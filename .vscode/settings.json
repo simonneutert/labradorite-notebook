@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": true,
+  "vscode-erb-beautify.useBundler": true,
+  "solargraph.useBundler": false,
+  "solargraph.formatting": true,
+  "solargraph.bundlerPath": "bundle",
+  "ruby.useBundler": true,
+  "ruby.pathToBundler": "/Users/simonneutert/.asdf/shims/bundle",
+  "ruby.useLanguageServer": false,
+  "ruby.format": false
+}

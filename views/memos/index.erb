@@ -1,0 +1,11 @@
+<input id="search" type="text" value="" class="form-control my-4">
+<div id="search-results"></div>
+<hr>
+<h1>My Notes</h1>
+<ul>
+  <% @titles.each do |post| %>
+    <li><a href="<%= post[:url] %>"><%= post[:title] %></a></li>
+  <% end %>
+</ul>
+<script src="/js/hi.js"></script>
+<script src="/js/search.js"></script>

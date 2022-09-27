@@ -1,0 +1,30 @@
+<style>
+  md-block { white-space: pre; font-family: monospace; }
+</style>
+<div class="row">
+  <div class="col">
+    <p>
+      <a href="/memos">Overview</a>
+    </p>
+    <p>
+      <a href="<%= @current_path_memo %>/edit">edit</a>
+    </p>
+  </div>
+</div>
+<hr>
+<h1><%= @meta_ostruct.title %></h1>
+<hr>
+<div class="row">
+  <div class="col">
+    <p>
+      <strong>TAGS: </strong>
+      <span><%= @meta_ostruct.tags.join(', ') %></span>
+    </div>
+  </p>
+</div>
+<hr>
+<div class="row">
+  <div class="col">
+    <%= @content %>
+  </div>
+</div>
