@@ -2,8 +2,8 @@
 id: 2022/09/26/abcd-efgh
 title: All about Pugs!!!
 tags:
-- dog
-- pug
-- pet
+  - dog
+  - pug
+  - pet
 urls:
-- http://localhost:9292/memos/2022/09/26/abcd-efgh/edit
+  - http://localhost:9292/memos/2022/09/26/abcd-efgh/edit
