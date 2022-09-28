@@ -1,11 +1,26 @@
 # frozen_string_literal: true
 
 class App < Roda
+  attr_accessor :index
+
   plugin :static, ['/js', '/css']
   plugin :render, layout: './layout'
   plugin :view_options
   plugin :json
   plugin :json_parser
+
+  dev = ENV['RACK_ENV'] == 'development'
+  begin
+    index = Tantiny::Index.new '.tantiny', exclusive_writer: !dev do
+      id :id
+      facet :category
+      string :title
+      text :content
+      date :updated_at
+    end
+  rescue StandardError => e
+    puts e
+  end
 
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
 
@@ -30,18 +45,15 @@ class App < Roda
     r.on 'memos' do
       set_view_subdir 'memos'
 
+      r.post 'reload' do
+        index = SearchIndex::Core.new(index).recreate_index!
+
+        response.status = 200
+        {}
+      end
+
       r.post 'search' do
-        results = INDEX.search(r.params['search'])
-        content = results.map do |path_to_memo_md|
-          url = "/memos/#{path_to_memo_md}"
-          path = "./memos/#{path_to_memo_md}/memo.md"
-          path_to_memo_meta_yml = "./memos/#{path_to_memo_md}/meta.yaml"
-          @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
-          @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
-          markdown_content = File.read(path).scan(/.{0,40}#{r.params['search']}.{0,40}/i)
-          [url, @meta_ostruct.title, markdown_content]
-        end
-        content
+        Controllers::Memos::Search.new(r, index).run
       end
 
       r.on(%r{(\d{4}/\d{2}/\d{2}/\w{4}-\w{4})}) do |memo_path|
@@ -61,24 +73,8 @@ class App < Roda
         end
 
         r.post 'update' do
-          params = r.params
-          meta_data = FileOperations::MetaDataParamDeserializer.read(params)
-          meta_updated = Helper::DeepCopy.create(@meta).merge(meta_data)
-
-          File.write(path_to_memo_meta_yml, meta_updated.to_yaml)
-          File.write(path_to_memo_md, params['content'])
-
-          INDEX.transaction do
-            INDEX << {
-              id: meta_updated['id'],
-              facet: meta_updated['tags'].join('/'),
-              title: meta_updated['title'].strip,
-              content: params['content'],
-              updated_at: DateTime.now
-            }
-          end
-          INDEX.reload
-
+          Controllers::Memos::Update.new(r, index, memo_path, @meta).run!
+          # replace redirect with JSON response
           r.redirect "#{@current_path_memo}/edit"
         end
 
