@@ -9,6 +9,8 @@
   </p>
 </div>
 
+---
+
 ## Rationale
 
 why
