@@ -15,20 +15,24 @@ const createSearchResultDomElement = function (url, title, hits) {
   return ele;
 };
 
-const search = document.getElementById("search");
-let debounce = undefined;
-search.addEventListener("keyup", (e) => {
+const runSearch = function (debounce, elem) {
   if (debounce) {
     clearTimeout(debounce);
   }
   debounce = setTimeout(() => {
+    if (elem.value.length < 3) {
+      // clear content
+      document.getElementById("search-results").replaceChildren(...[]);
+      return;
+    }
+    // fetch data replace content
     fetch("http://localhost:9292/memos/search", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: JSON.stringify({ search: search.value }),
+      body: JSON.stringify({ search: elem.value }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -43,4 +47,11 @@ search.addEventListener("keyup", (e) => {
         document.getElementById("search-results").replaceChildren(...coll);
       });
   }, 300);
+};
+
+const search = document.getElementById("search");
+let debounce = undefined;
+search.addEventListener("keyup", (e) => {
+  runSearch(debounce, search);
 });
+runSearch(debounce, search);
