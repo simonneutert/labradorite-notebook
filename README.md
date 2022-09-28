@@ -5,7 +5,7 @@
 
 <div align="center">
   <p>
-    <img src="https://github.com/simonneutert/labradorite-notebook/blob/development/public/labradorite.jpg?raw=true">
+    <img src="https://github.com/simonneutert/labradorite-notebook/blob/development/public/labradorite.jpg?raw=true" alt="Labradorite dreamed by openai's Dall-E2: A brown labrador shooting a lazer from a blue crystal on its forehead, digital art">
   </p>
 </div>
 
