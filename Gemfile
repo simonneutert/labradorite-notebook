@@ -16,5 +16,5 @@ gem 'redcarpet', '~> 3.5'
 
 group :development do
   gem 'rubocop', '~> 1.36', require: false
-  gem 'solargraph', '~> 0.47.0', require: false
+  gem 'solargraph', '~> 0.47.1', require: false
 end
