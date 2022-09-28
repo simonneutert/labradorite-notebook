@@ -16,15 +16,31 @@
 <hr>
 <div class="row">
   <div class="col">
-    <p>
-      <strong>TAGS: </strong>
-      <span><%= @meta_ostruct.tags.join(', ') %></span>
-    </div>
-  </p>
+    <%= @content %>
+  </div>
 </div>
 <hr>
 <div class="row">
   <div class="col">
-    <%= @content %>
+    <p>
+      <strong>TAGS: </strong>
+      <% unless @meta_ostruct.tags.empty? %>
+        <span><%= @meta_ostruct.tags.split(',').join(', ') %></span>
+      <% else %>
+        NO TAGS
+      <% end %>
+    </p>
+  </div>
+  <div class="col">
+    <% if @meta_ostruct.urls.any? %>
+      <p>
+        <strong>URLS:</strong>
+      </p>
+      <% @meta_ostruct.urls.each do |url| %>
+        <p><a href="<%= url %>" target="_blank" rel="noopener noreferrer"><%= url %></a></p>
+      <% end %>
+    <% else %>
+      NO URLS
+    <% end %>
   </div>
 </div>

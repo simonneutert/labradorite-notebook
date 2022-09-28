@@ -10,7 +10,11 @@ module Controllers
       end
 
       def run
-        index.search(@search_input).map do |path_to_memo_md|
+        content_search = @index.smart_query(:content, @search_input)
+        title_search = @index.smart_query(:title, @search_input)
+        search_results = @index.search(content_search | title_search)
+
+        search_results.map do |path_to_memo_md|
           url = "/memos/#{path_to_memo_md}"
           path_to_memo_md_file = "./memos/#{path_to_memo_md}/memo.md"
           path_to_memo_meta_yaml_file = "./memos/#{path_to_memo_md}/meta.yaml"

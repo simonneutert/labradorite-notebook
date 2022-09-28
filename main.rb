@@ -23,7 +23,7 @@ p index.search('world')
 index = Tantiny::Index.new './tmp/index' do
   id :imdb_id
   facet :category
-  string :title
+  text :title
   text :description
   integer :duration
   double :rating

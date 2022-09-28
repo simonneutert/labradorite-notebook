@@ -8,7 +8,7 @@ module FileOperations
         data = Marshal.load(Marshal.dump(params))
         content = data['content']
         data = data.slice('tags', 'title')
-        data['tags'] = data['tags'].split(',').map(&:strip)
+        data['tags'] = data['tags'].split(',').map(&:strip).join(',')
         data['urls'] = content.scan(URLS_REGEXP)
         data
       end

@@ -14,8 +14,8 @@ module SearchIndex
 
       @index = Tantiny::Index.new '.tantiny', exclusive_writer: @dev do
         id :id
-        facet :category
-        string :title
+        text :tags
+        text :title
         text :content
         date :updated_at
       end
@@ -43,7 +43,7 @@ module SearchIndex
       # use SearchIndex::Schema later
       {
         id: data_hsh['id'],
-        facet: data_hsh['tags'].join('/'),
+        tags: data_hsh['tags'],
         title: data_hsh['title'].strip,
         content: data_hsh['content'],
         updated_at: DateTime.now

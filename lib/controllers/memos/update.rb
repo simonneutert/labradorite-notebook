@@ -27,7 +27,7 @@ module Controllers
         @index.transaction do
           @index << {
             id: data['id'],
-            facet: data['tags'].join('/'),
+            tags: data['tags'],
             title: data['title'].strip,
             content: data['content'],
             updated_at: DateTime.now
