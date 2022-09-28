@@ -15,43 +15,49 @@ const createSearchResultDomElement = function (url, title, hits) {
   return ele;
 };
 
-const runSearch = function (debounce, elem) {
-  if (debounce) {
-    clearTimeout(debounce);
-  }
-  debounce = setTimeout(() => {
-    if (elem.value.length < 3) {
-      // clear content
-      document.getElementById("search-results").replaceChildren(...[]);
-      return;
-    }
-    // fetch data replace content
-    fetch("http://localhost:9292/memos/search", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify({ search: elem.value }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        let coll = [];
-        data.map((searchResult) => {
-          const url = searchResult[0];
-          const title = searchResult[1];
-          const hits = searchResult[2];
+const runSearch = function (elem, searchAbortController) {
+  searchAbortController = new AbortController();
 
-          coll.push(createSearchResultDomElement(url, title, hits));
-        });
-        document.getElementById("search-results").replaceChildren(...coll);
+  if (elem.value.length < 3) {
+    // clear content
+    document.getElementById("search-results").replaceChildren(...[]);
+    return;
+  }
+  // fetch data replace content
+  fetch("http://localhost:9292/memos/search", {
+    signal: searchAbortController.signal,
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify({ search: elem.value }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      let coll = [];
+      data.map((searchResult) => {
+        const url = searchResult[0];
+        const title = searchResult[1];
+        const hits = searchResult[2];
+
+        coll.push(createSearchResultDomElement(url, title, hits));
       });
-  }, 300);
+      document.getElementById("search-results").replaceChildren(...coll);
+    });
 };
 
 const search = document.getElementById("search");
 let debounce = undefined;
+let searchAbortController = new AbortController();
 search.addEventListener("keyup", (e) => {
-  runSearch(debounce, search);
+  if (debounce) {
+    clearTimeout(debounce);
+    searchAbortController.abort();
+  }
+  debounce = setTimeout(() => {
+    console.log(1);
+    runSearch(search, searchAbortController);
+  }, 500);
 });
-runSearch(debounce, search);
+runSearch(search, searchAbortController);
