@@ -4,9 +4,8 @@
 > \- every esoteric out there
 
 <div align="center">
- 
   <p>
- <img src="">
+    <img src="https://github.com/simonneutert/labradorite-notebook/blob/development/public/labradorite.jpg?raw=true">
   </p>
 </div>
 
