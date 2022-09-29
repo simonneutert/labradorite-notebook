@@ -6,3 +6,4 @@ urls:
 - http://localhost:9292/memos/2022/09/26/abcd-efgh/edit
 - http://localhost:9292/memos/2022/09/25/abcd-efgh/edit
 - http://localhost:9292/memos/2022/09/24/abcd-efgh/edit
+updated_at: !ruby/object:DateTime 2022-09-29 17:29:58.161601000 +02:00

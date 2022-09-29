@@ -86,14 +86,10 @@ class App < Roda
 
       # TODO: extract to controller
       r.is do
-        paths = Dir.glob('memos/**/**').filter do |paths|
-                  paths.match(/\.md/)
-                end
-                   .take(10)
-                   .map! { |file_path| File.dirname(file_path) }
-
-        @titles_latest = paths.map do |post|
-          meta_data = YAML.safe_load(File.read("#{post}/meta.yaml"))
+        n_files = 25
+        files = FileOperations::FilesSortByLatestModified.new.latest_n_memos(n_files)
+        @titles_latest = files.map do |post|
+          meta_data = YAML.safe_load(File.read("#{post}/meta.yaml"), [Date, Time, DateTime])
           {
             title: meta_data['title'],
             url: "/#{post}"
