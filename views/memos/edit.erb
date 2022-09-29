@@ -15,7 +15,7 @@
   <hr>
   <div class="row">
     <div class="col">
-      <div style="height: 80vh; border: 1px solid green; overflow-y: scroll;">
+      <div id="content-preview" style="height: 80vh; border: 1px solid green; overflow-y: scroll;">
         <%= @content -%>
       </div>
     </div>
@@ -29,7 +29,8 @@
 </form>
 <%# JS includes %>
 <script src="/js/basic-tagin.js"></script>
-<script src="/js/controllers/memos-update.js"></script>
+<script src="/js/controllers/memos/update.js"></script>
+<script src="/js/controllers/memos/preview.js"></script>
 <script>
   initMemosUpdate("memo-form", "http://localhost:9292/api/v1<%= @current_path_memo %>/update");
 </script>

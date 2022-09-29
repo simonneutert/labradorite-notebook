@@ -2,13 +2,10 @@ The Pug is a breed of dog originally from China, with physically distinctive fea
 
 ## Second
 
-Second paragraph.
+Second paragraph with a link to a [GitHub](http://localhost:9292/memos/2022/09/26/abcd-efgh/edit) repository.
 
 ### Third
-
-third
-
-[GitHub](http://localhost:9292/memos/2022/09/26/abcd-efgh/edit)
+here are some links to help you
 
 http://localhost:9292/memos/2022/09/25/abcd-efgh/edit
 

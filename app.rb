@@ -33,6 +33,10 @@ class App < Roda
             Controllers::Memos::Search.new(r, index).run
           end
 
+          r.post 'preview' do
+            { md: markdown.render(r.params['md']) }
+          end
+
           r.on(%r{(\d{4}/\d{2}/\d{2}/\w{4}-\w{4})}) do |memo_path|
             @current_path_memo = "/memos/#{memo_path}"
             path_to_memo_md = ".#{@current_path_memo}/memo.md"
@@ -47,9 +51,8 @@ class App < Roda
 
             # TODO: make the response dependent to action result
             r.post 'update' do
-              binding.pry
               Controllers::Memos::Update.new(r, index, memo_path, @meta).run!
-              { status: :success }
+              return { status: :success }
             end
           end
         end
