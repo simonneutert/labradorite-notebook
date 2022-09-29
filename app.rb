@@ -33,10 +33,24 @@ class App < Roda
             Controllers::Memos::Search.new(r, index).run
           end
 
-          # TODO: make the response dependent to action result
-          r.post 'update' do
-            Controllers::Memos::Update.new(r, index, memo_path, @meta).run!
-            { status: :success }
+          r.on(%r{(\d{4}/\d{2}/\d{2}/\w{4}-\w{4})}) do |memo_path|
+            @current_path_memo = "/memos/#{memo_path}"
+            path_to_memo_md = ".#{@current_path_memo}/memo.md"
+            path_to_memo_meta_yml = ".#{@current_path_memo}/meta.yaml"
+
+            markdown_content = File.read(path_to_memo_md)
+            @content_md = markdown_content
+            @content = markdown.render(markdown_content)
+
+            @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
+            @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
+
+            # TODO: make the response dependent to action result
+            r.post 'update' do
+              binding.pry
+              Controllers::Memos::Update.new(r, index, memo_path, @meta).run!
+              { status: :success }
+            end
           end
         end
       end

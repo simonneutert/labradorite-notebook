@@ -2,7 +2,7 @@
 <script src="https://unpkg.com/tagin@2.0.2/dist/tagin.min.js"></script>
 <a href="<%= @current_path_memo %>">Back</a>
 <hr>
-<form name="memo" action="<%= @current_path_memo %>/update" method="POST">
+<form id="memo-form" name="memo-form" action="<%= @current_path_memo %>/update" method="POST">
   <h1>
     <input type="text" id="title" name="title" class="form-control" value="<%= @meta_ostruct.title %>">
   </h1>
@@ -23,7 +23,13 @@
       <textarea name="content" id="content" style="width: 100%; height: 80vh;"><%= @content_md -%></textarea>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button id="submit-memo-form" type="submit" class="btn btn-primary">
+    Submit
+  </button>
 </form>
 <%# JS includes %>
 <script src="/js/basic-tagin.js"></script>
+<script src="/js/controllers/memos-update.js"></script>
+<script>
+  initMemosUpdate("memo-form", "http://localhost:9292/api/v1<%= @current_path_memo %>/update");
+</script>

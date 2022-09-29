@@ -22,7 +22,8 @@ module Controllers
         File.write(path_to_memo_meta_yml, meta_updated.to_yaml)
         File.write(path_to_memo_md, @params['content'])
 
-        data = Helper::DeepCopy.create(meta_updated).merge({ 'content' => @params['content'] })
+        data = Helper::DeepCopy.create(meta_updated)
+                               .merge('content' => @params['content'])
 
         upsert!(data) && @index.reload && true
       end
