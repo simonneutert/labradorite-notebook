@@ -24,6 +24,12 @@ module Controllers
 
         data = Helper::DeepCopy.create(meta_updated).merge({ 'content' => @params['content'] })
 
+        upsert!(data) && @index.reload && true
+      end
+
+      private
+
+      def upsert!(data)
         @index.transaction do
           @index << {
             id: data['id'],
@@ -33,7 +39,6 @@ module Controllers
             updated_at: DateTime.now
           }
         end
-        @index.reload
       end
     end
   end
