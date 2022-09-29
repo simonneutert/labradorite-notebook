@@ -55,7 +55,7 @@ module SearchIndex
     # TODO: extract paths to constants
     def extract_data_from_files
       Dir.glob(MARKDOWN_DIR).map do |file|
-        meta = YAML.load(File.read(file.gsub(MARKDOWN_FILENAME, META_FILENAME)))
+        meta = YAML.safe_load(File.read(file.gsub(MARKDOWN_FILENAME, META_FILENAME)), [Date, Time, DateTime])
         content = File.read(file)
         data = meta.merge({ 'content' => content })
         map_data_to_schema(data)
@@ -68,8 +68,7 @@ module SearchIndex
         id: data_hsh['id'],
         tags: data_hsh['tags'],
         title: data_hsh['title'].strip,
-        content: data_hsh['content'],
-        updated_at: DateTime.now
+        content: data_hsh['content']
       }
     end
   end

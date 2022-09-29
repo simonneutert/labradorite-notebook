@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Controllers
   module Memos
     class Update
@@ -13,7 +15,9 @@ module Controllers
 
       def run!
         meta_data = FileOperations::MetaDataParamDeserializer.read(@params)
-        meta_updated = Helper::DeepCopy.create(@meta).merge(meta_data)
+        meta_updated = Helper::DeepCopy.create(@meta)
+                                       .merge(meta_data)
+                                       .merge('updated_at' => DateTime.now)
 
         @current_path_memo = "/memos/#{@memo_path}"
         path_to_memo_md = ".#{@current_path_memo}/memo.md"
@@ -31,6 +35,7 @@ module Controllers
       private
 
       def upsert!(data)
+        binding.pry
         @index.transaction do
           @index << {
             id: data['id'],
