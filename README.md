@@ -32,11 +32,11 @@ Little experiment on how it rolls:
 
 ## Folder Structure
 
-- lib: Library Code / Business Logic
-- views: ERB Views
-- memos: the Memos/Notes in subdirectories `YYYY/MM/DD/random-string`
-- public: css/js/media
-- .tantiny: the local index data created by the [tantiny](https://github.com/baygeldin/tantiny) gem
+- `lib`: Library Code / Business Logic
+- `views`: ERB Views
+- `memos`: the Memos/Notes in subdirectories `YYYY/MM/DD/random-string`
+- `public`: css/js/media
+- `.tantiny`: the local index data created by the [tantiny](https://github.com/baygeldin/tantiny) gem
 
 ## Major Dependencies
 
