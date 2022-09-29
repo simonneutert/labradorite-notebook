@@ -88,9 +88,11 @@ class App < Roda
       r.is do
         paths = Dir.glob('memos/**/**').filter do |paths|
                   paths.match(/\.md/)
-                end.map! { |file_path| File.dirname(file_path) }
+                end
+                   .take(10)
+                   .map! { |file_path| File.dirname(file_path) }
 
-        @titles = paths.map do |post|
+        @titles_latest = paths.map do |post|
           meta_data = YAML.safe_load(File.read("#{post}/meta.yaml"))
           {
             title: meta_data['title'],

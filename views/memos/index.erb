@@ -1,9 +1,9 @@
-<input id="search" type="text" value="" class="form-control my-4">
+<input id="search" type="text" value="" class="form-control my-4" placeholder="CMD + F to search ...">
 <div id="search-results"></div>
 <hr>
-<h1>My Notes</h1>
+<h1>Latest Notes</h1>
 <ul>
-  <% @titles.each do |post| %>
+  <% @titles_latest.each do |post| %>
     <li><a href="<%= post[:url] %>"><%= post[:title] %></a></li>
   <% end %>
 </ul>

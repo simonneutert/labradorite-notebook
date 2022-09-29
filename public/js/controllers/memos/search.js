@@ -62,3 +62,18 @@
   });
   runSearch(search, searchAbortController);
 })();
+
+(() => {
+  // window.onkeydown = function (e) {
+  //   var ck = e.keyCode ? e.keyCode : e.which;
+  //   if ((e.ctrlKey && ck == 70) || (e.metaKey && ck == 70)) {
+  //     document.getElementById("search").focus({ focusVisible: true });
+  //   }
+  // };
+  document.body.addEventListener("keydown", function (e) {
+    if (e.key == "f" && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      document.getElementById("search").focus({ focusVisible: true });
+    }
+  });
+})();
