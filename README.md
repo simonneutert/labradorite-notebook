@@ -15,6 +15,14 @@
 
 why
 
+## Architecture
+
+Little experiment on how it rolls:
+
+- POST sends/gets JSON
+- GET gets HTML
+- navigating using HTML a tags
+
 ## Folder Structure
 
 - dir x

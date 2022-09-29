@@ -12,7 +12,8 @@ module Controllers
       def run
         content_search = @index.smart_query(:content, @search_input)
         title_search = @index.smart_query(:title, @search_input)
-        search_results = @index.search(content_search | title_search)
+        tag_search = @index.smart_query(:tags, @search_input)
+        search_results = @index.search(title_search | tag_search | content_search)
 
         search_results.map do |path_to_memo_md|
           url = "/memos/#{path_to_memo_md}"
