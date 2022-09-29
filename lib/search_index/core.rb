@@ -4,6 +4,10 @@ module SearchIndex
   attr_reader :dev
 
   class Core
+    MARKDOWN_DIR = 'memos/**/*.md'
+    MARKDOWN_FILENAME = 'memo.md'
+    META_FILENAME = 'meta.yaml'
+
     # class methods are simply a global initializer
     class << self
       #
@@ -32,17 +36,16 @@ module SearchIndex
     def recreate_index!
       # remove the files from filesystem in order to be able to start from scratch
       puts 'REMOVED INDEX' if FileUtils.rm_rf('.tantiny')
-
       @index = SearchIndex::Core.init_index
-
+      # extract
       notebook_entry_data = extract_data_from_files
-
+      # upsert
       @index.transaction do
         notebook_entry_data.each do |data_schema|
           @index << data_schema
         end
       end
-
+      # reload and return
       @index.reload
       @index
     end
@@ -51,8 +54,8 @@ module SearchIndex
 
     # TODO: extract paths to constants
     def extract_data_from_files
-      Dir.glob('memos/**/*.md').map do |file|
-        meta = YAML.load(File.read(file.gsub('memo.md', 'meta.yaml')))
+      Dir.glob(MARKDOWN_DIR).map do |file|
+        meta = YAML.load(File.read(file.gsub(MARKDOWN_FILENAME, META_FILENAME)))
         content = File.read(file)
         data = meta.merge({ 'content' => content })
         map_data_to_schema(data)
