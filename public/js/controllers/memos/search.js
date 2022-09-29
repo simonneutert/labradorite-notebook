@@ -58,7 +58,7 @@
     }
     debounce = setTimeout(() => {
       runSearch(search, searchAbortController);
-    }, 500);
+    }, 300);
   });
   runSearch(search, searchAbortController);
 })();
