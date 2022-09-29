@@ -26,9 +26,9 @@ I wanted something that does **just-enough**™. Let me try and wrap it up in a 
 
 Little experiment on how it rolls:
 
-- POST sends/gets JSON
-- GET gets HTML
-- navigating using HTML a tags
+- all GET get HTML
+- all POST sends FORMS/JSON gets JSON back
+- all links/navigation are plain HTML `a` tags 🤯
 
 ## Folder Structure
 
