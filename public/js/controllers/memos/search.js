@@ -51,6 +51,7 @@
   const search = document.getElementById("search");
   let debounce = undefined;
   let searchAbortController = new AbortController();
+
   search.addEventListener("keyup", (e) => {
     if (debounce) {
       clearTimeout(debounce);

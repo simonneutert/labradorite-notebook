@@ -1,6 +1,6 @@
 (function () {
-  function initMemosPreview(contentFormElement, searchAbortControllerX) {
-    searchAbortControllerX = new AbortController();
+  function initMemosPreview(contentFormElement, searchAbortController) {
+    searchAbortController = new AbortController();
     let markdownContent = contentFormElement.value;
 
     if (!markdownContent) {
@@ -8,7 +8,7 @@
     }
 
     fetch("http://localhost:9292/api/v1/memos/preview", {
-      signal: searchAbortControllerX.signal,
+      signal: searchAbortController.signal,
       method: "POST",
       cache: "no-cache",
       headers: {
@@ -27,16 +27,16 @@
   }
 
   let debounce = undefined;
-  let searchAbortControllerX = new AbortController();
+  let searchAbortController = new AbortController();
   let contentFormElement = document.getElementById("content");
 
   contentFormElement.addEventListener("keyup", (e) => {
     if (debounce) {
       clearTimeout(debounce);
-      searchAbortControllerX.abort();
+      searchAbortController.abort();
     }
     debounce = setTimeout(() => {
-      initMemosPreview(contentFormElement, searchAbortControllerX);
+      initMemosPreview(contentFormElement, searchAbortController);
     }, 200);
   });
 })();
