@@ -20,6 +20,20 @@
     return createSearchResultsElem;
   };
 
+  const buildResultCollectionDomElements = function (data) {
+    const coll = [];
+    data.map((searchResult) => {
+      const [url, title, hits] = searchResult;
+      const searchResultDomElement = createSearchResultDomElement(
+        url,
+        title,
+        hits
+      );
+      coll.push(searchResultDomElement);
+    });
+    return coll;
+  };
+
   const postData = function (searchAbortController, elem) {
     fetch(searchUrl, {
       signal: searchAbortController.signal,
@@ -32,19 +46,10 @@
     })
       .then((response) => response.json())
       .then((data) => {
-        let coll = [];
-        data.map((searchResult) => {
-          const url = searchResult[0];
-          const title = searchResult[1];
-          const hits = searchResult[2];
-          const searchResultDomElement = createSearchResultDomElement(
-            url,
-            title,
-            hits
-          );
-          coll.push(searchResultDomElement);
-        });
-        document.getElementById("search-results").replaceChildren(...coll);
+        const listOfResultElements = buildResultCollectionDomElements(data);
+        document
+          .getElementById("search-results")
+          .replaceChildren(...listOfResultElements);
       });
   };
 
