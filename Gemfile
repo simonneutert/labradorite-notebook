@@ -18,3 +18,7 @@ group :development do
   gem 'rubocop', '~> 1.36', require: false
   gem 'solargraph', '~> 0.47.1', require: false
 end
+
+group :test do
+  gem 'minitest'
+end

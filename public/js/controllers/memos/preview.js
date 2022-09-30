@@ -29,6 +29,7 @@
   let debounce = undefined;
   let searchAbortControllerX = new AbortController();
   let contentFormElement = document.getElementById("content");
+
   contentFormElement.addEventListener("keyup", (e) => {
     if (debounce) {
       clearTimeout(debounce);
