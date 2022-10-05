@@ -34,10 +34,13 @@ class App < Roda
           end
 
           r.post 'preview' do
-            { md: markdown.render(r.params['md']) }
+            content = r.params['md']
+            return { md: '<span></span>' } if content.empty?
+
+            { md: markdown.render(content) }
           end
 
-          r.on(%r{(\d{4}/\d{2}/\d{2}/\w{4}-\w{4})}) do |memo_path|
+          r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})}) do |memo_path|
             @current_path_memo = "/memos/#{memo_path}"
             path_to_memo_md = ".#{@current_path_memo}/memo.md"
             path_to_memo_meta_yml = ".#{@current_path_memo}/meta.yaml"
@@ -63,7 +66,7 @@ class App < Roda
       set_view_subdir 'memos'
 
       # TODO: extract to controller
-      r.on(%r{(\d{4}/\d{2}/\d{2}/\w{4}-\w{4})}) do |memo_path|
+      r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})}) do |memo_path|
         @current_path_memo = "/memos/#{memo_path}"
         path_to_memo_md = ".#{@current_path_memo}/memo.md"
         path_to_memo_meta_yml = ".#{@current_path_memo}/meta.yaml"
@@ -82,6 +85,26 @@ class App < Roda
         r.is do
           view 'show'
         end
+      end
+
+      r.on 'new' do
+        slug = Helper::SimpleUidGenerator.generate
+        d = DateTime.now
+        path = "memos/#{d.year}/#{d.month}/#{d.day}/#{slug}"
+        raise ArgumentError if File.exist?(path)
+
+        FileUtils.mkdir_p(path)
+
+        File.write("#{path}/memo.md", '')
+        File.write("#{path}/meta.yaml",
+                   { 'id' => "/#{d.year}/#{d.month}/#{d.day}/#{slug}",
+                     'title' => slug,
+                     'tags' => '',
+                     'urls' => [],
+                     'updated_at' => d }.to_yaml.to_s)
+        r.redirect "/#{path}/edit"
+      rescue StandardError => e
+        r.redirect '/memos/new'
       end
 
       # TODO: extract to controller

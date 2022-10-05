@@ -7,6 +7,7 @@ require 'tantiny'
 require 'redcarpet'
 require 'puma'
 require 'roda'
+require 'fileutils'
 
 require 'pry' if dev
 

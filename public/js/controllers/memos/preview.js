@@ -3,10 +3,6 @@
     searchAbortController = new AbortController();
     let markdownContent = contentFormElement.value;
 
-    if (!markdownContent) {
-      return;
-    }
-
     fetch("http://localhost:9292/api/v1/memos/preview", {
       signal: searchAbortController.signal,
       method: "POST",

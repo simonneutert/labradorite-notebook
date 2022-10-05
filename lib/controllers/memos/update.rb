@@ -35,7 +35,6 @@ module Controllers
       private
 
       def upsert!(data)
-        binding.pry
         @index.transaction do
           @index << {
             id: data['id'],
