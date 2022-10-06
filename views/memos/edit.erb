@@ -8,35 +8,65 @@
   DELETE
 </a>
 <hr>
-<form id="memo-form" name="memo-form" action="<%= @current_path_memo %>/update" method="POST">
-  <h1>
-    <input type="text" id="title" name="title" class="form-control" value="<%= @meta_ostruct.title %>" placeholder="Your Title Here...">
-  </h1>
-  <hr>
-  <div class="row">
-    <div class="col">
-      <input type="text" name="tags" class="form-control tagin" value="<%= @meta_ostruct.tags %>">
+<ul id="form-menu" class="nav nav-tabs">
+  <li id="show-editor-form" class="nav-item">
+    <a class="nav-link active" href="#">Markdown</a>
+  </li>
+  <li id="show-preview" class="nav-item">
+    <a class="nav-link" href="#">Preview</a>
+  </li>
+</ul>
+<hr>
+<div>
+  <form id="memo-form" name="memo-form" action="<%= @current_path_memo %>/update" method="POST">
+    <h1>
+      <input type="text" id="title" name="title" class="form-control" value="<%= @meta_ostruct.title %>" placeholder="Your Title Here...">
+    </h1>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <input type="text" name="tags" class="form-control tagin" value="<%= @meta_ostruct.tags %>">
+      </div>
     </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col" style="overflow-y: scroll;">
-      <textarea name="content" id="content" style="width: 100%; height: 80vh;"><%= @content_md -%></textarea>
+    <hr>
+    <div id="memo-form-content">
+      <div style="overflow-y: scroll;">
+        <textarea name="content" id="content" style="width: 100%; height: 80vh;"><%= @content_md -%></textarea>
+      </div>
     </div>
-    <div class="col">
+    <div id="memo-form-preview" class="col">
       <div id="content-preview" style="height: 80vh; border: 1px solid green; overflow-y: scroll;">
         <%= @content -%>
       </div>
     </div>
-  </div>
-  <button id="submit-memo-form" type="submit" class="btn btn-primary">
-    Submit
-  </button>
-</form>
+    <button id="submit-memo-form" type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</div>
 <%# JS includes %>
 <script src="/js/basic-tagin.js"></script>
 <script src="/js/controllers/memos/update.js"></script>
 <script src="/js/controllers/memos/preview.js"></script>
 <script>
   initMemosUpdate("memo-form", "http://localhost:9292/api/v1<%= @current_path_memo %>/update");
+</script>
+<script>
+  const elems = ["show-editor-form", "show-preview"];
+    elems.forEach(id => {
+      document.getElementById(id).addEventListener("click", (e) => {
+        Array.from(document.getElementById('form-menu').getElementsByTagName("a")).forEach(element => {
+          element.classList.remove('active');
+        });
+        console.log(e)
+        if (e.target.parentElement.id == 'show-editor-form') {
+          document.getElementById('memo-form-content').style.display = ""
+          document.getElementById('memo-form-preview').style.display = "none"
+        } else {
+          document.getElementById('memo-form-content').style.display = "none"
+          document.getElementById('memo-form-preview').style.display = ""
+        }
+        e.target.classList.add('active');
+      })
+    })
 </script>
