@@ -78,6 +78,11 @@ class App < Roda
         @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
         @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
 
+        r.on 'destroy' do
+          FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
+          r.redirect '/'
+        end
+
         r.on 'edit' do
           view 'edit'
         end
@@ -88,21 +93,9 @@ class App < Roda
       end
 
       r.on 'new' do
-        slug = Helper::SimpleUidGenerator.generate
-        d = DateTime.now
-        path = "memos/#{d.year}/#{d.month}/#{d.day}/#{slug}"
-        raise ArgumentError if File.exist?(path)
-
-        FileUtils.mkdir_p(path)
-
-        File.write("#{path}/memo.md", '')
-        File.write("#{path}/meta.yaml",
-                   { 'id' => "/#{d.year}/#{d.month}/#{d.day}/#{slug}",
-                     'title' => slug,
-                     'tags' => '',
-                     'urls' => [],
-                     'updated_at' => d }.to_yaml.to_s)
-        r.redirect "/#{path}/edit"
+        new_memo = FileOperations::NewMemoGenerator.new
+        new_memo.generate
+        r.redirect "/#{new_memo.path}/edit"
       rescue StandardError => e
         r.redirect '/memos/new'
       end

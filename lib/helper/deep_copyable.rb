@@ -2,7 +2,7 @@
 
 module Helper
   module DeepCopyable
-    def create(obj)
+    def deep_copy(obj)
       Marshal.load(Marshal.dump(obj))
     end
   end

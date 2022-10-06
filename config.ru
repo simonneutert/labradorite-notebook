@@ -15,6 +15,7 @@ require 'ostruct'
 
 require 'rack/unreloader'
 Unreloader = Rack::Unreloader.new(subclasses: %w[Roda Sequel::Model], reload: dev) { App }
+Dir.glob('./lib/helper/**/*.rb').each { |file| Unreloader.require file }
 Dir.glob('./lib/**/*.rb').each { |file| Unreloader.require file }
 Unreloader.require './app.rb'
 

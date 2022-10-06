@@ -10,10 +10,26 @@
       padding: 1.5em;
     }
 </style>
-<input id="search" type="text" value="" class="form-control my-4" placeholder="CMD + F to search ...">
+<div class="row">
+  <div class="col-1">
+    <a href="/memos/new" class="btn btn-primary mt-4">NEW</a>
+  </div>
+  <div class="col-11">
+    <input id="search" type="text" value="" class="form-control my-4" placeholder="CMD + F to search ...">
+  </div>
+</div>
 <div id="search-results"></div>
 <hr>
-<h1>Latest Notes</h1>
+<p class="text-end">
+  <span style="cursor: pointer;" onclick="fetch('/api/v1/memos/reload', {method: 'post'}).then((res) => {console.log(res)})">
+    🔄 INDEX
+  </span>
+</p>
+<div class="row">
+  <div class="col-10">
+    <h1>Latest Notes</h1>
+  </div>
+</div>
 <ul>
   <% @titles_latest.each do |post| %>
     <li><a href="<%= post[:url] %>"><%= post[:title] %></a></li>
