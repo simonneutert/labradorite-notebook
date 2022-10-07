@@ -29,7 +29,9 @@ module Controllers
         memo_schema = Helper::DeepCopy.create(meta_updated)
                                       .merge('content' => @params['content'])
 
-        upsert!(memo_schema) && @index.reload && true
+        upsert!(memo_schema)
+        @index.reload
+        true
       end
 
       private
