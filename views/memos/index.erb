@@ -26,7 +26,7 @@
   </div>
   <div class="col-1">
     <p class="mt-3 text-end">
-      <span style="cursor: pointer;" onclick="fetch('/api/v1/memos/reload', {method: 'post'}).then((res) => {console.log(res)})">
+      <span style="cursor: pointer;" onclick="reloadIndex(event)">
         🔄 INDEX
       </span>
     </p>
@@ -38,3 +38,17 @@
   <% end %>
 </ul>
 <script src="/js/controllers/memos/search.js"></script>
+<script>
+  const reloadIndex = (e) => {
+    e.target.style.display="none";
+    fetch('/api/v1/memos/reload', {
+      method: 'post'
+    })
+    .then((res) => {
+      e.target.style.display = "";
+    })
+    .catch((e) => {
+      console.console.error(e);
+      e.target.style.display = "none"})
+  }
+</script>
