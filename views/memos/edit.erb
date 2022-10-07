@@ -1,45 +1,48 @@
 <link rel="stylesheet" href="https://unpkg.com/tagin@2.0.2/dist/tagin.min.css">
 <script src="https://unpkg.com/tagin@2.0.2/dist/tagin.min.js"></script>
-<a href="<%= @current_path_memo %>">Back</a>
-<hr>
-<a href="<%= @current_path_memo %>/destroy" 
-   class="btn btn-primary" 
+<div class="row">
+  <div class="col">
+    <a href="<%= @current_path_memo %>" class="btn btn-primary">Back</a>
+  </div>
+  <div class="col text-end">
+    <a href="<%= @current_path_memo %>/destroy" 
+   class="btn btn-danger " 
    onclick="return confirm('Are you sure you want to delete this item?');">
-  DELETE
-</a>
-<hr>
-<ul id="form-menu" class="nav nav-tabs">
-  <li id="show-editor-form" class="nav-item">
-    <a class="nav-link active" href="#">Markdown</a>
-  </li>
-  <li id="show-preview" class="nav-item">
-    <a class="nav-link" href="#">Preview</a>
-  </li>
-</ul>
-<hr>
-<div>
+      DELETE
+    </a>
+  </div>
+</div>
+<div class="mt-4 mb-4">
   <form id="memo-form" name="memo-form" action="<%= @current_path_memo %>/update" method="POST">
-    <h1>
-      <input type="text" id="title" name="title" class="form-control" value="<%= @meta_ostruct.title %>" placeholder="Your Title Here...">
-    </h1>
-    <hr>
-    <div class="row">
+    <div class="row mb-3">
+      <div class="col">
+        <input type="text" id="title" name="title" class="form-control" value="<%= @meta_ostruct.title %>" placeholder="Your Title Here...">
+      </div>
       <div class="col">
         <input type="text" name="tags" class="form-control tagin" value="<%= @meta_ostruct.tags %>">
       </div>
     </div>
-    <hr>
+    <div>
+      <ul id="form-menu" class="nav nav-tabs">
+        <li id="show-editor-form" class="nav-item">
+          <a class="nav-link active" href="#">Markdown</a>
+        </li>
+        <li id="show-preview" class="nav-item">
+          <a class="nav-link" href="#">Preview</a>
+        </li>
+      </ul>
+    </div>
     <div id="memo-form-content">
       <div style="overflow-y: scroll;">
-        <textarea name="content" id="content" style="width: 100%; height: 80vh;"><%= @content_md -%></textarea>
+        <textarea name="content" id="content" style="width: 100%; height: 60vh;"><%= @content_md -%></textarea>
       </div>
     </div>
-    <div id="memo-form-preview" class="col">
-      <div id="content-preview" style="height: 80vh; border: 1px solid green; overflow-y: scroll;">
+    <div id="memo-form-preview" class="col" style="display: none;">
+      <div id="content-preview" style="height: 60vh; border: 1px solid green; overflow-y: scroll;">
         <%= @content -%>
       </div>
     </div>
-    <button id="submit-memo-form" type="submit" class="btn btn-primary">
+    <button id="submit-memo-form" type="submit" class="btn btn-primary mt-2">
       Submit
     </button>
   </form>

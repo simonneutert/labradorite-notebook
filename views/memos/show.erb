@@ -3,20 +3,25 @@
 </style>
 <div class="row">
   <div class="col">
-    <p>
-      <a href="/memos">Overview</a>
-    </p>
-    <p>
-      <a href="<%= @current_path_memo %>/destroy" class="btn btn-primary">DELETE</a>
-    </p>
-    <p>
-      <a href="<%= @current_path_memo %>/edit">edit</a>
+    <a href="/memos" class="btn btn-primary">Overview</a>
+  </div>
+  <div class="col">
+    <p class="text-end">
+      <a href="<%= @current_path_memo %>/destroy" class="btn btn-danger">DELETE</a>
     </p>
   </div>
 </div>
 <hr>
-<h1><%= @meta_ostruct.title %></h1>
-<hr>
+<div class="row">
+  <div class="col">
+    <h1><%= @meta_ostruct.title %></h1>
+  </div>
+  <div class="col-1">
+    <p class="text-end mt-2">
+      <a href="<%= @current_path_memo %>/edit" class="btn btn-primary">edit</a>
+    </p>
+  </div>
+</div>
 <div class="row">
   <div class="col">
     <%= @content %>
