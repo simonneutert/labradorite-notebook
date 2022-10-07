@@ -43,3 +43,9 @@ Little experiment on how it rolls:
 - Roda
 - Tantiny
 - RedCarpet
+
+## Docker
+
+https://stackoverflow.com/a/56844765
+
+UID=${UID} GID=${GID} docker-compose up

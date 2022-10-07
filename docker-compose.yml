@@ -3,6 +3,7 @@ services:
   app:
     tty: true
     stdin_open: true
+    user: "${UID}:${GID}"
     build:
       context: .
       dockerfile: Dockerfile
