@@ -71,7 +71,7 @@ class App < Roda
         path_to_memo_md = ".#{@current_path_memo}/memo.md"
         path_to_memo_meta_yml = ".#{@current_path_memo}/meta.yaml"
 
-        markdown_content = File.read(path_to_memo_md)
+        markdown_content = File.read("./#{path_to_memo_md}")
         @content_md = markdown_content
         @content = markdown.render(markdown_content)
 
