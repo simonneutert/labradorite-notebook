@@ -14,7 +14,7 @@ module FileOperations
 
       File.write("#{@path}/memo.md", '')
       File.write("#{@path}/meta.yaml",
-                 { 'id' => "/#{d.year}/#{d.month}/#{d.day}/#{@slug}",
+                 { 'id' => "#{d.year}/#{d.month}/#{d.day}/#{@slug}",
                    'title' => @slug,
                    'tags' => '',
                    'urls' => [],
