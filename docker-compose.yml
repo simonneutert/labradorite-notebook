@@ -11,5 +11,5 @@ services:
     command: bundle exec rackup -o0
     volumes:
       - ./memos:/app/memos
-      - ./.tantiny:/app/.tantiny
+      # - ./.tantiny:/app/.tantiny reenable with matching uid/guid
     restart: unless-stopped
