@@ -25,7 +25,7 @@
       return;
     }
     // fetch data replace content
-    fetch("http://localhost:9292/api/v1/memos/search", {
+    fetch("/api/v1/memos/search", {
       signal: searchAbortController.signal,
       method: "POST",
       headers: {
