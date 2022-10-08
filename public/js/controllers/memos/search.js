@@ -59,7 +59,7 @@
     }
     debounce = setTimeout(() => {
       runSearch(search, searchAbortController);
-    }, 300);
+    }, 200);
   });
   runSearch(search, searchAbortController);
 })();
