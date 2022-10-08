@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class App < Roda
-  attr_accessor :index
+  attr_accessor :index, :index_status
 
-  plugin :static, ['/js', '/css']
+  plugin :static, ['/js', '/css', '/favicon']
   plugin :render, layout: './layout'
   plugin :view_options
   plugin :caching
@@ -12,6 +12,7 @@ class App < Roda
 
   dev = ENV['RACK_ENV'] == 'development'
   index ||= SearchIndex::Core.init_index
+  @index_status = nil
 
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
 
@@ -78,6 +79,7 @@ class App < Roda
 
         @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
         @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
+        @meta_data_digest = Digest::SHA1.hexdigest(@meta_ostruct.to_yaml)
 
         r.on 'destroy' do
           FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
@@ -89,7 +91,7 @@ class App < Roda
         end
 
         r.is do
-          r.etag @meta_ostruct.sha1
+          r.etag(@meta_data_digest)
           view 'show'
         end
       end
