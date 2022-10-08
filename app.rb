@@ -24,6 +24,22 @@ class App < Roda
     r.on 'api' do
       r.on 'v1' do
         r.on 'memos' do
+          r.on 'attachments' do
+            r.is do
+              # when form data
+              data = r.params['upload']
+              filename = data[:filename]
+              path = "public/#{filename}"
+              File.write(path,
+                         File.read(data[:tempfile]),
+                         mode: 'wb')
+              { succes: path }
+
+              # when direct upload (incomplete)
+              # File.write("public/meme.jpg", img_str, mode: "wb")
+            end
+          end
+
           # TODO: make the response dependent to action result
           r.post 'reload' do
             index = SearchIndex::Core.new(index).recreate_index!
