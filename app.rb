@@ -6,6 +6,7 @@ class App < Roda
   plugin :static, ['/js', '/css']
   plugin :render, layout: './layout'
   plugin :view_options
+  plugin :caching
   plugin :json
   plugin :json_parser
 
@@ -88,6 +89,7 @@ class App < Roda
         end
 
         r.is do
+          r.etag @meta_ostruct.sha1
           view 'show'
         end
       end
