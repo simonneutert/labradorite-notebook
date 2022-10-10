@@ -56,3 +56,11 @@ Little experiment on how it rolls:
 https://stackoverflow.com/a/56844765
 
 UID=${UID} GID=${GID} docker-compose up
+
+## Follow-up: Inspiration, Knowledge
+
+#### Rails
+
+https://stevepolito.design/blog/search-across-multiple-models-in-rails/
+
+Gist: a searchable table is to be added and kept updated using commit_hooks
