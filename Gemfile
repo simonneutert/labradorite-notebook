@@ -21,3 +21,5 @@ end
 group :test do
   gem 'minitest'
 end
+
+gem "rake", "~> 13.0"

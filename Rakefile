@@ -1,5 +1,6 @@
 require 'minitest'
 require 'minitest/test_task'
+require 'pry'
 
 # Minitest::TestTask.create # named test, sensible defaults
 
@@ -11,3 +12,8 @@ Minitest::TestTask.create(:test) do |t|
 end
 
 task default: :test
+
+task :clean do
+  FileUtils.rm_rf('./memos')
+  FileUtils.cp_r('./.defaults/memos', './')
+end

@@ -9,12 +9,15 @@ class App < Roda
   plugin :caching
   plugin :json
   plugin :json_parser
+  plugin :sinatra_helpers # , delegate: false
 
   dev = ENV['RACK_ENV'] == 'development'
   index ||= SearchIndex::Core.init_index
   @index_status = nil
 
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+  # TODO: write a method for whitelist checks of media type
+  media_whitelist = %w[pdf md txt png jpg jpeg yml yaml json]
 
   route do |r|
     r.root do
@@ -24,6 +27,24 @@ class App < Roda
     r.on 'api' do
       r.on 'v1' do
         r.on 'memos' do
+          r.on 'attachments' do
+            r.post do
+              data = r.params['file']
+              filename = data[:filename]
+              raise unless media_whitelist.any? { |t| filename.end_with?(t) }
+              if filename.end_with?('memo.md') || filename.end_with?('memo.yaml') || filename.end_with?('memo.yml')
+                raise 'Filename forbidden!'
+              end
+
+              pathy_filename = "#{Time.now.to_i}-#{filename}"[1..-1].gsub('/', '_')
+              File.write(".#{r.params['path']}/#{pathy_filename}",
+                         File.read(data[:tempfile]),
+                         mode: 'wb')
+
+              { success: "#{r.params['path']}/#{pathy_filename}" }
+            end
+          end
+
           # TODO: make the response dependent to action result
           r.post 'reload' do
             index = SearchIndex::Core.new(index).recreate_index!
@@ -64,8 +85,17 @@ class App < Roda
       end
     end
 
+    r.on 'attachments' do
+      r.multi_public('attachments')
+    end
+
     r.on 'memos' do
       set_view_subdir 'memos'
+
+      r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(txt|json|md|pdf|yml|yaml|jpg|jpeg|png))}) do |x, y|
+        # mime_type :jpg
+        send_file "./memos/#{x}/#{y}"
+      end
 
       # TODO: extract to controller
       r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})}) do |memo_path|
@@ -80,6 +110,10 @@ class App < Roda
         @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
         @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
         @meta_data_digest = Digest::SHA1.hexdigest(@meta_ostruct.to_yaml)
+
+        @media_files = Dir.glob(".#{@current_path_memo}/**")
+                          .filter { |filename| media_whitelist.any? { |t| filename.end_with?(t) } }
+                          .reject { |filename| filename.end_with?('memo.md') || filename.end_with?('memo.yaml') }
 
         r.on 'destroy' do
           FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
