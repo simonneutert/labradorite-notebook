@@ -1,11 +1,13 @@
 (() => {
   const searchUrl = "http://localhost:9292/api/v1/memos/search";
+  const searchElem = document.getElementById("search");
 
   const createSearchResultDomElement = function (url, title, hits) {
-    const ele = document.createElement("div");
+    const createSearchResultsElem = document.createElement("div");
     const href = document.createElement("a");
-    ele.appendChild(href);
+    createSearchResultsElem.appendChild(href);
     href.href = url;
+
     const resultHeader = document.createElement("h4");
     resultHeader.appendChild(document.createTextNode(title));
     href.append(resultHeader);
@@ -15,18 +17,10 @@
       hitElement.appendChild(document.createTextNode(hit));
       href.appendChild(hitElement);
     });
-    return ele;
+    return createSearchResultsElem;
   };
 
-  const runSearch = function (elem, searchAbortController) {
-    searchAbortController = new AbortController();
-
-    if (elem.value.length < 3) {
-      // clear content
-      document.getElementById("search-results").replaceChildren(...[]);
-      return;
-    }
-    // fetch data replace content
+  const postData = function (searchAbortController, elem) {
     fetch(searchUrl, {
       signal: searchAbortController.signal,
       method: "POST",
@@ -43,18 +37,34 @@
           const url = searchResult[0];
           const title = searchResult[1];
           const hits = searchResult[2];
-
-          coll.push(createSearchResultDomElement(url, title, hits));
+          const searchResultDomElement = createSearchResultDomElement(
+            url,
+            title,
+            hits
+          );
+          coll.push(searchResultDomElement);
         });
         document.getElementById("search-results").replaceChildren(...coll);
       });
   };
 
-  const search = document.getElementById("search");
+  const runSearch = function (elem, searchAbortController) {
+    searchAbortController = new AbortController();
+
+    if (elem.value.length < 3) {
+      // clear content
+      document.getElementById("search-results").replaceChildren(...[]);
+      return;
+    }
+
+    // fetch data replace content
+    postData(searchAbortController, elem);
+  };
+
   let debounce = undefined;
   let searchAbortController = new AbortController();
 
-  search.addEventListener("keyup", (e) => {
+  searchElem.addEventListener("keyup", (e) => {
     if (debounce) {
       clearTimeout(debounce);
       searchAbortController.abort();
@@ -63,14 +73,6 @@
       runSearch(search, searchAbortController);
     }, 100);
   });
-  runSearch(search, searchAbortController);
-})();
 
-(() => {
-  document.body.addEventListener("keydown", function (e) {
-    if (e.key == "f" && (e.ctrlKey || e.metaKey)) {
-      e.preventDefault();
-      document.getElementById("search").focus({ focusVisible: true });
-    }
-  });
+  runSearch(searchElem, searchAbortController);
 })();
