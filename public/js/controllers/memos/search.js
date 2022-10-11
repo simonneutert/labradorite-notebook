@@ -1,4 +1,6 @@
 (() => {
+  const searchUrl = "http://localhost:9292/api/v1/memos/search";
+
   const createSearchResultDomElement = function (url, title, hits) {
     const ele = document.createElement("div");
     const href = document.createElement("a");
@@ -25,7 +27,7 @@
       return;
     }
     // fetch data replace content
-    fetch("/api/v1/memos/search", {
+    fetch(searchUrl, {
       signal: searchAbortController.signal,
       method: "POST",
       headers: {

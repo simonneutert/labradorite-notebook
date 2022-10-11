@@ -1,9 +1,15 @@
 (function () {
+  const previewUrl = "http://localhost:9292/api/v1/memos/preview";
+
   function initMemosPreview(contentFormElement, searchAbortController) {
     searchAbortController = new AbortController();
     let markdownContent = contentFormElement.value;
 
-    fetch("/api/v1/memos/preview", {
+    if (!markdownContent) {
+      return;
+    }
+
+    fetch(previewUrl, {
       signal: searchAbortController.signal,
       method: "POST",
       cache: "no-cache",
