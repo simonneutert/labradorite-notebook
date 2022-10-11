@@ -1,3 +1,4 @@
+<link href="https://releases.transloadit.com/uppy/v3.0.1/uppy.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/tagin@2.0.2/dist/tagin.min.css">
 <script src="https://unpkg.com/tagin@2.0.2/dist/tagin.min.js"></script>
 <div class="row">
@@ -47,6 +48,46 @@
     </button>
   </form>
 </div>
+<div class="row">
+  <div class="col">
+    <div id="drag-drop-area"></div>
+  </div>
+  <div class="col">
+    <div>
+      <h2>Media</h2>
+      <% @media_files.each do |m| %>
+        <p>
+          <a href="<%= m[1..-1] %>" target="_blank" rel="noopener noreferrer"><%= m[1..-1] %></a>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script type="module">
+  import {Uppy, Dashboard, XHRUpload} from "https://releases.transloadit.com/uppy/v3.0.1/uppy.min.mjs"
+  var uppy = new Uppy({
+    meta: {
+      path: "<%= @current_path_memo %>",
+    }})
+    .use(Dashboard, {
+      inline: true,
+      target: '#drag-drop-area',
+    })
+    .use(XHRUpload, {endpoint: "http://localhost:9292/api/v1/memos/attachments"})
+
+  uppy.on('upload-success', (file, response) => {
+    console.log(file.name, response.uploadURL)
+    const img = new Image()
+    img.width = 300
+    img.alt = file.id
+    // img.src = response.uploadURL
+    img.src = response.body.success
+    document.body.appendChild(img)
+  })
+  uppy.on('complete', (result) => {
+    console.log('Upload complete! We’ve uploaded these files:', result.successful)
+  })
+</script>
 <%# JS includes %>
 <script src="/js/basic-tagin.js"></script>
 <script src="/js/controllers/memos/update.js"></script>
