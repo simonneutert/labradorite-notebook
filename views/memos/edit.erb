@@ -50,17 +50,22 @@
 </div>
 <div class="row">
   <div class="col">
-    <div id="drag-drop-area"></div>
-  </div>
-  <div class="col">
-    <div>
+    <div id="media-list">
       <h2>Media</h2>
-      <% @media_files.each do |m| %>
-        <p>
-          <a href="<%= m[1..-1] %>" target="_blank" rel="noopener noreferrer"><%= m[1..-1] %></a>
-        </p>
+      <% if @media_files.any? %>
+        <% @media_files.each do |m| %>
+          <p>
+            <span>DELETE&nbsp;</span>
+            <a href="<%= m[1..-1] %>" target="_blank" rel="noopener noreferrer"><%= m[1..-1] %></a>
+          </p>
+        <% end %>
+      <% else %>
+        <p>No media yet, save and refresh</p>
       <% end %>
     </div>
+  </div>
+  <div class="col">
+    <div id="drag-drop-area"></div>
   </div>
 </div>
 <script type="module">
@@ -71,18 +76,23 @@
     }})
     .use(Dashboard, {
       inline: true,
+      height: 200,
       target: '#drag-drop-area',
     })
     .use(XHRUpload, {endpoint: "http://localhost:9292/api/v1/memos/attachments"})
 
   uppy.on('upload-success', (file, response) => {
-    console.log(file.name, response.uploadURL)
-    const img = new Image()
-    img.width = 300
-    img.alt = file.id
-    // img.src = response.uploadURL
-    img.src = response.body.success
-    document.body.appendChild(img)
+    // console.log(file.name, response.uploadURL)
+    // const img = new Image()
+    // img.width = 300
+    // img.alt = file.id
+    // // img.src = response.uploadURL
+    // img.src = response.body.success
+    // document.body.appendChild(img)
+
+    const elem = document.createElement("p")
+    elem.innerHTML = response.body.success
+    document.getElementById("media-list").appendChild(elem)
   })
   uppy.on('complete', (result) => {
     console.log('Upload complete! We’ve uploaded these files:', result.successful)

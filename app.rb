@@ -17,7 +17,7 @@ class App < Roda
 
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
   # TODO: write a method for whitelist checks of media type
-  media_whitelist = %w[pdf md txt png jpg jpeg]
+  media_whitelist = %w[pdf md txt png jpg jpeg yml yaml json]
 
   route do |r|
     r.root do
@@ -32,6 +32,9 @@ class App < Roda
               data = r.params['file']
               filename = data[:filename]
               raise unless media_whitelist.any? { |t| filename.end_with?(t) }
+              if filename.end_with?('memo.md') || filename.end_with?('memo.yaml') || filename.end_with?('memo.yml')
+                raise 'Filename forbidden!'
+              end
 
               pathy_filename = "#{Time.now.to_i}-#{filename}"[1..-1].gsub('/', '_')
               File.write(".#{r.params['path']}/#{pathy_filename}",
@@ -89,7 +92,7 @@ class App < Roda
     r.on 'memos' do
       set_view_subdir 'memos'
 
-      r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(jpg|jpeg|png))}) do |x, y|
+      r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(txt|json|md|pdf|yml|yaml|jpg|jpeg|png))}) do |x, y|
         # mime_type :jpg
         send_file "./memos/#{x}/#{y}"
       end
@@ -110,6 +113,7 @@ class App < Roda
 
         @media_files = Dir.glob(".#{@current_path_memo}/**")
                           .filter { |filename| media_whitelist.any? { |t| filename.end_with?(t) } }
+                          .reject { |filename| filename.end_with?('memo.md') || filename.end_with?('memo.yaml') }
 
         r.on 'destroy' do
           FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
