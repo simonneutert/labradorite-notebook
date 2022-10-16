@@ -13,7 +13,7 @@ module FileOperations
       filename = @params_file_data[:filename]
       validate!(filename)
 
-      pathy_filename = "#{Time.now.to_i}-#{filename}"[1..-1].gsub('/', '_')
+      pathy_filename = "#{Time.now.to_i}-#{filename}"[1..-1].gsub('/', '_').gsub(' ', '_')
       file_content = File.read(@params_file_data[:tempfile])
 
       File.write("#{@root_path}#{@params_path}/#{pathy_filename}",
