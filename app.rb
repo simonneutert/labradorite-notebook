@@ -20,12 +20,13 @@ class App < Roda
   plugin :assets, css: Dir.entries('assets/css').reject { |f| f.size <= 2 },
                   js: Dir.entries('assets/js').reject { |f| f.size <= 2 }
 
+  compile_assets
+
   dev = ENV['RACK_ENV'] == 'development'
   index ||= SearchIndex::Core.init_index
   @index_status = nil
 
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
-
   route do |r|
     r.assets
 
