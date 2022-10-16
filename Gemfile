@@ -22,7 +22,6 @@ group :development do
 end
 
 group :test do
-  gem 'faraday', '~> 2.6'
   gem 'minitest', '~> 5.16'
   gem 'rack-test'
 end

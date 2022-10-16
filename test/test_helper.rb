@@ -5,7 +5,6 @@ require 'tantiny'
 require 'redcarpet'
 require 'puma'
 require 'roda'
-require 'faraday'
 
 require 'pry' if dev
 
