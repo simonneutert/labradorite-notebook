@@ -70,6 +70,19 @@
     </div>
   </div>
 </div>
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x mb-4">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <%# <img src="..." class="rounded me-2" alt="..."> %>
+      <strong class="me-auto">Saving ...</strong>
+      <small>Success!</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <a href="javascript:window.location.href=window.location.href">Refresh</a> to load prettified text and attachments
+    </div>
+  </div>
+</div>
 <script type="module">
   // sets up uppy
   import {Uppy, Dashboard, XHRUpload} from "https://releases.transloadit.com/uppy/v3.0.1/uppy.min.mjs"
