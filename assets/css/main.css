@@ -1,0 +1,42 @@
+md-block {
+  white-space: pre;
+  font-family: monospace;
+}
+
+img {
+  max-width: 100%;
+}
+
+#search {
+  webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+#search:focus {
+  padding: 1.5em;
+}
+
+textarea {
+  font-family: monospace, monospace !important;
+}
+
+table {
+  caption-side: bottom;
+  border-collapse: collapse;
+  table-layout: auto;
+  tab-size: 180px;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid gray;
+}
+
+th {
+  border: 1px solid gray !important;
+}
+
+td {
+  border: 1px solid gray !important;
+}

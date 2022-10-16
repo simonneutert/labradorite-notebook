@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  app:
+    tty: true
+    stdin_open: true
+    build:
+      args:
+        - USERNAME=${USERNAME}
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 9292:9292
+    command: bundle exec rackup -o0
+    volumes:
+      - ./memos:/home/${USERNAME}/memos
+    restart: unless-stopped

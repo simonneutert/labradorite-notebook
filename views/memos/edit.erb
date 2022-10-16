@@ -1,0 +1,100 @@
+<link href="https://releases.transloadit.com/uppy/v3.0.1/uppy.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/tagin@2.0.2/dist/tagin.min.css">
+<script src="https://unpkg.com/tagin@2.0.2/dist/tagin.min.js"></script>
+<div id="memos-edit" class="enable-tagin">
+  <div class="row">
+    <div class="col">
+      <a href="<%= @current_path_memo %>" class="btn btn-primary">Back</a>
+    </div>
+    <div class="col text-end">
+      <a href="<%= @current_path_memo %>/destroy" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">
+        DELETE
+      </a>
+    </div>
+  </div>
+  <div class="mt-4 mb-4">
+    <form id="memo-form" name="memo-form" action="<%= @current_path_memo %>/update" method="POST">
+      <div class="row mb-3">
+        <div class="col-12 col-sm-6">
+          <input type="text" id="title" name="title" class="form-control" value="<%= @meta_ostruct.title %>" placeholder="Your Title Here...">
+        </div>
+        <div class="col-12 col-sm-6 my-4 my-sm-0">
+          <input type="text" name="tags" class="form-control tagin" value="<%= @meta_ostruct.tags %>">
+        </div>
+      </div>
+      <div>
+        <ul id="form-menu" class="nav nav-tabs">
+          <li id="show-editor-form" class="nav-item">
+            <a class="nav-link active" href="#">Markdown</a>
+          </li>
+          <li id="show-preview" class="nav-item">
+            <a class="nav-link" href="#">Preview</a>
+          </li>
+        </ul>
+      </div>
+      <div id="memo-form-content">
+        <div style="overflow-y: scroll;">
+          <textarea name="content" id="content" style="width: 100%; height: 60vh;"><%= @content_md %></textarea>
+        </div>
+      </div>
+      <div id="memo-form-preview" class="col" style="display: none;">
+        <div id="content-preview" style="height: 60vh; border: 1px solid green; overflow-y: scroll;">
+          <%= @content %>
+        </div>
+      </div>
+      <button id="submit-memo-form" type="submit" class="btn btn-primary mt-2">
+        Submit
+      </button>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div id="media-list">
+        <h2>Media</h2>
+        <% if @media_files.any? %>
+          <% @media_files.each do |m| %>
+            <p>
+              <span style="cursor: pointer" onclick="deleteAttachmentXHR(this)" data-path="<%= m[1..-1] %>">
+                🚮&nbsp;
+              </span>
+              <a href="<%= m[1..-1] %>" target="_blank" rel="noopener noreferrer"><%= m[1..-1] %></a>
+            </p>
+          <% end %>
+        <% else %>
+          <p>No media yet, save and refresh</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col">
+      <div id="drag-drop-area"></div>
+    </div>
+  </div>
+</div>
+<script type="module">
+  // sets up uppy
+  import {Uppy, Dashboard, XHRUpload} from "https://releases.transloadit.com/uppy/v3.0.1/uppy.min.mjs"
+  var uppy = new Uppy({
+    meta: {
+      path: "<%= @current_path_memo %>",
+    }})
+    .use(Dashboard, {
+      inline: true,
+      height: 300,
+      target: '#drag-drop-area',
+    })
+    .use(XHRUpload, {endpoint: "/api/v1/attachments"})
+
+  uppy.on('upload-success', (file, response) => {
+    const elem = document.createElement("p")
+    elem.innerHTML = response.body.success
+    document.getElementById("media-list").appendChild(elem)
+  })
+  uppy.on('complete', (result) => {
+    console.log('Upload complete! We’ve uploaded these files:', result.successful)
+  })
+</script>
+<%# JS includes %>
+<script>
+  // Todo: have the path put in a data attribute
+  ready(() => initMemosUpdate("memo-form", "/api/v1<%= @current_path_memo %>/update"))
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= assets(:css) %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+    <!-- Favicon:  
+      This favicon was generated using the following graphics from Twitter Twemoji:
+
+      - Graphics Title: 1f5c3.svg
+      - Graphics Author: Copyright 2020 Twitter, Inc and other contributors (https://github.com/twitter/twemoji)
+      - Graphics Source: https://github.com/twitter/twemoji/blob/master/assets/svg/1f5c3.svg
+      - Graphics License: CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+    -->
+    <link rel="icon" href="/favicon/favicon.ico" sizes="any"><!-- 32×32 -->
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <title>Labradorite</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script>
+      function ready(fn) {
+        if (document.readyState !== "loading") {
+          fn();
+        } else {
+          document.addEventListener("DOMContentLoaded", fn);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container my-4">
+      <%= yield %>
+    </div>
+    <%= assets(:js) %>
+  </body>
+</html>
