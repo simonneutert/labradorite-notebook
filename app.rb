@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # TODO: write a method for whitelist checks of media type
-MEDIA_WHITELIST = %w[pdf md txt png jpg jpeg yml yaml json]
+MEDIA_WHITELIST = %w[pdf md txt png jpg jpeg heic yml yaml json]
 
 require 'rack/deflater'
 class App < Roda
@@ -38,7 +38,7 @@ class App < Roda
         r.on 'attachments' do
           pwd_root = Dir.pwd
 
-          r.on(%r{memos/(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(txt|json|md|pdf|yml|yaml|jpg|jpeg|png))}) do |path, filename|
+          r.on(%r{memos/(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(txt|json|md|pdf|yml|yaml|jpg|JPG|PNG|JPEG|heic|jpeg|png))}) do |path, filename|
             r.delete do
               file_worker = FileOperations::Attachments::Deleter.new(Dir.pwd, path, filename)
               file_worker.delete
@@ -109,7 +109,7 @@ class App < Roda
     r.on 'memos' do
       set_view_subdir 'memos'
 
-      r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(txt|json|md|pdf|yml|yaml|jpg|jpeg|png))}) do |path, filename|
+      r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(txt|json|md|pdf|yml|yaml|jpg|JPG|PNG|JPEG|heic|jpeg|png))}) do |path, filename|
         # TODO: add a caching soluting, that checks for the requested file's last touch date
         send_file "./memos/#{path}/#{filename}"
       end
