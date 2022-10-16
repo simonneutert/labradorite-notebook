@@ -1,6 +1,5 @@
 require 'minitest'
 require 'minitest/test_task'
-require 'pry'
 
 # Minitest::TestTask.create # named test, sensible defaults
 
