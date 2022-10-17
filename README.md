@@ -12,8 +12,6 @@
 
 ---
 
-## Table of Contents
-
 - [Labradorite Notebook](#labradorite-notebook)
   - [Table of Contents](#table-of-contents)
   - [Rationale](#rationale)
@@ -21,7 +19,7 @@
   - [Architecture](#architecture)
   - [Folder Structure](#folder-structure)
   - [Major Dependencies](#major-dependencies)
-  - [Deploy with Docker](#deploy-with-docker)
+  - [Run/Deploy with Docker](#deploy-with-docker)
     - [Docker Compose](#docker-compose)
   - [Development](#development)
   - [Follow-up: Inspiration, Knowledge](#follow-up-inspiration-knowledge)
@@ -75,7 +73,7 @@ Little experiment on how it rolls:
 * Tantiny
 * RedCarpet
 
-## Deploy with Docker
+## Run/Deploy with Docker
 
 The included `Dockerfile` and the `docker-compose.yml` are more a stub to build upon.
 
