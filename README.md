@@ -13,7 +13,6 @@
 ---
 
 - [Labradorite Notebook](#labradorite-notebook)
-  - [Table of Contents](#table-of-contents)
   - [Rationale](#rationale)
   - [Technical Prerequisites](#technical-prerequisites)
   - [Architecture](#architecture)
