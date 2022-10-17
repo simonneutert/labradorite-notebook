@@ -94,7 +94,7 @@ That will help you both secure the service and have the files being created with
 
 ### Docker Compose
 
-build and/or up using: `USERNAME=$(whoami) docker-compose build`
+build and/or up using: `$ USERNAME=$(whoami) docker-compose build`
 
 **Volumes**
 
