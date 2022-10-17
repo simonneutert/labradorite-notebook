@@ -34,9 +34,9 @@
 
 Most Notetaking apps do either too much (Notion), too less (Apple Notes) or locked me in (Evernote).
 
-I wanted something that does **just-enough**™. Let me try and wrap it up in a few bullets:
+I wanted something that does **just-enough**™, in the spirit of a *flat file cms*. Let me try and wrap it up in a few bullets:
 
-* **ownership** of the notes  
+* **ownership** of the notes (flat files)  
   markdown, yaml, attachments all in one place in directories
 * **easy** on the eyes/mind  
   I don't want to see all the old stuff I may not need anymore
