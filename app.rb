@@ -13,6 +13,7 @@ class App < Roda
   plugin :render, layout: './layout'
   plugin :view_options
   plugin :all_verbs
+  plugin :sessions, key: 'labradorite', secret: 'labradoritelabradoritelabradoritelabradoritelabradoritelabradorite'
   plugin :caching
   plugin :json
   plugin :json_parser
@@ -86,9 +87,16 @@ class App < Roda
             @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
             @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
 
+            r.on 'destroy' do
+              FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
+              r.session['last_file_scan'] = nil
+              r.redirect '/'
+            end
+
             # TODO: make the response dependent to action result
             r.post 'update' do
               Controllers::Memos::Update.new(r, index, memo_path, @meta).run!
+              r.session['last_file_scan'] = nil
               begin
                 `prettier -w #{path_to_memo_md}`
               rescue StandardError
@@ -135,6 +143,7 @@ class App < Roda
 
         r.on 'destroy' do
           FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
+          r.session['last_file_scan'] = nil
           r.redirect '/'
         end
 
@@ -159,7 +168,10 @@ class App < Roda
       # TODO: extract to controller
       r.is do
         n_files = 25
+        r.etag(r.session['last_file_scan'])
+
         files = FileOperations::FilesSortByLatestModified.new.latest_n_memos(n_files)
+
         @titles_latest = files.map do |post|
           meta_data = YAML.safe_load(File.read("#{post}/meta.yaml"), [Date, Time, DateTime])
           {
@@ -167,6 +179,7 @@ class App < Roda
             url: "/#{post}"
           }
         end
+        r.session['last_file_scan'] = Digest::SHA1.hexdigest('1')
 
         view 'index'
       end

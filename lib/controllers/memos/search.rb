@@ -24,9 +24,10 @@ module Controllers
 
       def build_results(search_results)
         search_results.map do |path_to_memo_md|
-          url = "/memos/#{path_to_memo_md}"
-          path_to_memo_md_file = "./memos/#{path_to_memo_md}/memo.md"
-          path_to_memo_meta_yaml_file = "./memos/#{path_to_memo_md}/meta.yaml"
+          path = "/memos/#{path_to_memo_md}"
+          url = path.dup
+          path_to_memo_md_file = ".#{path}/memo.md"
+          path_to_memo_meta_yaml_file = ".#{path}/meta.yaml"
           read_meta_file(path_to_memo_meta_yaml_file)
           read_markdown_file(path_to_memo_md_file)
 
@@ -35,7 +36,8 @@ module Controllers
       end
 
       def read_markdown_file(path_to_memo_md_file)
-        @markdown_content = File.read(path_to_memo_md_file).scan(/^.*#{@search_input}.*$/i)
+        @markdown_content = File.read(path_to_memo_md_file)
+                                .scan(/^.*#{@search_input}.*$/i)
       end
 
       def read_meta_file(path_to_memo_meta_yaml)
@@ -43,6 +45,15 @@ module Controllers
         @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
       end
 
+      #
+      # returns a triplet of search result data
+      #
+      # @param [String] url
+      # @param [String] title of memo/note
+      # @param [String] content with the search match text line
+      #
+      # @return [Array<String>]
+      #
       def result_triplet(url, title, content)
         [url, title, content]
       end

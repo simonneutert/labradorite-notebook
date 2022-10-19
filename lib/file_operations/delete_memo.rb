@@ -1,4 +1,7 @@
 module FileOperations
+  #
+  # Deletes a Memo and its Meta Data and Attachments
+  #
   class DeleteMemo
     attr_reader :memo_path, :current_path_memo
 
@@ -9,6 +12,11 @@ module FileOperations
       @current_path_memo = deep_copy(current_path_memo)
     end
 
+    #
+    # deletes a memo and everything inside the directory
+    #
+    # @return [TrueClass]
+    #
     def run
       FileUtils.remove_dir("./#{@current_path_memo}")
       top_path = @memo_path.split('/').take(3).join('/')

@@ -1,4 +1,9 @@
+# frozen_string_literal: true
+
 module FileOperations
+  #
+  # Persists file to disk with a simple API
+  #
   class FileUpload
     include Helper::DeepCopyable
 
@@ -13,7 +18,7 @@ module FileOperations
       filename = @params_file_data[:filename]
       validate!(filename)
 
-      pathy_filename = "#{Time.now.to_i}-#{filename}"[1..-1].gsub('/', '_').gsub(' ', '_')
+      pathy_filename = "#{Time.now.to_i}-#{filename}"[1..].gsub('/', '_').gsub(' ', '_')
       file_content = File.read(@params_file_data[:tempfile])
 
       File.write("#{@root_path}#{@params_path}/#{pathy_filename}",
@@ -27,7 +32,7 @@ module FileOperations
     def status
       return { success: @success } if @success
 
-      { success: false, error: "#{@error}" }
+      { success: false, error: @error.to_s }
     end
 
     private
@@ -40,6 +45,14 @@ module FileOperations
       ['memo.md', 'memo.yaml', 'memo.yml'].any? { |name| filename_downcased.end_with?(name) }
     end
 
+    #
+    # validates structure of params
+    #
+    # @param [String] filename
+    #
+    # @raise [ArgumentError]
+    # @return [TrueClass]
+    #
     def validate!(filename)
       filename_downcased = filename.downcase
       validate_mime_type!(filename_downcased)
@@ -47,11 +60,11 @@ module FileOperations
     end
 
     def validate_mime_type!(filename_downcased)
-      raise 'Media Type not supported!' unless mime_type_whitelisted?(filename_downcased)
+      raise ArgumentError, 'Media Type not supported!' unless mime_type_whitelisted?(filename_downcased)
     end
 
     def validate_reserved_filenames!(filename_downcased)
-      raise 'Filename forbidden!' if filename_reserved?(filename_downcased)
+      raise ArgumentError, 'Filename forbidden!' if filename_reserved?(filename_downcased)
     end
   end
 end

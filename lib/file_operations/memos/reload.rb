@@ -5,6 +5,11 @@ module Controllers
         @index = index
       end
 
+      #
+      # recreates the index
+      #
+      # @return [Tantiny::Index]
+      #
       def recreate_index
         SearchIndex::Core.new(@index).recreate_index!
       end
