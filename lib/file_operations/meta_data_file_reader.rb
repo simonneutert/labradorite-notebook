@@ -7,7 +7,7 @@ module FileOperations
         to_yaml(File.read(path_string))
       end
 
-      def to_ostruct(meta_data)
+      def hash_to_ostruct(meta_data)
         OpenStruct.new(meta_data)
       end
 

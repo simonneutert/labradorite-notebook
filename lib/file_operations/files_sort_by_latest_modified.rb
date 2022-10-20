@@ -3,10 +3,13 @@ module FileOperations
   # Scans the filesystem and returns the latest modified file(paths)
   #
   class FilesSortByLatestModified
-    def latest_n_memos(n)
-      latest_n_memos_by_file_modified(n)
-    end
-
+    #
+    # returns latest memos by file modified
+    #
+    # @param [Integer] n number of files
+    #
+    # @return [Array<String>] file paths from latest to touch to least touched
+    #
     def latest_n_memos_by_file_modified(n)
       all_files_order_from_least_to_newest_modified
         .last(n)

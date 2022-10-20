@@ -42,7 +42,7 @@ module Controllers
 
       def read_meta_file(path_to_memo_meta_yaml)
         @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yaml)
-        @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
+        @meta_ostruct = FileOperations::MetaDataFileReader.hash_to_ostruct(@meta)
       end
 
       #

@@ -87,7 +87,7 @@ class App < Roda
             @content = markdown.render(markdown_content)
 
             @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
-            @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
+            @meta_ostruct = FileOperations::MetaDataFileReader.hash_to_ostruct(@meta)
 
             r.on 'destroy' do
               FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
@@ -136,7 +136,7 @@ class App < Roda
         @content = markdown.render(markdown_content)
 
         @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
-        @meta_ostruct = FileOperations::MetaDataFileReader.to_ostruct(@meta)
+        @meta_ostruct = FileOperations::MetaDataFileReader.hash_to_ostruct(@meta)
         @meta_data_digest = Digest::SHA1.hexdigest(@meta_ostruct.to_yaml)
 
         @media_files = Dir.glob(".#{@current_path_memo}/**")
@@ -172,7 +172,7 @@ class App < Roda
         n_files = 25
         r.etag(r.session['last_file_scan'])
 
-        files = FileOperations::FilesSortByLatestModified.new.latest_n_memos(n_files)
+        files = FileOperations::FilesSortByLatestModified.new.latest_n_memos_by_file_modified(n_files)
 
         @titles_latest = files.map do |post|
           meta_data = YAML.safe_load(File.read("#{post}/meta.yaml"), [Date, Time, DateTime])
