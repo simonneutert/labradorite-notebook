@@ -27,6 +27,8 @@ class App < Roda
   index ||= SearchIndex::Core.init_index
   @index_status = nil
 
+  allowed_file_endings = 'txt|json|md|pdf|yml|yaml|jpg|JPG|PNG|JPEG|heic|jpeg|png|webp'
+
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
   route do |r|
     r.assets
@@ -40,7 +42,7 @@ class App < Roda
         r.on 'attachments' do
           pwd_root = Dir.pwd
 
-          r.on(%r{memos/(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(txt|json|md|pdf|yml|yaml|jpg|JPG|PNG|JPEG|heic|jpeg|png))}) do |path, filename|
+          r.on(%r{memos/(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(#{allowed_file_endings}))}) do |path, filename|
             r.delete do
               file_worker = FileOperations::Attachments::Deleter.new(Dir.pwd, path, filename)
               file_worker.delete
@@ -118,7 +120,7 @@ class App < Roda
     r.on 'memos' do
       set_view_subdir 'memos'
 
-      r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(txt|json|md|pdf|yml|yaml|jpg|JPG|PNG|JPEG|heic|jpeg|png))}) do |path, filename|
+      r.on(%r{(\d{4}/\d{1,2}/\d{1,2}/\w{4}-\w{4})/(.*\.(#{allowed_file_endings}))}) do |path, filename|
         # TODO: add a caching soluting, that checks for the requested file's last touch date
         send_file "./memos/#{path}/#{filename}"
       end
