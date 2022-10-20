@@ -16,7 +16,8 @@ class App < Roda
   plugin :render, layout: './layout'
   plugin :view_options
   plugin :all_verbs
-  plugin :sessions, key: 'labradorite', secret: 'labradoritelabradoritelabradoritelabradoritelabradoritelabradorite'
+  plugin :sessions, key: 'labradorite',
+                    secret: ENV.delete('SESSION_SECRET') || 'labradoritelabradoritelabradoritelabradoritelabradoritelabradorite'
   plugin :caching
   plugin :json
   plugin :json_parser
