@@ -29,6 +29,9 @@ class App < Roda
 
   dev = ENV['RACK_ENV'] == 'development'
   index ||= SearchIndex::Core.init_index
+  controller = Controllers::Memos::Reload.new(index)
+  index = controller.recreate_index
+
   @index_status = nil
 
   allowed_file_endings_regexp = MEDIA_WHITELIST.join('|').freeze
