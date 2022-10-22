@@ -14,11 +14,12 @@
 
 - [Labradorite Notebook](#labradorite-notebook)
   - [Rationale](#rationale)
+  - [Features / Infos](#features--infos)
   - [Technical Prerequisites](#technical-prerequisites)
   - [Architecture](#architecture)
   - [Folder Structure](#folder-structure)
   - [Major Dependencies](#major-dependencies)
-  - [Run/Deploy with Docker](#deploy-with-docker)
+  - [Run/Deploy with Docker](#rundeploy-with-docker)
     - [Docker Compose](#docker-compose)
   - [Development](#development)
   - [Follow-up: Inspiration, Knowledge](#follow-up-inspiration-knowledge)
@@ -45,9 +46,32 @@ I wanted something that does **just-enough**™, in the spirit of a *flat file c
 
 I like to keep things simple, so I once again fell for [Roda](https://roda.jeremyevans.net) as the Web Layer. [Tantiny](https://github.com/baygeldin/tantiny) is the kicker for this project. I was curious, if I could come up with something useful quickly, not having to deal with a complicated setup or Postgres as a requirement.
 
+## Features / Infos
+
+**Markdown Editor**
+
+- Preview
+- Supports auto-formatting with/after saving  
+  - (to see it, you need to page refresh, which is both convenient and inconvient, depending on perspective 🤓 )
+
+**Attachments**
+
+- supported attachments for uploads
+  - txt
+  - pdf
+  - md
+  - png
+  - jpg
+  - jpeg
+  - heic
+  - webp
+  - yml
+  - yaml
+  - json
+
 ## Technical Prerequisites
 
-* Ruby v3.0.x ready to roll
+* Ruby v2.7.x or v3.0.x are tested and ready to roll
 * Install a stable version of [Rust](https://www.rust-lang.org/) with [Cargo](https://github.com/rust-lang/cargo)
 
 ## Architecture
