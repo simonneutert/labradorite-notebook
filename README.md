@@ -12,22 +12,6 @@
 
 ---
 
-- [Labradorite Notebook](#labradorite-notebook)
-  - [Rationale](#rationale)
-  - [Features / Infos](#features--infos)
-  - [Technical Prerequisites](#technical-prerequisites)
-  - [Architecture](#architecture)
-  - [Folder Structure](#folder-structure)
-  - [Major Dependencies](#major-dependencies)
-  - [Run/Deploy with Docker](#rundeploy-with-docker)
-    - [Docker Compose](#docker-compose)
-  - [Development](#development)
-  - [Follow-up: Inspiration, Knowledge](#follow-up-inspiration-knowledge)
-      - [Tantiny](#tantiny)
-      - [Rails Multi-Model Search](#rails-multi-model-search)
-
----
-
 ## Rationale
 
 Most Notetaking apps do either too much (Notion), too less (Apple Notes) or locked me in (Evernote).
@@ -46,7 +30,24 @@ I wanted something that does **just-enough**™, in the spirit of a *flat file c
 
 I like to keep things simple, so I once again fell for [Roda](https://roda.jeremyevans.net) as the Web Layer. [Tantiny](https://github.com/baygeldin/tantiny) is the kicker for this project. I was curious, if I could come up with something useful quickly, not having to deal with a complicated setup or Postgres as a requirement.
 
-## Features / Infos
+---
+
+- [Labradorite Notebook](#labradorite-notebook)
+  - [Rationale](#rationale)
+  - [Features / User Info](#features--user-info)
+  - [Technical Prerequisites](#technical-prerequisites)
+  - [Architecture](#architecture)
+  - [Folder Structure](#folder-structure)
+  - [Major Dependencies](#major-dependencies)
+  - [Run/Deploy with Docker](#rundeploy-with-docker)
+    - [Docker Compose](#docker-compose)
+  - [Development](#development)
+  - [Follow-up: Inspiration, Knowledge](#follow-up-inspiration-knowledge)
+      - [Tantiny](#tantiny)
+      - [Rails Multi-Model Search](#rails-multi-model-search)
+
+---
+## Features / User Info
 
 **Search Index**
 
@@ -133,6 +134,9 @@ build and/or up using: `$ USERNAME=$(whoami) docker-compose build`
 
 - `$ rake test` runs the test suite
 - `$ rake reset` resets the files to the defaults (e.g. for testing)
+
+Before pushing code, you should always run `rake reset` and `rake test`,  
+**therefore have a repo you work on AND another you use JUST for running the software.**
 
 ## Follow-up: Inspiration, Knowledge
 
