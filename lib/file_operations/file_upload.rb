@@ -41,10 +41,6 @@ module FileOperations
       MEDIA_WHITELIST.any? { |t| filename_downcased.end_with?(t.downcase) }
     end
 
-    def filename_reserved?(filename_downcased)
-      ['memo.md', 'memo.yaml', 'memo.yml'].any? { |name| filename_downcased.end_with?(name) }
-    end
-
     #
     # validates structure of params
     #
@@ -56,15 +52,10 @@ module FileOperations
     def validate!(filename)
       filename_downcased = filename.downcase
       validate_mime_type!(filename_downcased)
-      validate_reserved_filenames!(filename_downcased)
     end
 
     def validate_mime_type!(filename_downcased)
       raise ArgumentError, 'Media Type not supported!' unless mime_type_whitelisted?(filename_downcased)
-    end
-
-    def validate_reserved_filenames!(filename_downcased)
-      raise ArgumentError, 'Filename forbidden!' if filename_reserved?(filename_downcased)
     end
   end
 end
