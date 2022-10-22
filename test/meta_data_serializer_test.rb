@@ -17,10 +17,15 @@ updated_at: !ruby/object:DateTime 2021-08-21 17:29:58.161601000 +02:00
   end
 
   def setup
+    `rake reset_default_memos`
     @yaml_data_from_string =
       FileOperations::MetaDataFileReader.to_yaml(yaml_string)
     @yaml_data_from_demo_file =
       FileOperations::MetaDataFileReader.from_path('./memos/2022/09/26/abcd-efgh/meta.yaml')
+  end
+
+  def after_teardown
+    `rake reset_memos`
   end
 
   def test_yaml_serialiazation_from_string
