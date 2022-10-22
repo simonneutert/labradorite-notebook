@@ -10,9 +10,13 @@ Minitest::TestTask.create(:test) do |t|
   t.test_globs = ['test/**/*_test.rb']
 end
 
-task default: :test
+task default: %i[reset_default_memos test reset_memos]
 
-task :reset do
+task :reset_default_memos do
   FileUtils.rm_rf('./memos')
   FileUtils.cp_r('./.defaults/memos', './')
+end
+
+task :reset_memos do
+  FileUtils.rm_rf('./memos')
 end

@@ -37,6 +37,7 @@ class App < Roda
   allowed_file_endings_regexp = MEDIA_WHITELIST.join('|').freeze
 
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+
   route do |r|
     r.assets
 
@@ -98,14 +99,14 @@ class App < Roda
 
             r.on 'destroy' do
               FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
-              r.session['last_file_scan'] = nil
+              r.session['last_file_scan'] = Digest::SHA1.hexdigest(Time.now.to_i.to_s)
               r.redirect '/'
             end
 
             # TODO: make the response dependent to action result
             r.post 'update' do
               Controllers::Memos::Update.new(r, index, memo_path, @meta).run!
-              r.session['last_file_scan'] = nil
+              r.session['last_file_scan'] = Digest::SHA1.hexdigest(Time.now.to_i.to_s)
               begin
                 `prettier -w #{path_to_memo_md}`
               rescue StandardError
@@ -152,7 +153,7 @@ class App < Roda
 
         r.on 'destroy' do
           FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
-          r.session['last_file_scan'] = nil
+          r.session['last_file_scan'] = Digest::SHA1.hexdigest(Time.now.to_i.to_s)
           r.redirect '/'
         end
 

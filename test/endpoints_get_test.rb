@@ -11,11 +11,12 @@ class TestEndpointsGet < Minitest::Test
   end
 
   def setup
+    `rake reset_default_memos`
     @app = app
   end
 
   def after_teardown
-    `rake reset`
+    `rake reset_memos`
   end
 
   def test_index_redirect

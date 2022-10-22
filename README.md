@@ -133,7 +133,8 @@ build and/or up using: `$ USERNAME=$(whoami) docker-compose build`
 ## Development
 
 - `$ rake test` runs the test suite
-- `$ rake reset` resets the files to the defaults (e.g. for testing)
+- `$ rake reset_default_memos` resets the files to the repos defaults (e.g. for testing)
+- `$ rake reset_memos` clears ALL memos
 
 Before pushing code, you should always run `rake reset` and `rake test`,  
 **therefore have a repo you work on AND another you use JUST for running the software.**
