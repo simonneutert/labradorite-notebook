@@ -23,8 +23,6 @@ if (document.getElementById("memos-edit")) {
             const toast = new bootstrap.Toast(toastLiveExample)
             toast.show()
           }
-
-          console.log(data);
         });
 
       return false;
