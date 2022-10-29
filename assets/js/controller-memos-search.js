@@ -5,7 +5,7 @@ if (document.getElementById("memos-search")) {
 
     const highlightSearchText = (text) => {
       const search = document.getElementById("search").value
-      return text.replace(new RegExp(`${search}`, 'i'), `<span class="highlight-search-span">$&</span>`)
+      return text.replaceAll(new RegExp(`${search}`, 'gi'), `<span class="highlight-search-span">$&</span>`)
     }
 
     const createSearchResultDomElement = function (url, title, hits) {
