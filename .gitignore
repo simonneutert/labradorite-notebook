@@ -1,4 +1,8 @@
 public/assets/
+# do NOT track default memo files
+memos/2021/08/21/hgfe-dcba/
+memos/2022/09/26/abcd-efgh/
+
 .DS_Store
 # tantiny related folders
 .tantiny/
