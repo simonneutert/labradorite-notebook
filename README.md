@@ -49,10 +49,6 @@ I like to keep things simple, so I once again fell for [Roda](https://roda.jerem
 ---
 ## Features / User Info
 
-**Search Index**
-
-PLEASE TRIGGER yourself, after initial or redeploy 🔥
-
 **Markdown Editor**
 
 - Preview
