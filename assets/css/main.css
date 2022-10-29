@@ -19,6 +19,10 @@ img {
   padding: 1.5em;
 }
 
+.highlight-search-span {
+  background-color: yellow;
+}
+
 textarea {
   font-family: monospace, monospace !important;
 }

@@ -3,6 +3,11 @@ if (document.getElementById("memos-search")) {
     const searchUrl = "/api/v1/memos/search";
     const searchElem = document.getElementById("search");
 
+    const highlightSearchText = (text) => {
+      const search = document.getElementById("search").value
+      return text.replace(new RegExp(`${search}`, 'i'), `<span class="highlight-search-span">$&</span>`)
+    }
+
     const createSearchResultDomElement = function (url, title, hits) {
       const createSearchResultsElem = document.createElement("div");
       const href = document.createElement("a");
@@ -12,10 +17,12 @@ if (document.getElementById("memos-search")) {
       const resultHeader = document.createElement("h4");
       resultHeader.appendChild(document.createTextNode(title));
       href.append(resultHeader);
-      hits.map((hit) => {
+      hits.forEach((hit) => {
+        const hhit = highlightSearchText(hit);
+        console.log(hhit);
         const hitElement = document.createElement("p");
         hitElement.style.paddingLeft = "1em";
-        hitElement.appendChild(document.createTextNode(hit));
+        hitElement.innerHTML = hhit;
         href.appendChild(hitElement);
       });
       return createSearchResultsElem;
@@ -76,7 +83,7 @@ if (document.getElementById("memos-search")) {
         searchAbortController.abort();
       }
       debounce = setTimeout(() => {
-        runSearch(search, searchAbortController);
+        runSearch(searchElem, searchAbortController);
       }, 200);
     });
 
