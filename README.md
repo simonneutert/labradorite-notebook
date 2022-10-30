@@ -14,7 +14,7 @@
 
 ## Rationale
 
-Most Notetaking apps do either too much (Notion), too less (Apple Notes) or locked me in (Evernote).
+Most Notetaking apps do either too much (Notion), too less (Apple Notes) and lock me in (all options ever).
 
 I wanted something that does **just-enough**™, in the spirit of a *flat file cms*. Let me try and wrap it up in a few bullets:
 
