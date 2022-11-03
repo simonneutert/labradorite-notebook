@@ -36,7 +36,7 @@ class App < Roda
 
   allowed_file_endings_regexp = MEDIA_WHITELIST.join('|').freeze
 
-  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true, fenced_code_blocks: true)
 
   route do |r|
     r.assets
