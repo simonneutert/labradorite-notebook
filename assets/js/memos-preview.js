@@ -32,9 +32,10 @@ ready(() => {
 
       let debounce = undefined;
       let searchAbortController = new AbortController();
-      let contentFormElement = document.getElementById("content");
 
-      contentFormElement.addEventListener("keyup", (e) => {
+      let contentFormElement = document.getElementById("content");
+      const showPreviewButton = document.getElementById("show-preview");
+      showPreviewButton.addEventListener("click", (event) => {
         if (debounce) {
           clearTimeout(debounce);
           searchAbortController.abort();
