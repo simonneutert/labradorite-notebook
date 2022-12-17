@@ -49,6 +49,10 @@ class App < Roda
       r.redirect '/memos'
     end
 
+    r.on 'health' do
+      'ok'
+    end
+
     r.on 'api' do
       r.on 'v1' do
         r.on 'attachments' do
