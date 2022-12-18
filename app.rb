@@ -8,6 +8,9 @@ MEDIA_WHITELIST = %w[txt pdf md png jpg jpeg heic webp yml yaml json]
 
 require 'rack/deflater'
 class App < Roda
+  @production = ENV['RACK_ENV'] == 'production'
+  @dev = ENV['RACK_ENV'] == 'development'
+
   use Rack::Deflater
 
   attr_accessor :index, :index_status
@@ -25,9 +28,8 @@ class App < Roda
   plugin :assets, css: Dir.entries('assets/css').reject { |f| f.size <= 2 },
                   js: Dir.entries('assets/js').reject { |f| f.size <= 2 }
 
-  compile_assets
+  compile_assets if @production
 
-  dev = ENV['RACK_ENV'] == 'development'
   index ||= SearchIndex::Core.init_index
   controller = Controllers::Memos::Reload.new(index)
   index = controller.recreate_index
