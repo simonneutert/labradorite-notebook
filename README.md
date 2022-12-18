@@ -52,8 +52,7 @@ I like to keep things simple, so I once again fell for [Roda](https://roda.jerem
 **Markdown Editor**
 
 - Preview
-- Supports auto-formatting with/after saving  
-  - (to see it, you need to page refresh, which is both convenient and inconvient, depending on perspective 🤓 )
+- Supports auto-formatting with/around saving (on page refresh)  
 
 **Attachments**
 
