@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 dev = ENV['RACK_ENV'] == 'development'
+require 'pry' if dev
 
 require 'yaml'
 require 'tantiny'
@@ -9,8 +10,7 @@ require 'puma'
 require 'roda'
 require 'fileutils'
 require 'digest'
-
-require 'pry' if dev
+require 'rack/deflater'
 
 require 'ostruct'
 require 'rack/unreloader'
