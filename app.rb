@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
+
 # TODO: write a method for whitelist checks of media type
 MEDIA_WHITELIST = %w[txt pdf md png jpg jpeg heic webp yml yaml json]
                   .map { |c| [c.upcase, c] }
                   .flatten
                   .freeze
 
-require 'rack/deflater'
 class App < Roda
   @production = ENV['RACK_ENV'] == 'production'
   @dev = ENV['RACK_ENV'] == 'development'
