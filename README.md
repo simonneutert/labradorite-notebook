@@ -71,7 +71,7 @@ I like to keep things simple, so I once again fell for [Roda](https://roda.jerem
 
 **Screenshots**
 
-<img src="https://github.com/simonneutert/labradorite-notebook/tree/main/assets/docs/images/search_results.png" style="width: '50%'">
+<img src="assets/docs/images/search_results.png" style="width: '50%'">
 
 ## Technical Prerequisites
 
