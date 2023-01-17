@@ -1,6 +1,6 @@
 ##### Setup for Alpine #####
 
-FROM ruby:3.0.4-alpine3.16 AS builder
+FROM ruby:3.0.5-alpine3.16 AS builder
 
 ENV WORKDIR="/app/"
 WORKDIR ${WORKDIR}
@@ -21,7 +21,7 @@ ARG bundler_jobs=2
 ENV WORKDIR="/app/"
 WORKDIR ${WORKDIR}
 
-RUN gem install bundler:2.3.22
+RUN gem install bundler:2.4.3
 COPY Gemfile* ${WORKDIR}
 
 RUN bundle config set without 'development test' 
@@ -29,7 +29,7 @@ RUN bundle install -j${bundler_jobs}
 
 ##### MAIN CONTAINER #####
 
-FROM ruby:3.0.4-alpine3.16
+FROM ruby:3.0.5-alpine3.16
 RUN apk add --no-cache npm && npm install -g prettier
 # replace labradorite with your username on your server
 ARG USERNAME=labradorite

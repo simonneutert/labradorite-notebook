@@ -69,6 +69,10 @@ I like to keep things simple, so I once again fell for [Roda](https://roda.jerem
   - yaml
   - json
 
+**Screenshots**
+
+<img src="https://github.com/simonneutert/labradorite-notebook/tree/main/assets/docs/images/search_results.png" style="width: '50%'">
+
 ## Technical Prerequisites
 
 * Ruby v2.7.x or v3.0.x are tested and ready to roll
