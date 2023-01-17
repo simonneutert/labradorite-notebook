@@ -71,7 +71,16 @@ I like to keep things simple, so I once again fell for [Roda](https://roda.jerem
 
 **Screenshots**
 
-<img src="assets/docs/images/search_results.png" style="width: '50%'">
+<img src="assets/docs/images/search_results.png">
+
+---
+
+<img src="assets/docs/images/edit.png">
+
+
+---
+
+<img src="assets/docs/images/show.png">
 
 ## Technical Prerequisites
 
