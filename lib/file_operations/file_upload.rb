@@ -15,7 +15,7 @@ module FileOperations
     end
 
     def store
-      filename = @params_file_data[:filename]
+      filename = @params_file_data[:filename].encode('utf-8', invalid: :replace, undef: :replace, replace: '_')
       validate!(filename)
 
       pathy_filename = "#{Time.now.to_i}-#{filename}"[1..].gsub('/', '_').gsub(' ', '_')
