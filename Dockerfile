@@ -1,9 +1,8 @@
 ##### Setup for Alpine #####
 
-FROM ruby:3.0.5-alpine3.16 AS builder
+FROM ruby:3.0-alpine AS builder
 
 ENV LANG C.UTF-8
-
 ENV WORKDIR="/app/"
 WORKDIR ${WORKDIR}
 
@@ -31,7 +30,9 @@ RUN bundle install -j${bundler_jobs}
 
 ##### MAIN CONTAINER #####
 
-FROM ruby:3.0.5-alpine3.16
+FROM ruby:3.0-alpine
+
+ENV LANG C.UTF-8
 RUN apk add --no-cache npm && npm install -g prettier
 # replace labradorite with your username on your server
 ARG USERNAME=labradorite
