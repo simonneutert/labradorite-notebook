@@ -2,6 +2,8 @@
 
 FROM ruby:3.0.5-alpine3.16 AS builder
 
+ENV LANG C.UTF-8
+
 ENV WORKDIR="/app/"
 WORKDIR ${WORKDIR}
 
