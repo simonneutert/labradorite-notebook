@@ -83,19 +83,22 @@
     </div>
   </div>
 </div>
-<script type="module">
+<script src="https://releases.transloadit.com/uppy/v3.4.0/uppy.min.js"></script>
+<script>
   // sets up uppy
-  import {Uppy, Dashboard, XHRUpload} from "https://releases.transloadit.com/uppy/v3.4.0/uppy.min.mjs"
-  var uppy = new Uppy({
+  var uppy = new Uppy.Uppy()
+
+  var uppy = new Uppy.Uppy({
     meta: {
       path: "<%= @current_path_memo %>",
     }})
-    .use(Dashboard, {
+
+    uppy.use(Uppy.Dashboard, {
       inline: true,
       height: 300,
       target: '#drag-drop-area',
     })
-    .use(XHRUpload, {endpoint: "/api/v1/attachments"})
+    uppy.use(Uppy.XHRUpload, {endpoint: "/api/v1/attachments"})
 
   uppy.on('upload-success', (file, response) => {
     const elem = document.createElement("p")
