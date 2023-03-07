@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'rack-unreloader', '~> 2.1'
-gem 'rackup', '~> 0.2.2'
+gem 'rackup', '~> 2.0.0'
 gem 'rake', '~> 13.0'
 gem 'roda', '~> 3.60'
 gem 'tilt', '~> 2.0'
