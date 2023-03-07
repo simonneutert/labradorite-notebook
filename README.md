@@ -21,6 +21,7 @@
 - [Run/Deploy with Docker](#rundeploy-with-docker)
   - [Docker Compose](#docker-compose)
 - [Development](#development)
+- [Run it](#run-it)
 - [Follow-up: Inspiration, Knowledge](#follow-up-inspiration-knowledge)
   - [Tantiny](#tantiny)
   - [Rails Multi-Model Search](#rails-multi-model-search)
@@ -145,6 +146,24 @@ build and/or up using: `$ USERNAME=$(whoami) docker-compose build`
 
 Before pushing code, you should always run `rake reset` and `rake test`,  
 **therefore have a repo you work on AND another you use JUST for running the software.**
+
+## Run it
+
+Example docker-compose file:
+
+```docker-compose
+version: '3'
+services:
+  app:
+    environment:
+      - USERNAME=yourusername
+    image: ghcr.io/simonneutert/labradorite-notebook:v0.2.0
+    # ports:
+    #  - 9292:9292
+    command: bundle exec rackup -o0 -Eproduction
+    volumes:
+      - ./memos:/home/labradorite/memos:cached
+```
 
 ## Follow-up: Inspiration, Knowledge
 
