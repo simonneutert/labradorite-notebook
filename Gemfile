@@ -11,7 +11,7 @@ gem 'tilt', '~> 2.0'
 gem 'redcarpet', '~> 3.5'
 gem 'tantiny', '0.3.3'
 
-gem 'puma', '~> 5.6'
+gem 'puma', '~> 6.1'
 
 group :development do
   gem 'htmlbeautifier', require: false
