@@ -22,7 +22,6 @@ ARG bundler_jobs=2
 ENV WORKDIR="/app/"
 WORKDIR ${WORKDIR}
 
-RUN gem install bundler:2.4.3
 COPY Gemfile* ${WORKDIR}
 
 RUN bundle config set without 'development test' 
@@ -34,6 +33,7 @@ FROM ruby:3.0-alpine
 
 ENV LANG C.UTF-8
 RUN apk add --no-cache npm && npm install -g prettier
+
 # replace labradorite with your username on your server
 ARG USERNAME=labradorite
 RUN adduser -D ${USERNAME}
