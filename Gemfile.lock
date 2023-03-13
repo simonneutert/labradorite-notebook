@@ -45,7 +45,7 @@ GEM
       webrick
     rainbow (3.1.1)
     rake (13.0.6)
-    redcarpet (3.5.1)
+    redcarpet (3.6.0)
     regexp_parser (2.7.0)
     reverse_markdown (2.1.1)
       nokogiri
@@ -123,7 +123,7 @@ DEPENDENCIES
   rack-unreloader (~> 2.1)
   rackup (~> 2.0.0)
   rake (~> 13.0)
-  redcarpet (~> 3.5)
+  redcarpet (~> 3.6)
   roda (~> 3.65)
   rubocop (~> 1.48)
   solargraph (~> 0.48)
