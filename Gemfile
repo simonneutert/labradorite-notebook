@@ -8,7 +8,7 @@ gem 'rake', '~> 13.0'
 gem 'roda', '~> 3.65'
 gem 'tilt', '~> 2.0'
 
-gem 'redcarpet', '~> 3.5'
+gem 'redcarpet', '~> 3.6'
 gem 'tantiny', '0.3.3'
 
 gem 'puma', '~> 6.1'
