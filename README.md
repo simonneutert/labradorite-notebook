@@ -84,7 +84,7 @@ I like to keep things simple, so I once again fell for [Roda](https://roda.jerem
 
 ## Technical Prerequisites
 
-- Ruby v2.7.x or v3.0.x are tested and ready to roll
+- Ruby v3.x are tested and ready to roll
 - Install a stable version of [Rust](https://www.rust-lang.org/) with [Cargo](https://github.com/rust-lang/cargo)
 
 ## Architecture
