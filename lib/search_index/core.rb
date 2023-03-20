@@ -55,7 +55,7 @@ module SearchIndex
     # TODO: extract paths to constants
     def extract_data_from_files
       Dir.glob(MARKDOWN_DIR).map do |file|
-        meta = YAML.safe_load(File.read(file.gsub(MARKDOWN_FILENAME, META_FILENAME)), [Date, Time, DateTime])
+        meta = YAML.safe_load_file(file.gsub(MARKDOWN_FILENAME, META_FILENAME), permitted_classes: [Date, Time, DateTime])
         content = File.read(file)
         data = meta.merge({ 'content' => content })
         map_data_to_schema(data)

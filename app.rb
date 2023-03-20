@@ -193,7 +193,7 @@ class App < Roda
         files = FileOperations::FilesSortByLatestModified.new.latest_n_memos_by_file_modified(n_files)
 
         @titles_latest = files.map do |post|
-          meta_data = YAML.safe_load(File.read("#{post}/meta.yaml"), [Date, Time, DateTime])
+          meta_data = YAML.safe_load_file("#{post}/meta.yaml", permitted_classes: [Date, Time, DateTime])
           {
             title: meta_data['title'],
             url: "/#{post}"
