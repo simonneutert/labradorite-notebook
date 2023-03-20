@@ -1,6 +1,14 @@
-### 0.2.0 (Next)
+### 0.3.0 (2023/07/03)
 
-- Your contribution here.
+- Requires Ruby v3+ by @simonneutert in #42
+
+### 0.2.0 (2023/07/03)
+
+- Bump solargraph from 0.47.2 to 0.48.0 by @dependabot in #26
+- Bump rubocop from 1.38.0 to 1.48.0 by @dependabot in #27
+- Bump rack-unreloader from 2.0.0 to 2.1.0 by @dependabot in #25
+- Bump rackup from 0.2.2 to 2.0.0 by @dependabot in #29
+- Bump puma from 5.6.5 to 6.1.1 by @dependabot in #28
 
 ### 0.1.7 (2023/02/05)
 
