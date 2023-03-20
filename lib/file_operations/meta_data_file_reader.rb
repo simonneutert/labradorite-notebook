@@ -18,8 +18,8 @@ module FileOperations
       #
       # @return [Hash]
       #
-      def to_yaml(s)
-        YAML.safe_load(s, [Date, Time, DateTime], symbolize_names: false)
+      def to_yaml(str)
+        YAML.safe_load(str, permitted_classes: [Date, Time, DateTime])
       end
     end
   end
