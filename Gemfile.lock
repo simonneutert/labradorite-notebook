@@ -19,7 +19,7 @@ GEM
     mini_portile2 (2.8.1)
     minitar (0.9)
     minitest (5.18.0)
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -33,7 +33,7 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (6.1.1)
+    puma (6.2.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (3.0.7)
@@ -118,7 +118,7 @@ DEPENDENCIES
   htmlbeautifier
   minitest (~> 5.18)
   pry
-  puma (~> 6.1)
+  puma (~> 6.2)
   rack-test
   rack-unreloader (~> 2.1)
   rackup (~> 2.0.0)
