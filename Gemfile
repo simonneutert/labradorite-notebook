@@ -6,7 +6,7 @@ gem 'rack-unreloader', '~> 2.1'
 gem 'rackup', '~> 2.1.0'
 gem 'rake', '~> 13.0'
 gem 'roda', '~> 3.68'
-gem 'tilt', '~> 2.1'
+gem 'tilt', '~> 2.2'
 
 gem 'redcarpet', '~> 3.6'
 gem 'tantiny', '0.3.3'
