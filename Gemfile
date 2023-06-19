@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rack-unreloader', '~> 2.1'
 gem 'rackup', '~> 2.1.0'
 gem 'rake', '~> 13.0'
-gem 'roda', '~> 3.68'
+gem 'roda', '~> 3.69'
 gem 'tilt', '~> 2.2'
 
 gem 'redcarpet', '~> 3.6'
