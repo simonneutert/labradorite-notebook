@@ -33,7 +33,7 @@ jobs:
           # This cannot be specified with `num-old-versions-to-delete`. By default, `min-versions-to-keep` takes precedence over `num-old-versions-to-delete`.
           # When set to 0, all deletable versions will be deleted.
           # When set greater than 0, all deletable package versions except the specified number will be deleted.
-          min-versions-to-keep: 0
+          min-versions-to-keep: 20
           # If true it will delete only the untagged versions in case of container package.
           # Does not work for other package types and will be ignored.
           # The number of untagged versions to keep can be set by using `min-versions-to-keep` value with this.
