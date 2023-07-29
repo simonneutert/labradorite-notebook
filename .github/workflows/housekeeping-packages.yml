@@ -1,0 +1,43 @@
+name: Housekeeping
+
+on:
+  schedule:
+    - cron: '0 17 * * *'
+  push:
+    branches: ["main"]
+    tags: ["v*.*.*"]
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+
+    steps:
+      - name: cleanup
+        uses: actions/delete-package-versions@v4.1.1
+        with:
+          # Name of the package.
+          # Required
+          package-name: ticket-regional-preact
+
+          # Type of the package. Can be one of container, maven, npm, nuget, or rubygems.
+          # Required
+          package-type: container
+          # The number of latest versions to keep.
+          # This cannot be specified with `num-old-versions-to-delete`. By default, `min-versions-to-keep` takes precedence over `num-old-versions-to-delete`.
+          # When set to 0, all deletable versions will be deleted.
+          # When set greater than 0, all deletable package versions except the specified number will be deleted.
+          min-versions-to-keep: 5
+          # If true it will delete only the untagged versions in case of container package.
+          # Does not work for other package types and will be ignored.
+          # The number of untagged versions to keep can be set by using `min-versions-to-keep` value with this.
+          # When `min-versions-to-keep` is 0, all untagged versions get deleted.
+          # Defaults to false.
+          # Cannot be used with `num-old-versions-to-delete`.
+          delete-only-untagged-versions: true
