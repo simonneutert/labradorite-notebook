@@ -24,7 +24,7 @@ jobs:
         with:
           # Name of the package.
           # Required
-          package-name: ticket-regional-preact
+          package-name: labradorite-notebook
 
           # Type of the package. Can be one of container, maven, npm, nuget, or rubygems.
           # Required
