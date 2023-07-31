@@ -19,7 +19,7 @@ GEM
     method_source (1.0.0)
     mini_portile2 (2.8.1)
     minitar (0.9)
-    minitest (5.18.1)
+    minitest (5.19.0)
     nio4r (2.5.9)
     nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
@@ -120,7 +120,7 @@ PLATFORMS
 
 DEPENDENCIES
   htmlbeautifier
-  minitest (~> 5.18)
+  minitest (~> 5.19)
   pry
   puma (~> 6.3)
   rack-test

@@ -22,6 +22,6 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', '~> 5.18'
+  gem 'minitest', '~> 5.19'
   gem 'rack-test'
 end
