@@ -32,7 +32,7 @@
 
 ## Rationale
 
-Most Notetaking apps do either too much (Notion), too less (Apple Notes) and lock me in (all options ever).
+Most Notetaking apps do either too much (Notion), too little (Apple Notes) and lock me in (all options ever).
 
 I wanted something that does **just-enough**™, in the spirit of a _flat file cms_. Let me try and wrap it up in a few bullets:
 
