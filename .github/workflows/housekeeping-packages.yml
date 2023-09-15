@@ -2,10 +2,10 @@ name: Housekeeping
 
 on:
   schedule:
-    - cron: '0 17 * * *'
-  push:
-    branches: ["main"]
-    tags: ["v*.*.*"]
+    - cron: "0 17 * * *"
+  # push:
+  #   branches: ["main"]
+  #   tags: ["v*.*.*"]
 
 jobs:
   clean:
