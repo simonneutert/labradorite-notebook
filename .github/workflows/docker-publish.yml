@@ -6,8 +6,8 @@ name: Docker buildx
 # documentation.
 
 on:
-  # schedule:
-  # - cron: '16 17 * * *'
+  schedule:
+    - cron: "0 9 * * 0"
   push:
     branches: ["main"]
     # Publish semver tags as releases.
