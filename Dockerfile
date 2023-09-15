@@ -32,7 +32,6 @@ RUN bundle install -j${bundler_jobs}
 FROM ruby:3.2-alpine
 
 ENV LANG C.UTF-8
-RUN apk add --no-cache npm && npm install -g prettier
 
 # replace labradorite with your username on your server
 ARG USERNAME=labradorite
