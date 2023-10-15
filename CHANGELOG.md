@@ -1,3 +1,8 @@
+### 0.4.1 (2023/10/15)
+
+- Adds Rubocop to CI
+- Updates gems and bundler itself 🚀
+
 ### 0.3.0 (2023/07/03)
 
 - Requires Ruby v3+ by @simonneutert in #42
