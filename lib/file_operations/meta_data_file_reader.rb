@@ -8,7 +8,7 @@ module FileOperations
       end
 
       def hash_to_struct(meta_data)
-        MetaStruct.new(
+        FileOperations::MetaStruct.new(
           meta_data['id'],
           meta_data['title'],
           meta_data['tags'],
