@@ -15,7 +15,7 @@ module Controllers
         content_search = @index.smart_query(:content, @search_input)
         title_search = @index.smart_query(:title, @search_input)
         tag_search = @index.smart_query(:tags, @search_input)
-        search_results = @index.search(title_search | tag_search | content_search, limit:)
+        search_results = @index.search(title_search | tag_search | content_search, limit: limit)
 
         build_results(search_results)
       end
