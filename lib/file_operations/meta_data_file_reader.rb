@@ -8,7 +8,7 @@ module FileOperations
       end
 
       def hash_to_ostruct(meta_data)
-        OpenStruct.new(meta_data)
+        OpenStruct.new(meta_data) # rubocop:disable Style/OpenStructUse
       end
 
       #

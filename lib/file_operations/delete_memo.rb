@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FileOperations
   #
   # Deletes a Memo and its Meta Data and Attachments

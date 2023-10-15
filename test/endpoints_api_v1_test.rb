@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
-require_relative './test_helper'
+require_relative 'test_helper'
 
 class TestEndpointsApiV1 < Minitest::Test
   OUTER_APP = Rack::Builder.parse_file('config.ru')
@@ -26,6 +28,7 @@ class TestEndpointsApiV1 < Minitest::Test
     assert_equal json['status'], 'success'
   end
 
+  # rubocop:disable Layout/LineLength
   def test_memos_tantiny_search
     post '/api/v1/memos/reload'
 
@@ -45,6 +48,7 @@ class TestEndpointsApiV1 < Minitest::Test
                   "![](/memos/2021/08/21/hgfe-dcba/665507228-pug.jpg)\r"], first_result_triplet.last
     assert_kind_of Array, first_result_triplet.last
   end
+  # rubocop:enable Layout/LineLength
 
   def test_memos_tantiny_search_without_match
     post '/api/v1/memos/reload'
@@ -71,6 +75,7 @@ class TestEndpointsApiV1 < Minitest::Test
     assert_equal json['md'], "<h1>Labradorite</h1>\n"
   end
 
+  # rubocop:disable Layout/LineLength
   def test_memos_update_memo
     post('/api/v1/memos/2021/08/21/hgfe-dcba/update', { 'title' => 'Facts about Pugsies!',
                                                         'tags' => 'dog,pug,pet',
@@ -80,4 +85,5 @@ class TestEndpointsApiV1 < Minitest::Test
     assert_equal last_response.status, 200
     assert_equal JSON.parse(last_response.body)['status'], 'success'
   end
+  # rubocop:enable Layout/LineLength
 end

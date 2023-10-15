@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 # TODO: write a method for whitelist checks of media type
 MEDIA_WHITELIST = %w[txt pdf md png jpg jpeg heic webp yml yaml json]
                   .map { |c| [c.upcase, c] }
@@ -19,8 +18,10 @@ class App < Roda
   plugin :render, layout: './layout'
   plugin :view_options
   plugin :all_verbs
+  # rubocop:disable Layout/LineLength
   plugin :sessions, key: 'labradorite',
                     secret: ENV.delete('SESSION_SECRET') || 'labradoritelabradoritelabradoritelabradoritelabradoritelabradorite'
+  # rubocop:enable Layout/LineLength
   plugin :caching
   plugin :json
   plugin :json_parser
@@ -181,7 +182,7 @@ class App < Roda
         new_memo = FileOperations::NewMemoGenerator.new
         new_memo.generate
         r.redirect "/#{new_memo.path}/edit"
-      rescue StandardError => e
+      rescue StandardError
         r.redirect '/memos/new'
       end
 

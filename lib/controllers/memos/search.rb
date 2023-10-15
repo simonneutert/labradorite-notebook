@@ -5,8 +5,8 @@ module Controllers
     class Search
       attr_reader :r, :meta, :meta_ostruct, :index
 
-      def initialize(r, index)
-        @params = Helper::DeepCopy.create(r.params)
+      def initialize(req, index)
+        @params = Helper::DeepCopy.create(req.params)
         @index = index
         @search_input = @params['search']
       end
@@ -15,7 +15,7 @@ module Controllers
         content_search = @index.smart_query(:content, @search_input)
         title_search = @index.smart_query(:title, @search_input)
         tag_search = @index.smart_query(:tags, @search_input)
-        search_results = @index.search(title_search | tag_search | content_search, limit: limit)
+        search_results = @index.search(title_search | tag_search | content_search, limit:)
 
         build_results(search_results)
       end

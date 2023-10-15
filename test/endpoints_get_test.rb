@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
-require_relative './test_helper'
+require_relative 'test_helper'
 
 class TestEndpointsGet < Minitest::Test
   OUTER_APP = Rack::Builder.parse_file('config.ru')
