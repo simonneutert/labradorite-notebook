@@ -3,7 +3,7 @@
 module Controllers
   module Memos
     class Search
-      attr_reader :r, :meta, :meta_ostruct, :index
+      attr_reader :r, :meta, :meta_struct, :index
 
       def initialize(req, index)
         @params = Helper::DeepCopy.create(req.params)
@@ -31,7 +31,7 @@ module Controllers
           read_meta_file(path_to_memo_meta_yaml_file)
           read_markdown_file(path_to_memo_md_file)
 
-          result_triplet(url, @meta_ostruct.title, @markdown_content)
+          result_triplet(url, @meta_struct.title, @markdown_content)
         end
       end
 
@@ -42,7 +42,7 @@ module Controllers
 
       def read_meta_file(path_to_memo_meta_yaml)
         @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yaml)
-        @meta_ostruct = FileOperations::MetaDataFileReader.hash_to_ostruct(@meta)
+        @meta_struct = FileOperations::MetaDataFileReader.hash_to_struct(@meta)
       end
 
       #

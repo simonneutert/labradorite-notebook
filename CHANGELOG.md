@@ -1,3 +1,7 @@
+### 0.4.2 (2023/10/15)
+
+- replaces OpenStruct with Struct
+
 ### 0.4.1 (2023/10/15)
 
 - Adds Rubocop to CI

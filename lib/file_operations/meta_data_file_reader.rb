@@ -7,8 +7,14 @@ module FileOperations
         to_yaml(File.read(path_string))
       end
 
-      def hash_to_ostruct(meta_data)
-        OpenStruct.new(meta_data) # rubocop:disable Style/OpenStructUse
+      def hash_to_struct(meta_data)
+        FileOperations::MetaStruct.new(
+          meta_data['id'],
+          meta_data['title'],
+          meta_data['tags'],
+          meta_data['urls'],
+          meta_data['updated_at']
+        )
       end
 
       #

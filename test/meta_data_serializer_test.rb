@@ -22,12 +22,29 @@ updated_at: !ruby/object:DateTime 2021-08-21 17:29:58.161601000 +02:00
     `rake reset_default_memos`
     @yaml_data_from_string =
       FileOperations::MetaDataFileReader.to_yaml(yaml_string)
+    @yaml_data_as_struct =
+      FileOperations::MetaDataFileReader.hash_to_struct(@yaml_data_from_string)
     @yaml_data_from_demo_file =
       FileOperations::MetaDataFileReader.from_path('./memos/2022/09/26/abcd-efgh/meta.yaml')
   end
 
   def after_teardown
     `rake reset_memos`
+  end
+
+  def test_meta_struct
+    assert(@yaml_data_as_struct.public_methods.include?(:id))
+    assert(@yaml_data_as_struct.public_methods.include?(:title))
+    assert(@yaml_data_as_struct.public_methods.include?(:tags))
+    assert(@yaml_data_as_struct.public_methods.include?(:urls))
+    assert(@yaml_data_as_struct.public_methods.include?(:updated_at))
+    assert(@yaml_data_as_struct.is_a?(FileOperations::MetaStruct))
+    assert_equal(@yaml_data_as_struct.id, '2021/08/21/hgfe-dcba')
+    assert_equal(@yaml_data_as_struct.title, 'Facts about Pugs!')
+    assert_equal(@yaml_data_as_struct.tags, 'dog,pug,pet')
+    assert(@yaml_data_as_struct.urls.is_a?(Array))
+    assert_equal(@yaml_data_as_struct.urls.first, 'http://localhost:9292/memos/2022/09/26/abcd-efgh/edit')
+    assert(@yaml_data_as_struct.updated_at.is_a?(DateTime))
   end
 
   def test_yaml_serialiazation_from_string

@@ -13,11 +13,11 @@
 <hr>
 <div class="row">
   <div class="col-12 col-md-10 order-5 order-sm-1">
-    <h1><%= @meta_ostruct.title %></h1>
+    <h1><%= @meta_struct.title %></h1>
     <p>
       <strong>TAGS: </strong>
-      <% unless @meta_ostruct.tags.empty? %>
-        <span><%= @meta_ostruct.tags.split(',').join(', ') %></span>
+      <% unless @meta_struct.tags.empty? %>
+        <span><%= @meta_struct.tags.split(',').join(', ') %></span>
       <% else %>
         NO TAGS
       <% end %>
@@ -37,11 +37,11 @@
 <hr>
 <div class="row">
   <div class="col-12 col-md-6" style="word-wrap: break-word;">
-    <% if @meta_ostruct.urls.any? %>
+    <% if @meta_struct.urls.any? %>
       <p>
         <strong>URLS:</strong>
       </p>
-      <% @meta_ostruct.urls.each do |url| %>
+      <% @meta_struct.urls.each do |url| %>
         <p><a href="<%= url %>" target="_blank" rel="noopener noreferrer"><%= url %></a></p>
       <% end %>
     <% else %>
