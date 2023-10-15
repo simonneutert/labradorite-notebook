@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
 require_relative 'test_helper'
 
 class TestMetaDataSerializing < Minitest::Test
   def yaml_string
-    yaml_string = '''
+    '
 ---
 id: 2021/08/21/hgfe-dcba
 title: Facts about Pugs!
@@ -13,7 +15,7 @@ urls:
 - http://localhost:9292/memos/2022/09/25/abcd-efgh/edit
 - http://localhost:9292/memos/2022/09/24/abcd-efgh/edit
 updated_at: !ruby/object:DateTime 2021-08-21 17:29:58.161601000 +02:00
-'''
+'
   end
 
   def setup

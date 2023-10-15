@@ -5,8 +5,8 @@ module Controllers
     class Search
       attr_reader :r, :meta, :meta_ostruct, :index
 
-      def initialize(r, index)
-        @params = Helper::DeepCopy.create(r.params)
+      def initialize(req, index)
+        @params = Helper::DeepCopy.create(req.params)
         @index = index
         @search_input = @params['search']
       end

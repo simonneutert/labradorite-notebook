@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+
 module FileOperations
   class NewMemoGenerator
     attr_reader :slug, :path
 
-    def initialize; end
+    def initialize
+      # overwrite this, if needed
+    end
 
     def generate
       @slug = Helper::SimpleUidGenerator.generate

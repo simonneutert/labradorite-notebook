@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FileOperations
   #
   # Scans the filesystem and returns the latest modified file(paths)
@@ -10,9 +12,9 @@ module FileOperations
     #
     # @return [Array<String>] file paths from latest to touch to least touched
     #
-    def latest_n_memos_by_file_modified(n)
+    def latest_n_memos_by_file_modified(num)
       all_files_order_from_least_to_newest_modified
-        .last(n)
+        .last(num)
         .map! { |file_path| File.dirname(file_path) }
         .reverse
     end

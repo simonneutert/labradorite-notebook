@@ -5,8 +5,8 @@ module Controllers
     class Update
       attr_reader :r, :meta, :meta_ostruct, :index
 
-      def initialize(r, index, memo_path, meta)
-        @params = Helper::DeepCopy.create(r.params)
+      def initialize(req, index, memo_path, meta)
+        @params = Helper::DeepCopy.create(req.params)
         @index = index
         @memo_path = memo_path
         @meta = meta
