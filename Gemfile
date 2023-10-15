@@ -16,7 +16,7 @@ gem 'puma', '~> 6.4'
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'pry'
-  gem 'rubocop', '~> 1.56', require: false
+  gem 'rubocop', '~> 1.57', require: false
   gem 'solargraph', '~> 0.49', require: false
   gem 'yard', '~> 0.9.34'
 end
