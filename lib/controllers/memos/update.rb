@@ -3,7 +3,7 @@
 module Controllers
   module Memos
     class Update
-      attr_reader :r, :meta, :meta_ostruct, :index
+      attr_reader :r, :meta, :meta_struct, :index
 
       def initialize(req, index, memo_path, meta)
         @params = Helper::DeepCopy.create(req.params)

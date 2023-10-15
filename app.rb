@@ -106,7 +106,7 @@ class App < Roda
             @content = markdown.render(markdown_content)
 
             @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
-            @meta_ostruct = FileOperations::MetaDataFileReader.hash_to_ostruct(@meta)
+            @meta_struct = FileOperations::MetaDataFileReader.hash_to_struct(@meta)
 
             r.on 'destroy' do
               FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
@@ -155,8 +155,8 @@ class App < Roda
         @content = markdown.render(markdown_content)
 
         @meta = FileOperations::MetaDataFileReader.from_path(path_to_memo_meta_yml)
-        @meta_ostruct = FileOperations::MetaDataFileReader.hash_to_ostruct(@meta)
-        @meta_data_digest = Digest::SHA1.hexdigest(@meta_ostruct.to_yaml)
+        @meta_struct = FileOperations::MetaDataFileReader.hash_to_struct(@meta)
+        @meta_data_digest = Digest::SHA1.hexdigest(@meta_struct.to_yaml)
 
         @media_files = Dir.glob(".#{@current_path_memo}/**")
                           .filter { |filename| MEDIA_WHITELIST.any? { |t| filename.downcase.end_with?(t.downcase) } }
