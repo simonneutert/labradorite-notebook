@@ -157,8 +157,9 @@ Example docker-compose file:
 version: '3'
 services:
   app:
+    user: "${UID}:${GID}"
     environment:
-      - USERNAME=yourusername
+      - USERNAME=yourusername # REPLACE THIS WITH YOUR VPS user's USERNAME
     image: ghcr.io/simonneutert/labradorite-notebook:v0.2.0
     # ports:
     #  - 9292:9292
