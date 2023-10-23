@@ -56,7 +56,7 @@ RUN set -uex; \
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODEJS_VERSION.x nodistro main" \
      > /etc/apt/sources.list.d/nodesource.list; \
     apt-get update; \
-    apt-get install nodejs -y;
-    npm install -g prettier
+    apt-get install nodejs -y;    
+RUN npm install -g prettier;
 
 CMD bundle exec rackup -o0 -Eproduction
