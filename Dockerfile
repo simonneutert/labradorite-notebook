@@ -46,17 +46,7 @@ EXPOSE 9292
 
 COPY --from=gembuilder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=${USERNAME} . ${WORKDIR}
-
-RUN set -uex; \
-    apt-get update; \
-    apt-get install -y ca-certificates curl gnupg; \
-    mkdir -p /etc/apt/keyrings; \
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
-     | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg; \
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODEJS_VERSION.x nodistro main" \
-     > /etc/apt/sources.list.d/nodesource.list; \
-    apt-get update; \
-    apt-get install nodejs -y;    
-RUN npm install -g prettier;
+   
+RUN apk add --update-cache nodejs && && rm -rf /var/cache/apk/* && npm install -g prettier;
 
 CMD bundle exec rackup -o0 -Eproduction
