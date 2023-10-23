@@ -31,10 +31,9 @@ RUN bundle install -j${bundler_jobs}
 
 FROM ruby:3.2-alpine
 
-RUN apk add --update-cache \
-    nodejs \
-    && rm -rf /var/cache/apk/*;
-RUN npm install -g prettier;
+RUN apk add nodejs npm \
+    && rm -rf /var/cache/apk/*; \
+    npm install -g prettier;
 
 ENV LANG C.UTF-8
 ENV RUBY_YJIT_ENABLE=1
