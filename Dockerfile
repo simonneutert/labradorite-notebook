@@ -31,6 +31,11 @@ RUN bundle install -j${bundler_jobs}
 
 FROM ruby:3.2-alpine
 
+RUN apk add --update-cache \
+    nodejs \
+    && rm -rf /var/cache/apk/*;
+RUN npm install -g prettier;
+
 ENV LANG C.UTF-8
 ENV RUBY_YJIT_ENABLE=1
 ENV NODEJS_VERSION=18
@@ -46,7 +51,5 @@ EXPOSE 9292
 
 COPY --from=gembuilder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=${USERNAME} . ${WORKDIR}
-   
-RUN apk add --update-cache nodejs && rm -rf /var/cache/apk/* && npm install -g prettier;
 
 CMD bundle exec rackup -o0 -Eproduction
