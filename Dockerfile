@@ -47,6 +47,6 @@ EXPOSE 9292
 COPY --from=gembuilder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=${USERNAME} . ${WORKDIR}
    
-RUN apk add --update-cache nodejs && && rm -rf /var/cache/apk/* && npm install -g prettier;
+RUN apk add --update-cache nodejs && rm -rf /var/cache/apk/* && npm install -g prettier;
 
 CMD bundle exec rackup -o0 -Eproduction
