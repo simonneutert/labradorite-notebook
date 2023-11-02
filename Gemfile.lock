@@ -46,7 +46,7 @@ GEM
       rack (>= 3)
       webrick (~> 1.8)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     rbs (2.8.4)
     redcarpet (3.6.0)
     regexp_parser (2.8.2)
@@ -126,7 +126,7 @@ DEPENDENCIES
   rack-test
   rack-unreloader (~> 2.1)
   rackup (~> 2.1.0)
-  rake (~> 13.0)
+  rake (~> 13.1)
   redcarpet (~> 3.6)
   roda (~> 3.73)
   rubocop (~> 1.57)
