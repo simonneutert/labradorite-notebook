@@ -32,9 +32,6 @@ jobs:
       - uses: moonrepo/setup-rust@v1
         with:
           channel: "1.73.0"
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
       - name: Install dependencies
         run: |
           bundle config path vendor/bundle
