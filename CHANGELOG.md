@@ -1,10 +1,14 @@
+### 0.4.4 (2023/11/17)
+
+- Updates dependencies and ci config
+
 ### 0.4.3 (2023/10/23)
 
-- updates NodeJS install, switches prod image to debian
+- Updates NodeJS install, switches prod image to debian
 
 ### 0.4.2 (2023/10/15)
 
-- replaces OpenStruct with Struct
+- Replaces OpenStruct with Struct
 
 ### 0.4.1 (2023/10/15)
 
