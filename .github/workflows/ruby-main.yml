@@ -19,6 +19,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, macos-latest-xlarge]
         ruby-version: ["3.2"]
+        rust-version: ["1.73.0", "stable"]
 
     runs-on: ${{ matrix.os }}
 
@@ -29,9 +30,9 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby-version }}
-      - uses: actions-rs/toolchain@v1
+      - uses: moonrepo/setup-rust@v1
         with:
-          toolchain: stable
+          channel: ${{ matrix.rust-version }}
       - name: Install dependencies
         run: |
           bundle config path vendor/bundle
