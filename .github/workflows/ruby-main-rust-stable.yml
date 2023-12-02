@@ -19,7 +19,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, macos-latest-xlarge]
         ruby-version: ["3.2"]
-        rust-version: ["1.73.0"]
+        rust-version: ["stable"]
 
     runs-on: ${{ matrix.os }}
 
