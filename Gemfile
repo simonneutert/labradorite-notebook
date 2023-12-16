@@ -15,7 +15,7 @@ group :development do
   gem 'htmlbeautifier', require: false
   gem 'pry'
   gem 'rubocop', '~> 1.59', require: false
-  gem 'solargraph', '~> 0.49', require: false
+  gem 'solargraph', '~> 0.50', require: false
   gem 'yard', '~> 0.9.34'
 end
 
