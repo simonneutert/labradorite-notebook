@@ -53,7 +53,7 @@ GEM
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.6)
-    roda (3.74.0)
+    roda (3.75.0)
       rack
     rubocop (1.59.0)
       json (~> 2.3)
@@ -128,7 +128,7 @@ DEPENDENCIES
   rackup (~> 2.1.0)
   rake (~> 13.1)
   redcarpet (~> 3.6)
-  roda (~> 3.74)
+  roda (~> 3.75)
   rubocop (~> 1.59)
   solargraph (~> 0.50)
   tantiny (= 0.3.3)
