@@ -19,7 +19,7 @@ GEM
     method_source (1.0.0)
     mini_portile2 (2.8.5)
     minitar (0.9)
-    minitest (5.20.0)
+    minitest (5.21.1)
     nio4r (2.7.0)
     nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
@@ -53,7 +53,7 @@ GEM
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.6)
-    roda (3.75.0)
+    roda (3.76.0)
       rack
     rubocop (1.59.0)
       json (~> 2.3)
@@ -120,7 +120,7 @@ PLATFORMS
 
 DEPENDENCIES
   htmlbeautifier
-  minitest (~> 5.20)
+  minitest (~> 5.21)
   pry
   puma (~> 6.4)
   rack-test
@@ -128,7 +128,7 @@ DEPENDENCIES
   rackup (~> 2.1.0)
   rake (~> 13.1)
   redcarpet (~> 3.6)
-  roda (~> 3.75)
+  roda (~> 3.76)
   rubocop (~> 1.59)
   solargraph (~> 0.50)
   tantiny (= 0.3.3)
