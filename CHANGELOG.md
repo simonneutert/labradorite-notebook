@@ -1,3 +1,19 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+new entry format:
+
+```markdown
+### next (yyyy/mm/dd)
+
+- [PR#](url) Description. - [@user](url)
+```
+
+### next (yyyy/mm/dd)
+
+- [#106](https://github.com/simonneutert/labradorite-notebook/pulls/106) Updates Ruby, Node.js, and Nokogiri versions, and replace unmaintained tag JS framework with "use-bootstrap-tag". - [@simonneutert](https://github.com/simonneutert)
+
 ### 0.4.4 (2023/11/17)
 
 - Updates dependencies and ci config
