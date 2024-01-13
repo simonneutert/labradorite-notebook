@@ -1,6 +1,6 @@
 ##### Setup for Alpine #####
 
-FROM ruby:3.2-alpine AS builder
+FROM ruby:3.3-alpine AS builder
 
 ENV LANG C.UTF-8
 ENV WORKDIR="/app/"
@@ -29,7 +29,7 @@ RUN bundle install -j${bundler_jobs}
 
 ##### MAIN CONTAINER #####
 
-FROM ruby:3.2-alpine
+FROM ruby:3.3-alpine
 
 RUN apk add nodejs npm \
     && rm -rf /var/cache/apk/*; \
