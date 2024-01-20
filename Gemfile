@@ -14,7 +14,7 @@ gem 'tilt', '~> 2.3'
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'pry'
-  gem 'rubocop', '~> 1.59', require: false
+  gem 'rubocop', '~> 1.60', require: false
   gem 'solargraph', '~> 0.50', require: false
   gem 'yard', '~> 0.9.34'
 end
