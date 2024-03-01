@@ -16,7 +16,7 @@ group :development do
   gem 'pry'
   gem 'rubocop', '~> 1.60', require: false
   gem 'solargraph', '~> 0.50', require: false
-  gem 'yard', '~> 0.9.34'
+  gem 'yard', '~> 0.9.36'
 end
 
 group :test do
