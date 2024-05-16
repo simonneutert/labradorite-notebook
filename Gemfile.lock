@@ -52,7 +52,8 @@ GEM
     regexp_parser (2.9.0)
     reverse_markdown (2.1.1)
       nokogiri
-    rexml (3.2.6)
+    rexml (3.2.8)
+      strscan (>= 3.0.9)
     roda (3.76.0)
       rack
     rubocop (1.60.2)
@@ -93,6 +94,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
+    strscan (3.1.0)
     tantiny (0.3.3)
       concurrent-ruby (~> 1.0)
       rake (~> 13.0)
