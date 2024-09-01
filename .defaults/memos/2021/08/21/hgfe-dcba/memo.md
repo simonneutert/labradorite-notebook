@@ -2,6 +2,8 @@ The Pug is a breed of dog originally from China, with physically distinctive fea
 
 ![](/memos/2021/08/21/hgfe-dcba/665507228-pug.jpg)
 
+[Wikipedia](https://en.wikipedia.org/wiki/Pug)
+
 ## Second
 
 Second paragraph with a link to a [GitHub](http://localhost:9292/memos/2022/09/26/abcd-efgh/edit) repository.

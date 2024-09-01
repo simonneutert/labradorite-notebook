@@ -81,6 +81,7 @@ class App < Roda
           r.post 'reload' do
             controller = Controllers::Memos::Reload.new(index)
             index = controller.recreate_index
+            r.session['last_file_scan'] = Digest::SHA1.hexdigest(Time.now.to_i.to_s)
             controller.status
           end
 
@@ -119,10 +120,11 @@ class App < Roda
               Controllers::Memos::Update.new(r, index, memo_path, @meta).run!
               r.session['last_file_scan'] = Digest::SHA1.hexdigest(Time.now.to_i.to_s)
               begin
-                `prettier -w #{path_to_memo_md}`
+                raise StandardError unless system("npm run format -- #{path_to_memo_md}")
+                raise StandardError unless system("npm run format -- #{path_to_memo_meta_yml}")
               rescue StandardError
-                puts 'Prettier not installed!'
-                puts 'Install it by running: `$ npm install -g prettier`'
+                puts "\n\nPrettier not installed!\n\n"
+                puts "Install it by running: `$ npm install`\n\n\n\n"
                 return { status: :success, message: 'prettier not on PATH' }
               end
               return { status: :success }
@@ -181,6 +183,12 @@ class App < Roda
       r.on 'new' do
         new_memo = FileOperations::NewMemoGenerator.new
         new_memo.generate
+
+        controller = Controllers::Memos::Reload.new(index)
+        index = controller.recreate_index
+        controller.status
+        r.session['last_file_scan'] = Digest::SHA1.hexdigest(Time.now.to_i.to_s)
+
         r.redirect "/#{new_memo.path}/edit"
       rescue StandardError
         r.redirect '/memos/new'
