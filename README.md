@@ -16,6 +16,13 @@
 
 ---
 
+> [!IMPORTANT]
+> [Tantiny] might have died this summer... 
+> This project might have its last releases soon. 
+> I will keep it running for as long as I can, but I will not invest more time into it. 😔
+
+---
+
 - [Rationale](#rationale)
 - [Features / User Info](#features--user-info)
 - [Technical Prerequisites](#technical-prerequisites)
@@ -27,8 +34,8 @@
 - [Development](#development)
 - [Run it](#run-it)
 - [Follow-up: Inspiration, Knowledge](#follow-up-inspiration-knowledge)
-  - [Tantiny](#tantiny)
-  - [Rails Multi-Model Search](#rails-multi-model-search)
+    - [Tantiny](#tantiny)
+    - [Rails Multi-Model Search](#rails-multi-model-search)
 
 ---
 
@@ -143,6 +150,8 @@ build and/or up using: `$ USERNAME=$(whoami) docker-compose build`
 - fyi: having tantiny's index (`.tantiny`) as a volume has no benefit. Beware, it can easily have a negative impact.
 
 ## Development
+
+From v0.5.0 on, the project can only be run native on a Linux machine or in a Docker container. See the Dockerfiles and `justfile` for more information.
 
 - `$ rake test` runs the test suite
 - `$ rake reset_default_memos` resets the files to the repos defaults (e.g. for testing)
