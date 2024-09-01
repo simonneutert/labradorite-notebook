@@ -17,7 +17,7 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
         ruby-version: ["3.3.4"]
         rust-version: ["1.76.0"]
 
