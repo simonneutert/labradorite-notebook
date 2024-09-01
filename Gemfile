@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'minitar-cli', '~> 0.12'
 gem 'puma', '~> 6.4'
 gem 'rack-unreloader', '~> 2.1'
 gem 'rackup', '~> 2.1.0'
@@ -15,6 +16,9 @@ group :development do
   gem 'htmlbeautifier', require: false
   gem 'pry'
   gem 'rubocop', '~> 1.60', require: false
+  gem 'rubocop-minitest', '~> 0.34.5', require: false
+  gem 'rubocop-performance', '~> 1.20', require: false
+  gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'solargraph', '~> 0.50', require: false
   gem 'yard', '~> 0.9.34'
 end

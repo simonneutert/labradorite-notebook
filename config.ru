@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 dev = ENV['RACK_ENV'] == 'development'
-require 'pry' if dev
+prod = ENV['RACK_ENV'] == 'production'
+require 'pry' unless prod
 
 require 'yaml'
 require 'tantiny'
