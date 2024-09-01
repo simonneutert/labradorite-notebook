@@ -160,7 +160,7 @@ class App < Roda
 
         @media_files = Dir.glob(".#{@current_path_memo}/**")
                           .filter { |filename| MEDIA_WHITELIST.any? { |t| filename.downcase.end_with?(t.downcase) } }
-                          .reject { |filename| filename.end_with?('memo.md') || filename.end_with?('meta.yaml') }
+                          .reject { |filename| filename.end_with?('memo.md', 'meta.yaml') }
 
         r.on 'destroy' do
           FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run

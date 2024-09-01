@@ -9,6 +9,6 @@ class TestSimpleUidGenerator < Minitest::Test
   end
 
   def test_uid_pattern
-    assert @simple_uid.match?(/^\w{4}-\w{4}$/)
+    assert_match(/^\w{4}-\w{4}$/, @simple_uid)
   end
 end

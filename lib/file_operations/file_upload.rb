@@ -18,7 +18,7 @@ module FileOperations
       filename = @params_file_data[:filename].encode('utf-8', invalid: :replace, undef: :replace, replace: '_')
       validate!(filename)
 
-      pathy_filename = "#{Time.now.to_i}-#{filename}"[1..].gsub('/', '_').gsub(' ', '_')
+      pathy_filename = "#{Time.now.to_i}-#{filename}"[1..].tr('/', '_').tr(' ', '_')
       file_content = File.read(@params_file_data[:tempfile])
 
       File.write("#{@root_path}#{@params_path}/#{pathy_filename}",

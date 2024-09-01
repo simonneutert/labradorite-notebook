@@ -28,7 +28,7 @@ module FileOperations
     #
     def all_files_order_from_least_to_newest_modified
       Dir.glob('memos/**/**')
-         .filter { |paths| paths.match(/\.md/) }
+         .filter { |paths| paths.include?('.md') }
          .sort_by { |f| File.mtime(f) }
     end
   end
