@@ -10,6 +10,8 @@ new entry format:
 - [PR#](url) Description. - [@user](url)
 ```
 
+---
+
 ### next (yyyy/mm/dd)
 
 - []() All new posts' title will be set to the current date. Please visit the [UPGRADING](UPGRADING.md) readme file, too. - [@simonneutert](https://github.com/simonneutert)
