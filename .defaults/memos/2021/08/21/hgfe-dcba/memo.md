@@ -12,6 +12,6 @@ Second paragraph with a link to a [GitHub](http://localhost:9292/memos/2022/09/2
 
 here are some links to help you
 
-http://localhost:9292/memos/2022/09/25/abcd-efgh/edit
+http://localhost:9292/memos/2021/08/21/hgfe-dcba
 
-http://localhost:9292/memos/2022/09/24/abcd-efgh/edit
+http://localhost:9292/memos/2021/08/21/hgfe-dcba/edit
