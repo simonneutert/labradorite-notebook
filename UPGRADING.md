@@ -1,3 +1,3 @@
 # Upgrading Labradorite
 
-*empty*
+_empty_
