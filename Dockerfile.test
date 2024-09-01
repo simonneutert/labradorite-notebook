@@ -24,7 +24,6 @@ WORKDIR ${WORKDIR}
 
 COPY Gemfile* ${WORKDIR}
 
-RUN bundle config set without 'development test' 
 RUN bundle install -j${bundler_jobs}
 
 ##### MAIN CONTAINER #####
@@ -38,7 +37,7 @@ RUN apk add nodejs npm \
 ENV LANG C.UTF-8
 ENV RUBY_YJIT_ENABLE=1
 ENV NODEJS_VERSION=20
-ENV RACK_ENV=production
+ENV RACK_ENV=test
 
 # replace labradorite with your username on your server
 ARG USERNAME=labradorite
@@ -51,4 +50,4 @@ EXPOSE 9292
 COPY --from=gembuilder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=${USERNAME} . ${WORKDIR}
 
-CMD bundle exec rackup -o0 -Eproduction
+CMD bundle exec rake

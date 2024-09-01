@@ -18,7 +18,7 @@ module SearchIndex
       def init_index
         dev = ENV['RACK_ENV'] == 'development' || ENV['RACK_ENV'] == 'test'
         # using exclusive_writer break hot reloading in development
-        Tantiny::Index.new '.tantiny', exclusive_writer: !dev do
+        Tantiny::Index.new('.tantiny', exclusive_writer: !dev) do
           id :id
           text :tags
           text :title

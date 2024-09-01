@@ -18,8 +18,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        ruby-version: ["3.3"]
-        rust-version: ["1.73.0"]
+        ruby-version: ["3.3.4"]
+        rust-version: ["1.76.0"]
 
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
