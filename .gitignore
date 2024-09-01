@@ -1,3 +1,4 @@
+node_modules/
 public/assets/
 # do NOT track default memo files
 memos/2021/08/21/hgfe-dcba/
