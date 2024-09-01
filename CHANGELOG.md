@@ -14,7 +14,7 @@ new entry format:
 
 ### next (yyyy/mm/dd)
 
-- []() All new posts' title will be set to the current date. Please visit the [UPGRADING](UPGRADING.md) readme file, too. - [@simonneutert](https://github.com/simonneutert)
+- [#132](https://github.com/simonneutert/labradorite-notebook/pull/132) All new posts' title will be set to the current date. Please visit the [UPGRADING](UPGRADING.md) readme file, too. - [@simonneutert](https://github.com/simonneutert)
 - [#106](https://github.com/simonneutert/labradorite-notebook/pull/106) Updates Ruby, Node.js, and Nokogiri versions, and replace unmaintained tag JS framework with "use-bootstrap-tag". - [@simonneutert](https://github.com/simonneutert)
 
 ### 0.4.4 (2023/11/17)
