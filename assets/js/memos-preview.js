@@ -7,7 +7,9 @@ ready(() => {
         searchAbortController = new AbortController();
         let markdownContent = contentFormElement.value;
 
-        if (!markdownContent) { return; }
+        if (!markdownContent) {
+          return;
+        }
 
         fetch(previewUrl, {
           signal: searchAbortController.signal,

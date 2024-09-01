@@ -4,7 +4,7 @@ ready(() => {
     elems.forEach((id) => {
       document.getElementById(id).addEventListener("click", (event) => {
         Array.from(
-          document.getElementById("form-menu").getElementsByTagName("a")
+          document.getElementById("form-menu").getElementsByTagName("a"),
         ).forEach((element) => {
           element.classList.remove("active");
         });
