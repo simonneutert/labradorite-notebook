@@ -4,9 +4,12 @@ if (document.getElementById("memos-search")) {
     const searchElem = document.getElementById("search");
 
     const highlightSearchText = (text) => {
-      const search = document.getElementById("search").value
-      return text.replaceAll(new RegExp(`${search}`, 'gi'), `<span class="highlight-search-span">$&</span>`)
-    }
+      const search = document.getElementById("search").value;
+      return text.replaceAll(
+        new RegExp(`${search}`, "gi"),
+        `<span class="highlight-search-span">$&</span>`,
+      );
+    };
 
     const createSearchResultDomElement = function (url, title, hits) {
       const createSearchResultsElem = document.createElement("div");
@@ -35,7 +38,7 @@ if (document.getElementById("memos-search")) {
         const searchResultDomElement = createSearchResultDomElement(
           url,
           title,
-          hits
+          hits,
         );
         coll.push(searchResultDomElement);
       });

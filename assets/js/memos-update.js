@@ -18,10 +18,10 @@ if (document.getElementById("memos-edit")) {
       })
         .then((response) => response.json())
         .then((data) => {
-          const toastLiveExample = document.getElementById('liveToast')
+          const toastLiveExample = document.getElementById("liveToast");
           if (toastLiveExample) {
-            const toast = new bootstrap.Toast(toastLiveExample)
-            toast.show()
+            const toast = new bootstrap.Toast(toastLiveExample);
+            toast.show();
           }
         });
 
