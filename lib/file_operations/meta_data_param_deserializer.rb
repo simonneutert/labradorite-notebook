@@ -18,7 +18,7 @@ module FileOperations
       private
 
       def markdown_url_escape(url)
-        return url unless url.start_with?('[')
+        return url unless markdown_style_url?(url)
 
         begin
           url.split('](').last.split(')').first
@@ -26,6 +26,10 @@ module FileOperations
           puts e
           url
         end
+      end
+
+      def markdown_style_url?(url)
+        url.include?('](') && url.end_with?(')')
       end
     end
   end

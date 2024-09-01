@@ -4,7 +4,7 @@ module Helper
   class SimpleUidGenerator
     class << self
       def generate
-        8.times.map do
+        Array.new(8) do
           ('a'..'z').to_a.sample
         end.join.insert(4, '-')
       end
