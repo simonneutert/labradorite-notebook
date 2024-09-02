@@ -15,7 +15,7 @@
 ---
 
 > [!IMPORTANT]
-> [Tantiny] might have died this summer... 
+> [Tantiny](https://github.com/baygeldin/tantiny) might have died in the summer of '24
 > This project might have its last releases soon. 
 > I will keep it running for as long as I can, but I will not invest more time into it. 😔
 
