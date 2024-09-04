@@ -1,6 +1,6 @@
-<img align="right" src="https://github.com/simonneutert/labradorite-notebook/blob/main/public/labradorite.jpg?raw=true" alt="Labradorite dreamed by openai's Dall-E2: A brown labrador shooting a lazer from a blue crystal on its forehead, digital art">
-
 # Labradorite Notebook<!-- omit in toc -->
+
+<img align="right" src="https://github.com/simonneutert/labradorite-notebook/blob/main/public/labradorite.jpg?raw=true" alt="Labradorite dreamed by openai's Dall-E2: A brown labrador shooting a lazer from a blue crystal on its forehead, digital art">
 
 > Labradorite rightfully belongs to the group of wisdom crystals, because it promotes a free flow of mental energy as it awakens intuition and allows us to get mentally unstuck.
 >
@@ -9,15 +9,15 @@
 ---
 
 [![Ruby 3.3.4 Rust 1.76.0](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml/badge.svg)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml)
-
 [![Docker](https://github.com/simonneutert/labradorite-notebook/actions/workflows/docker-publish.yml/badge.svg?branch=main&event=push)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/docker-publish.yml)
 
 ---
 
 > [!IMPORTANT]
-> [Tantiny](https://github.com/baygeldin/tantiny) might have died in the summer of '24
-> This project might have its last releases soon. 
-> I will keep it running for as long as I can, but I will not invest more time into it. 😔
+> [Tantiny](https://github.com/baygeldin/tantiny) might have died in the summer of '24.
+> 
+> This project might have its last releases soon. 😔\
+> I will keep it running for as long as I can, but I will not invest more time into it. 
 
 ---
 
