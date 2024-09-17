@@ -37,7 +37,7 @@ RUN apk add nodejs npm \
 
 ENV LANG=C.UTF-8
 ENV RUBY_YJIT_ENABLE=1
-ENV NODEJS_VERSION=20
+ENV NODEJS_VERSION=22
 ENV RACK_ENV=production
 
 # replace labradorite with your username on your server
