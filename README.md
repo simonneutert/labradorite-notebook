@@ -8,7 +8,7 @@
 
 ---
 
-[![Ruby 3.3.4 Rust 1.76.0](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml/badge.svg)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml)
+[![Ruby 3.3 Rust 1.76.0](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml/badge.svg)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml)
 [![Docker](https://github.com/simonneutert/labradorite-notebook/actions/workflows/docker-publish.yml/badge.svg?branch=main&event=push)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/docker-publish.yml)
 
 ---
