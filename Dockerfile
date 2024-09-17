@@ -2,7 +2,7 @@
 
 FROM ruby:3.3-alpine3.19 AS builder
 
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 ENV WORKDIR="/app/"
 WORKDIR ${WORKDIR}
 
@@ -35,7 +35,7 @@ RUN apk add nodejs npm \
     && rm -rf /var/cache/apk/*; \
     npm install -g prettier;
 
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 ENV RUBY_YJIT_ENABLE=1
 ENV NODEJS_VERSION=20
 ENV RACK_ENV=production
@@ -44,6 +44,7 @@ ENV RACK_ENV=production
 ARG USERNAME=labradorite
 RUN adduser -D ${USERNAME}
 USER ${USERNAME}
+ENV WORKDIR=/home/${USERNAME}
 WORKDIR /home/${USERNAME}
 
 EXPOSE 9292
@@ -51,4 +52,4 @@ EXPOSE 9292
 COPY --from=gembuilder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=${USERNAME} . ${WORKDIR}
 
-CMD bundle exec rackup -o0 -Eproduction
+CMD ["bundle", "exec rackup -o0 -Eproduction"]
