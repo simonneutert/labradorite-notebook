@@ -17,7 +17,7 @@ group :development do
   gem 'pry'
   gem 'rubocop', '~> 1.66', require: false
   gem 'rubocop-minitest', '~> 0.36.0', require: false
-  gem 'rubocop-performance', '~> 1.20', require: false
+  gem 'rubocop-performance', '~> 1.22', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
   gem 'solargraph', '~> 0.50', require: false
   gem 'yard', '~> 0.9.37'
