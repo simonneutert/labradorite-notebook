@@ -14,10 +14,10 @@
 ---
 
 > [!IMPORTANT]
-> [Tantiny](https://github.com/baygeldin/tantiny) might have died in the summer of '24.
-> 
-> This project might have its last releases soon. 😔\
-> I will keep it running for as long as I can, but I will not invest more time into it. 
+> It seems like [Tantiny] might have died this summer... 
+>
+> This project heavily depends on Tantiny, and as a result, we anticipate releasing our final updates in the near future.  
+> I am committed to maintaining the project's functionality for as long as feasible. However, I will not be investing additional time or resources into its further development. 😔
 
 ---
 
