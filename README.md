@@ -14,10 +14,12 @@
 ---
 
 > [!IMPORTANT]
-> It seems like [Tantiny] might have died this summer... 
+> [Tantiny](https://github.com/baygeldin/tantiny) has died this summer (most probably) ... 
 >
 > This project heavily depends on Tantiny, and as a result, we anticipate releasing our final updates in the near future.  
 > I am committed to maintaining the project's functionality for as long as feasible. However, I will not be investing additional time or resources into its further development. 😔
+> 🥲 It will continue to work though! As it is fulfilling what it was built for in the first place.
+> Dependabot will help keep security vulnerabilities closed and containerization will do the rest.
 
 ---
 
