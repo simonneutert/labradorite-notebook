@@ -39,6 +39,7 @@ GEM
     rake (13.2.1)
     redcarpet (3.6.0)
     regexp_parser (2.9.2)
+    rexml (3.3.7)
     roda (3.84.0)
       rack
     rubocop (1.66.1)
@@ -105,12 +106,14 @@ DEPENDENCIES
   rackup (~> 2.1.0)
   rake (~> 13.1)
   redcarpet (~> 3.6)
+  rexml (~> 3.3)
   roda (~> 3.84)
   rubocop (~> 1.66)
   rubocop-minitest (~> 0.36.0)
   rubocop-performance (~> 1.22)
   rubocop-rake (~> 0.6.0)
   tantiny (= 0.3.3)
+  thermite (~> 0.13.0)
   tilt (~> 2.3)
   yard (~> 0.9.37)
 

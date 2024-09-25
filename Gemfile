@@ -8,8 +8,10 @@ gem 'rack-unreloader', '~> 2.1'
 gem 'rackup', '~> 2.1.0'
 gem 'rake', '~> 13.1'
 gem 'redcarpet', '~> 3.6'
+gem 'rexml', '~> 3.3'
 gem 'roda', '~> 3.84'
 gem 'tantiny', '0.3.3'
+gem 'thermite', '~> 0.13.0'
 gem 'tilt', '~> 2.3'
 
 group :development do
