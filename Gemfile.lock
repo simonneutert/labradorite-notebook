@@ -39,7 +39,7 @@ GEM
     rake (13.2.1)
     redcarpet (3.6.0)
     regexp_parser (2.9.2)
-    rexml (3.3.7)
+    rexml (3.3.8)
     roda (3.84.0)
       rack
     rubocop (1.66.1)
