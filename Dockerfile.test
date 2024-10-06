@@ -51,4 +51,4 @@ EXPOSE 9292
 COPY --from=gembuilder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=${USERNAME} . ${WORKDIR}
 
-CMD ["bundle", "exec rake"]
+CMD ["bundle", "exec", "rake"]
