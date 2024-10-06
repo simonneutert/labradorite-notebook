@@ -2,12 +2,16 @@
 
 source 'https://rubygems.org'
 
+gem 'fiddle', '~> 1.1'
+gem 'logger', '~> 1.6'
 gem 'minitar-cli', '~> 0.12'
+gem 'ostruct', '~> 0.6.0'
 gem 'puma', '~> 6.4'
 gem 'rack-unreloader', '~> 2.1'
 gem 'rackup', '~> 2.1.0'
 gem 'rake', '~> 13.1'
 gem 'redcarpet', '~> 3.6'
+gem 'reline', '~> 0.5.10'
 gem 'rexml', '~> 3.3'
 gem 'roda', '~> 3.84'
 gem 'tantiny', '0.3.3'

@@ -9,7 +9,7 @@ reset_default_memos:
   @bundle exec rake reset_default_memos
 
 test:
-  @docker buildx build -f Dockerfile.test . -t labra-test && docker run --rm -it --name labra-test labra-test
+  @docker build -f Dockerfile.test . -t labra-test && docker run --rm -it labra-test
 
 pretty_js:
   @npx prettier --write assets/js/**/*.js

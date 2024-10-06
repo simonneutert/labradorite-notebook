@@ -4,6 +4,7 @@ dev = ENV['RACK_ENV'] == 'development'
 prod = ENV['RACK_ENV'] == 'production'
 require 'pry' unless prod
 
+require 'logger'
 require 'yaml'
 require 'tantiny'
 require 'redcarpet'
@@ -12,7 +13,7 @@ require 'roda'
 require 'fileutils'
 require 'digest'
 require 'rack/deflater'
-
+require 'fiddle'
 require 'ostruct'
 require 'rack/unreloader'
 
