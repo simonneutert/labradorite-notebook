@@ -18,7 +18,7 @@ pretty_js:
 publish_ghcr_main:
   docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/simonneutert/labradorite-notebook:main --push .
 
-[confirm("Are you sure you want to publish a new version? Please use `just publish_ghcr_version v0.8.9` to specify the version.")]
+[confirm("Are you sure you want to publish a new version? Please ensure once more `just publish_ghcr_version <v-your-version>` is the correct version.")]
 [doc("Publish a new version to ghcr.io with the specified version including the tag 'latest'")]
 publish_ghcr_version version:
   docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/simonneutert/labradorite-notebook:{{version}} -t ghcr.io/simonneutert/labradorite-notebook:latest --push .
