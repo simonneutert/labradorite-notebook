@@ -21,4 +21,4 @@ publish_ghcr_main:
 [confirm("Are you sure you want to publish a new version? Please use `just publish_ghcr_version v0.8.9` to specify the version.")]
 [doc("Publish a new version to ghcr.io with the specified version including the tag 'latest'")]
 publish_ghcr_version version:
-  docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/simonneutert/labradorite-notebook:{{project}} -t ghcr.io/simonneutert/labradorite-notebook:latest --push .
+  docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/simonneutert/labradorite-notebook:{{version}} -t ghcr.io/simonneutert/labradorite-notebook:latest --push .
