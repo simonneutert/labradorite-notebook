@@ -17,7 +17,7 @@ GEM
     minitar-cli (0.12)
       minitar (~> 0.12.0)
       powerbar (~> 1.0)
-    minitest (5.25.1)
+    minitest (5.25.2)
     nio4r (2.7.4)
     ostruct (0.6.1)
     parallel (1.26.3)
@@ -29,7 +29,7 @@ GEM
     pry (0.15.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (6.4.3)
+    puma (6.5.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.8)
@@ -104,10 +104,10 @@ DEPENDENCIES
   htmlbeautifier
   logger (~> 1.6)
   minitar-cli (~> 0.12)
-  minitest (~> 5.21)
+  minitest (~> 5.25)
   ostruct (~> 0.6.1)
   pry
-  puma (~> 6.4)
+  puma (~> 6.5)
   rack-test
   rack-unreloader (~> 2.1)
   rackup (~> 2.2.1)

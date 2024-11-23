@@ -6,7 +6,7 @@ gem 'fiddle', '~> 1.1'
 gem 'logger', '~> 1.6'
 gem 'minitar-cli', '~> 0.12'
 gem 'ostruct', '~> 0.6.1'
-gem 'puma', '~> 6.4'
+gem 'puma', '~> 6.5'
 gem 'rack-unreloader', '~> 2.1'
 gem 'rackup', '~> 2.2.1'
 gem 'rake', '~> 13.1'
@@ -29,6 +29,6 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', '~> 5.21'
+  gem 'minitest', '~> 5.25'
   gem 'rack-test'
 end
