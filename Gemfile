@@ -11,12 +11,12 @@ gem 'rack-unreloader', '~> 2.1'
 gem 'rackup', '~> 2.2.1'
 gem 'rake', '~> 13.1'
 gem 'redcarpet', '~> 3.6'
-gem 'reline', '~> 0.5.12'
-gem 'rexml', '~> 3.3'
-gem 'roda', '~> 3.86'
+gem 'reline', '~> 0.6.0'
+gem 'rexml', '~> 3.4'
+gem 'roda', '~> 3.87'
 gem 'tantiny', '0.3.3'
 gem 'thermite', '~> 0.13.0'
-gem 'tilt', '~> 2.3'
+gem 'tilt', '~> 2.5'
 
 group :development do
   gem 'htmlbeautifier', require: false
