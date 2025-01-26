@@ -16,7 +16,7 @@ module SearchIndex
       # @return [Tantiny::Index]
       #
       def init_index
-        dev = ENV['RACK_ENV'] == 'development' || ENV['RACK_ENV'] == 'test'
+        dev = %w[development test].include?(ENV.fetch('RACK_ENV', nil))
         # using exclusive_writer break hot reloading in development
         Tantiny::Index.new('.tantiny', exclusive_writer: !dev) do
           id :id
