@@ -13,7 +13,7 @@ gem 'rake', '~> 13.1'
 gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.6.0'
 gem 'rexml', '~> 3.4'
-gem 'roda', '~> 3.88'
+gem 'roda', '~> 3.89'
 gem 'tantiny', '0.3.3'
 gem 'thermite', '~> 0.13.0'
 gem 'tilt', '~> 2.6'
@@ -21,7 +21,7 @@ gem 'tilt', '~> 2.6'
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'pry'
-  gem 'rubocop', '~> 1.71', require: false
+  gem 'rubocop', '~> 1.72', require: false
   gem 'rubocop-minitest', '~> 0.36.0', require: false
   gem 'rubocop-performance', '~> 1.23', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
