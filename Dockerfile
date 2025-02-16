@@ -31,6 +31,8 @@ RUN bundle install -j${bundler_jobs}
 
 FROM ruby:3.3-alpine
 
+RUN apk update && apk upgrade
+
 RUN apk add nodejs npm \
     && rm -rf /var/cache/apk/*; \
     npm install -g prettier;
