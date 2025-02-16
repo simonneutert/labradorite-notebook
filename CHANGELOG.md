@@ -16,10 +16,22 @@ new entry format:
 
 - [PR#](url) Description. - [@user](url)
 
+### v0.5.7 (2025/02/16)
+
+- [#166](https://github.com/simonneutert/labradorite-notebook/pull/132)
+  Dependencies and version locks. -
+  [@simonneutert](https://github.com/simonneutert)
+
 ### v0.5.0 (2024/09/01)
 
-- [#132](https://github.com/simonneutert/labradorite-notebook/pull/132) All new posts' title will be set to the current date. Please visit the [UPGRADING](UPGRADING.md) readme file, too. - [@simonneutert](https://github.com/simonneutert)
-- [#106](https://github.com/simonneutert/labradorite-notebook/pull/106) Updates Ruby, Node.js, and Nokogiri versions, and replace unmaintained tag JS framework with "use-bootstrap-tag". - [@simonneutert](https://github.com/simonneutert)
+- [#132](https://github.com/simonneutert/labradorite-notebook/pull/132) All new
+  posts' title will be set to the current date. Please visit the
+  [UPGRADING](UPGRADING.md) readme file, too. -
+  [@simonneutert](https://github.com/simonneutert)
+- [#106](https://github.com/simonneutert/labradorite-notebook/pull/106) Updates
+  Ruby, Node.js, and Nokogiri versions, and replace unmaintained tag JS
+  framework with "use-bootstrap-tag". -
+  [@simonneutert](https://github.com/simonneutert)
 
 ### 0.4.4 (2023/11/17)
 
@@ -54,7 +66,8 @@ new entry format:
 
 - sets utf-8 docker locales
 - uppy setup to non-js-module, but script source
-- upload filename utf-8 force encoding, replaces unknown character with underscore
+- upload filename utf-8 force encoding, replaces unknown character with
+  underscore
 
 ### 0.1.6 (2022/12/27)
 
@@ -74,11 +87,13 @@ new entry format:
 
 ### 0.1.2 (2022/10/29)
 
-- highlights search text in search results with yellow marker 🖍 - [@simonneutert](https://github.com/simonneutert).
+- highlights search text in search results with yellow marker 🖍 -
+  [@simonneutert](https://github.com/simonneutert).
 
 ### 0.1.1 (2022/10/22)
 
-- drops shipping of default memos, allowing easier upgrades - [@simonneutert](https://github.com/simonneutert).
+- drops shipping of default memos, allowing easier upgrades -
+  [@simonneutert](https://github.com/simonneutert).
 
 ### 0.1.0 (2022/10/22)
 
