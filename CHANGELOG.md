@@ -16,6 +16,14 @@ new entry format:
 
 - [PR#](url) Description. - [@user](url)
 
+### v0.5.9 (2025/03/12)
+
+- Dependencies updated. - [@simonneutert](https://github.com/simonneutert)
+
+### v0.5.8 (2025/03/07)
+
+- Dependencies updated. - [@simonneutert](https://github.com/simonneutert)
+
 ### v0.5.7 (2025/02/16)
 
 - [#166](https://github.com/simonneutert/labradorite-notebook/pull/132)
