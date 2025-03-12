@@ -9,7 +9,7 @@ GEM
     hashie (5.0.0)
     htmlbeautifier (1.4.3)
     io-console (0.8.0)
-    json (2.10.1)
+    json (2.10.2)
     language_server-protocol (3.17.0.4)
     lint_roller (1.1.0)
     logger (1.6.6)
