@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'fiddle', '~> 1.1'
-gem 'logger', '~> 1.6'
+gem 'logger', '~> 1.7'
 gem 'minitar-cli', '~> 0.12'
 gem 'ostruct', '~> 0.6.1'
 gem 'puma', '~> 6.6'
@@ -21,7 +21,7 @@ gem 'tilt', '~> 2.6'
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'pry'
-  gem 'rubocop', '~> 1.74', require: false
+  gem 'rubocop', '~> 1.75', require: false
   gem 'rubocop-minitest', '~> 0.37.1', require: false
   gem 'rubocop-performance', '~> 1.23', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
