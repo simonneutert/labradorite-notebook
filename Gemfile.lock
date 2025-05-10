@@ -49,7 +49,7 @@ GEM
     rexml (3.4.1)
     roda (3.91.0)
       rack
-    rubocop (1.75.3)
+    rubocop (1.75.5)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
