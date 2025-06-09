@@ -13,7 +13,7 @@ module Controllers
         @search_input = @params['search']
       end
 
-      def run!
+      def run! # rubocop:disable Naming/PredicateMethod
         meta_data = FileOperations::MetaDataParamDeserializer.read(@params)
         meta_updated = Helper::DeepCopy.create(@meta)
                                        .merge(meta_data)
