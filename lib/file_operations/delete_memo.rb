@@ -19,7 +19,7 @@ module FileOperations
     #
     # @return [TrueClass]
     #
-    def run
+    def run # rubocop:disable Naming/PredicateMethod
       FileUtils.remove_dir("./#{@current_path_memo}")
       top_path = @memo_path.split('/').take(3).join('/')
       path = "./memos/#{top_path}"
