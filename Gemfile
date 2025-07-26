@@ -11,7 +11,7 @@ gem 'rack-unreloader', '~> 2.1'
 gem 'rackup', '~> 2.2.1'
 gem 'rake', '~> 13.3'
 gem 'redcarpet', '~> 3.6'
-gem 'reline', '~> 0.6.1'
+gem 'reline', '~> 0.6.2'
 gem 'rexml', '~> 3.4'
 gem 'roda', '~> 3.94'
 gem 'tantiny', '0.3.3'
@@ -21,7 +21,7 @@ gem 'tilt', '~> 2.6'
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'pry'
-  gem 'rubocop', '~> 1.78', require: false
+  gem 'rubocop', '~> 1.79', require: false
   gem 'rubocop-minitest', '~> 0.38.1', require: false
   gem 'rubocop-performance', '~> 1.25', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
