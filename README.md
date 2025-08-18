@@ -1,5 +1,27 @@
 # Labradorite Notebook<!-- omit in toc -->
 
+---
+
+> [!CAUTION]
+> [Tantiny](https://github.com/baygeldin/tantiny) is dead (most probably) ...
+>
+> This project heavily depends on Tantiny, and as a result, we anticipate
+> releasing our final updates in the near future.\
+> I am committed to maintaining the project's functionality for as long as
+> feasible. However, I will not be investing additional time or resources into
+> its further development. 😔 🥲 It will continue to work though! As it is
+> fulfilling what it was built for in the first place. Dependabot will help keep
+> security vulnerabilities closed and containerization will do the rest.
+
+---
+
+> [!IMPORTANT]
+> I intend to rewrite this, dropping tantiny, swapping it for sqlite with FTS.
+> 
+> Time is limited and AI isn't a free lunch either. But where there's a will, there's a prophet climbing a mountain.
+
+---
+
 <img align="right" src="https://github.com/simonneutert/labradorite-notebook/blob/main/public/labradorite.jpg?raw=true" alt="Labradorite dreamed by openai's Dall-E2: A brown labrador shooting a lazer from a blue crystal on its forehead, digital art">
 
 > Labradorite rightfully belongs to the group of wisdom crystals, because it
@@ -11,19 +33,6 @@
 ---
 
 [![Ruby 3.3 Rust 1.76.0](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml/badge.svg)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml)
-
----
-
-> [!IMPORTANT] [Tantiny](https://github.com/baygeldin/tantiny) has died this
-> summer (most probably) ...
->
-> This project heavily depends on Tantiny, and as a result, we anticipate
-> releasing our final updates in the near future.\
-> I am committed to maintaining the project's functionality for as long as
-> feasible. However, I will not be investing additional time or resources into
-> its further development. 😔 🥲 It will continue to work though! As it is
-> fulfilling what it was built for in the first place. Dependabot will help keep
-> security vulnerabilities closed and containerization will do the rest.
 
 ---
 
