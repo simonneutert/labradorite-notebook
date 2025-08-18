@@ -12,6 +12,7 @@ plugins:
   - rubocop-performance
   - rubocop-rake
   - rubocop-minitest
+  - rubocop-sequel
 
 AllCops:
   TargetRubyVersion: 3.0
@@ -25,6 +26,7 @@ Style/Documentation:
   Enabled: false
 
 Metrics/ClassLength:
+  Max: 200
   Exclude:
     - app.rb
 

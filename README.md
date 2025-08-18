@@ -2,23 +2,13 @@
 
 ---
 
-> [!CAUTION]
-> [Tantiny](https://github.com/baygeldin/tantiny) is dead (most probably) ...
+> [!NOTE]
+> **Fast & Simple Search** - Powered by SQLite FTS5 with Extralite.
 >
-> This project heavily depends on Tantiny, and as a result, we anticipate
-> releasing our final updates in the near future.\
-> I am committed to maintaining the project's functionality for as long as
-> feasible. However, I will not be investing additional time or resources into
-> its further development. 😔 🥲 It will continue to work though! As it is
-> fulfilling what it was built for in the first place. Dependabot will help keep
-> security vulnerabilities closed and containerization will do the rest.
-
----
-
-> [!IMPORTANT]
-> I intend to rewrite this, dropping tantiny, swapping it for sqlite with FTS.
-> 
-> Time is limited and AI isn't a free lunch either. But where there's a will, there's a prophet climbing a mountain.
+> ✅ **Pure Ruby + SQLite** solution - no external dependencies  
+> ✅ **High performance** - SQLite FTS5 with BM25 ranking  
+> ✅ **Simple deployment** - runs anywhere Ruby + SQLite work  
+> ✅ **Flexible storage** - in-memory or file-based indexing  
 
 ---
 
@@ -32,7 +22,7 @@
 
 ---
 
-[![Ruby 3.3 Rust 1.76.0](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml/badge.svg)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml)
+[![Ruby 3.4 SQLite FTS5](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml/badge.svg)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml)
 
 ---
 
@@ -72,13 +62,21 @@ cms_. Let me try and wrap it up in a few bullets:
 
 I like to keep things simple, so I once again fell for
 [Roda](https://roda.jeremyevans.net) as the Web Layer.
-[Tantiny](https://github.com/baygeldin/tantiny) is the kicker for this project.
-I was curious, if I could come up with something useful quickly, not having to
-deal with a complicated setup or Postgres as a requirement.
+SQLite FTS5 with [Extralite](https://github.com/digital-fabric/extralite) provides 
+excellent full-text search without external dependencies.
+Pure Ruby + SQLite = simple deployment anywhere!
 
 ---
 
 ## Features / User Info
+
+**Search Engine**
+
+- **SQLite FTS5** full-text search with BM25 ranking
+- **In-memory database** by default for faster performance
+- **Configurable storage**: Use `DATABASE_TYPE=file` for persistent search index
+- **Multi-field search** across title, tags, and content
+- **Smart snippets** showing matching content with context
 
 **Markdown Editor**
 
@@ -114,9 +112,8 @@ deal with a complicated setup or Postgres as a requirement.
 
 ## Technical Prerequisites
 
-- Ruby v3.x are tested and ready to roll
-- Install [Rust@v1.76.0](https://www.rust-lang.org/) with
-  [Cargo](https://github.com/rust-lang/cargo)
+- Ruby v3.4+ are tested and ready to roll
+- SQLite3 (included with most systems)
 
 ## Architecture
 
@@ -129,16 +126,16 @@ Little experiment on how it rolls:
 ## Folder Structure
 
 - `lib`: Library Code / Business Logic
+  - `lib/search_index/`: SQLite FTS5 search implementation
 - `views`: ERB Views
 - `memos`: the Memos/Notes in subdirectories `YYYY/MM/DD/random-string`
 - `public`: css/js/media
-- `.tantiny`: the local index data created by the
-  [tantiny](https://github.com/baygeldin/tantiny) gem
+- `search_index.db`: SQLite FTS5 search index (optional, for persistent storage)
 
 ## Major Dependencies
 
 - Roda
-- Tantiny
+- Sequel + Extralite (SQLite FTS5)
 - RedCarpet
 
 ## Run/Deploy with Docker
@@ -173,17 +170,24 @@ build and/or up using: `$ USERNAME=$(whoami) docker-compose build`
 - this `memos` directory has all your created content in it. Having it mounted
   from your host should make easy for you to backup (if you don't use a private
   gitrepo for that 😉)
-- fyi: having tantiny's index (`.tantiny`) as a volume has no benefit. Beware,
-  it can easily have a negative impact.
+- `search_index.db`: Only needed if using `DATABASE_TYPE=file` for persistent search index
+- Note: The search index is rebuilt automatically from memo files on startup
 
 ## Development
 
-From v0.5.0 on, the project can only be run native on a Linux machine or in a
-Docker container. See the Dockerfiles and `justfile` for more information.
+The project now runs on any platform supporting Ruby + SQLite (Linux, macOS, Windows).
+Docker deployment is still supported for convenience.
+
+**Database Configuration**
+
+- **Default**: In-memory database (faster, rebuilt on startup)
+- **Persistent**: Set `DATABASE_TYPE=file` for file-based storage
+- **Custom path**: Use `DATABASE_PATH=/custom/path.db` with file mode
+
+**Testing**
 
 - `$ rake test` runs the test suite
-- `$ rake reset_default_memos` resets the files to the repos defaults (e.g. for
-  testing)
+- `$ rake reset_default_memos` resets the files to the repos defaults (e.g. for testing)
 - `$ rake reset_memos` clears ALL memos
 
 Before pushing code, you should always run `rake reset` and `rake test`,\
@@ -201,19 +205,21 @@ services:
     user: "${UID}:${GID}"
     environment:
       - USERNAME=yourusername # REPLACE THIS WITH YOUR VPS user's USERNAME
+      - DATABASE_TYPE=file # Optional: use 'file' for persistent search index
     image: ghcr.io/simonneutert/labradorite-notebook:v0.2.0
     # ports:
     #  - 9292:9292
     command: bundle exec rackup -o0 -Eproduction
     volumes:
       - ./memos:/home/labradorite/memos:cached
+      - ./search_index.db:/home/labradorite/search_index.db # Only if using DATABASE_TYPE=file
 ```
 
 ## Follow-up: Inspiration, Knowledge
 
-#### Tantiny
+#### SQLite FTS5
 
-https://github.com/baygeldin/tantiny
+https://www.sqlite.org/fts5.html
 
 #### Rails Multi-Model Search
 

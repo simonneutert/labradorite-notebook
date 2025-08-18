@@ -18,23 +18,19 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        ruby-version: ["3.3"]
-        rust-version: ["1.76.0"]
+        ruby-version: ["3.4"]
 
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v3
-      - uses: moonrepo/setup-rust@v1
-        with:
-          channel: ${{ matrix.rust-version }}
       - uses: actions/setup-node@v4
         with:
           # Version Spec of the version to use in SemVer notation.
           # It also admits such aliases as lts/*, latest, nightly and canary builds
           # Examples: 12.x, 10.15.1, >=10.15.0, lts/Hydrogen, 16-nightly, latest, node
-          node-version: '22.x'
+          node-version: '24.x'
       - name: Set up Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:
@@ -49,3 +45,8 @@ jobs:
         run: bundle exec rubocop && bundle exec rake
         env:
           RACK_ENV: test
+      - name: Run tests with file database
+        run: bundle exec rubocop && bundle exec rake
+        env:
+          RACK_ENV: test
+          DATABASE_TYPE: file

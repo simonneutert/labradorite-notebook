@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../config/constants'
+
 module FileOperations
   #
   # Scans the filesystem and returns the latest modified file(paths)
@@ -27,7 +29,7 @@ module FileOperations
     # @return [Array<String>] of file paths
     #
     def all_files_order_from_least_to_newest_modified
-      Dir.glob('memos/**/**')
+      Dir.glob(Config::Constants::Files::MEMOS_GLOB_PATTERN)
          .filter { |paths| paths.include?('.md') }
          .sort_by { |f| File.mtime(f) }
     end

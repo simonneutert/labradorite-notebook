@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../helper/app_logger'
+
 module FileOperations
   class MetaDataParamDeserializer
     URLS_REGEXP = %r{\S+://\S*}i
@@ -23,7 +25,7 @@ module FileOperations
         begin
           url.split('](').last.split(')').first
         rescue StandardError => e
-          puts e
+          Helper::AppLogger.error("Failed to parse markdown URL: #{e.message}")
           url
         end
       end

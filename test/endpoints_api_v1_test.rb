@@ -89,4 +89,44 @@ class TestEndpointsApiV1 < Minitest::Test
     assert_equal 'success', JSON.parse(last_response.body)['status']
   end
   # rubocop:enable Layout/LineLength
+
+  def test_system_database_status # rubocop:disable Metrics/MethodLength
+    get '/api/v1/system/database-status'
+
+    assert_equal 200, last_response.status
+    assert_equal 'application/json', last_response.content_type
+
+    json = JSON.parse(last_response.body)
+
+    # Test top-level response structure
+    assert_equal 'ok', json['status']
+    assert_includes json, 'timestamp'
+    assert_includes json, 'database'
+    assert_includes json, 'connection_pool'
+    assert_includes json, 'health_check'
+
+    # Test database info structure
+    database_info = json['database']
+
+    assert_includes database_info, 'type'
+    assert_includes database_info, 'connected'
+    assert_includes database_info, 'connection_stats'
+
+    # Test connection pool structure
+    connection_pool = json['connection_pool']
+
+    assert_includes connection_pool, 'status'
+    assert_includes connection_pool, 'total_operations'
+
+    # Test health check structure
+    health_check = json['health_check']
+
+    assert_includes health_check, 'success'
+    assert_includes health_check, 'response_time_ms'
+
+    # Test that health check was successful
+    assert health_check['success']
+    assert_kind_of Numeric, health_check['response_time_ms']
+    assert_kind_of Integer, health_check['record_count']
+  end
 end

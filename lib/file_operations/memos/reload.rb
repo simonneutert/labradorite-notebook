@@ -8,12 +8,12 @@ module Controllers
       end
 
       #
-      # recreates the index
+      # Recreates the search index by rebuilding it from memo files
       #
-      # @return [Tantiny::Index]
+      # @return [SearchIndex::SqliteCore] The rebuilt search index
       #
       def recreate_index
-        SearchIndex::Core.new(@index).recreate_index!
+        @index.recreate_index!
       end
 
       def status
