@@ -3,12 +3,13 @@
 dev = ENV['RACK_ENV'] == 'development'
 
 require 'yaml'
-require 'tantiny'
+require 'sequel'
+require 'extralite'
 require 'redcarpet'
 require 'puma'
 require 'roda'
 
-require 'pry' if dev
+require 'irb' if dev
 
 require 'ostruct'
 require 'rack/builder'
@@ -23,4 +24,21 @@ end
 Dir.glob('./lib/**/*.rb').each do |file|
   puts file
   require(file)
+end
+
+# Ensure database cleanup between test runs
+require 'minitest/autorun'
+
+class Minitest::Test # rubocop:disable Style/ClassAndModuleChildren
+  def setup
+    super
+    # Reset shared database instance before each test to ensure isolation
+    SearchIndex::Database.reset_shared!
+  end
+
+  def teardown
+    super
+    # Clean up database connections after each test
+    SearchIndex::Database.reset_shared!
+  end
 end

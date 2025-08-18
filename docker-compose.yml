@@ -14,4 +14,11 @@ services:
     command: bundle exec rackup -o0
     volumes:
       - ./memos:/home/${USERNAME}/memos
+      # Uncomment below for persistent database (optional)
+      # - ./data:/home/${USERNAME}/data
+    environment:
+      # Database runs in-memory by default for faster performance
+      # Uncomment below for persistent file-based database
+      # - DATABASE_TYPE=file
+      # - DATABASE_PATH=data/search_index.db
     restart: unless-stopped

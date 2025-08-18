@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require_relative 'lib/helper/app_logger'
+require_relative 'lib/config/constants'
+
 # TODO: write a method for whitelist checks of media type
 MEDIA_WHITELIST = %w[txt pdf md png jpg jpeg heic webp yml yaml json]
                   .map { |c| [c.upcase, c] }
@@ -31,11 +34,31 @@ class App < Roda
 
   compile_assets if @production
 
-  index ||= SearchIndex::Core.init_index
+  # Initialize search index
+  index ||= SearchIndex::SqliteCore.init_index
   controller = Controllers::Memos::Reload.new(index)
   index = controller.recreate_index
 
   @index_status = nil
+
+  # Setup graceful shutdown handlers for database cleanup
+  at_exit do
+    Helper::AppLogger.info('Application shutting down, cleaning up database connections...')
+    SearchIndex::Database.reset_shared!
+  end
+
+  # Handle termination signals gracefully
+  Signal.trap('TERM') do
+    Helper::AppLogger.info('Received SIGTERM, initiating graceful shutdown...')
+    SearchIndex::Database.reset_shared!
+    exit(0)
+  end
+
+  Signal.trap('INT') do
+    Helper::AppLogger.info('Received SIGINT, initiating graceful shutdown...')
+    SearchIndex::Database.reset_shared!
+    exit(0)
+  end
 
   allowed_file_endings_regexp = MEDIA_WHITELIST.join('|').freeze
 
@@ -73,6 +96,12 @@ class App < Roda
             file_worker = FileOperations::FileUpload.new(pwd_root, r.params)
             file_worker.store
             file_worker.status
+          end
+        end
+
+        r.on 'system' do
+          r.get 'database-status' do
+            Controllers::System::DatabaseStatus.new.status
           end
         end
 
@@ -123,8 +152,8 @@ class App < Roda
                 raise StandardError unless system("npm run format -- #{path_to_memo_md}")
                 raise StandardError unless system("npm run format -- #{path_to_memo_meta_yml}")
               rescue StandardError
-                puts "\n\nPrettier not installed!\n\n"
-                puts "Install it by running: `$ npm install`\n\n\n\n"
+                Helper::AppLogger.warn('Prettier not installed or not on PATH')
+                Helper::AppLogger.info('Install prettier by running: npm install')
                 return { status: :success, message: 'prettier not on PATH' }
               end
               return { status: :success }
@@ -196,7 +225,7 @@ class App < Roda
 
       # TODO: extract to controller
       r.is do
-        n_files = 25
+        n_files = Config::Constants::Search::DEFAULT_RECENT_MEMOS_COUNT
         r.etag(r.session['last_file_scan'])
 
         files = FileOperations::FilesSortByLatestModified.new.latest_n_memos_by_file_modified(n_files)

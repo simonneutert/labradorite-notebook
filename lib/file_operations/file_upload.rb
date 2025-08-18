@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../helper/app_logger'
+
 module FileOperations
   #
   # Persists file to disk with a simple API
@@ -15,18 +17,9 @@ module FileOperations
     end
 
     def store
-      filename = @params_file_data[:filename].encode('utf-8', invalid: :replace, undef: :replace, replace: '_')
-      validate!(filename)
-
-      pathy_filename = "#{Time.now.to_i}-#{filename}"[1..].tr('/', '_').tr(' ', '_')
-      file_content = File.read(@params_file_data[:tempfile])
-
-      File.write("#{@root_path}#{@params_path}/#{pathy_filename}",
-                 file_content,
-                 mode: 'wb')
-      @success = "#{@params_path}/#{pathy_filename}"
+      process_file_upload
     rescue StandardError => e
-      @error = e
+      handle_upload_error(e)
     end
 
     def status
@@ -36,6 +29,54 @@ module FileOperations
     end
 
     private
+
+    # Processes the main file upload operation
+    def process_file_upload
+      filename = prepare_filename
+      validate!(filename)
+
+      pathy_filename = generate_safe_filename(filename)
+      file_content = read_uploaded_file
+
+      write_file_to_disk(pathy_filename, file_content)
+      @success = "#{@params_path}/#{pathy_filename}"
+    end
+
+    # Handles different types of upload errors with appropriate logging
+    def handle_upload_error(error)
+      case error
+      when ArgumentError
+        Helper::AppLogger.warn("File upload validation failed: #{error.message}")
+      when Errno::ENOENT
+        Helper::AppLogger.error("File upload failed - file not found: #{error.message}")
+      when Errno::EACCES
+        Helper::AppLogger.error("File upload failed - permission denied: #{error.message}")
+      else
+        Helper::AppLogger.error("File upload failed: #{error.message}")
+      end
+      @error = error
+    end
+
+    # Prepares filename with proper encoding
+    def prepare_filename
+      @params_file_data[:filename].encode('utf-8', invalid: :replace, undef: :replace, replace: '_')
+    end
+
+    # Generates a safe filename for storage
+    def generate_safe_filename(filename)
+      # dropping the first character to avoid leading slash
+      "#{Time.now.to_i}-#{filename}"[1..].tr('/', '_').tr(' ', '_')
+    end
+
+    # Reads content from the uploaded temporary file
+    def read_uploaded_file
+      File.read(@params_file_data[:tempfile])
+    end
+
+    # Writes file content to the target location
+    def write_file_to_disk(filename, content)
+      File.write("#{@root_path}#{@params_path}/#{filename}", content, mode: 'wb')
+    end
 
     def mime_type_whitelisted?(filename_downcased)
       MEDIA_WHITELIST.any? { |t| filename_downcased.end_with?(t.downcase) }

@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'extralite', '~> 2.13'
 gem 'fiddle', '~> 1.1'
 gem 'logger', '~> 1.7'
 gem 'minitar-cli', '~> 0.12'
@@ -14,17 +15,17 @@ gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.6.2'
 gem 'rexml', '~> 3.4'
 gem 'roda', '~> 3.94'
-gem 'tantiny', '0.3.3'
-gem 'thermite', '~> 0.13.0'
+gem 'sequel', '~> 5.95'
 gem 'tilt', '~> 2.6'
 
 group :development do
   gem 'htmlbeautifier', require: false
-  gem 'pry'
+  gem 'irb'
   gem 'rubocop', '~> 1.79', require: false
   gem 'rubocop-minitest', '~> 0.38.1', require: false
   gem 'rubocop-performance', '~> 1.25', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
+  gem 'rubocop-sequel', '~> 0.4.1'
   gem 'yard', '~> 0.9.37'
 end
 

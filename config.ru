@@ -2,11 +2,12 @@
 
 dev = ENV['RACK_ENV'] == 'development'
 prod = ENV['RACK_ENV'] == 'production'
-require 'pry' unless prod
+require 'irb' unless prod
 
 require 'logger'
 require 'yaml'
-require 'tantiny'
+require 'sequel'
+require 'extralite'
 require 'redcarpet'
 require 'puma'
 require 'roda'

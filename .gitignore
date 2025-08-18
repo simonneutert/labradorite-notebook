@@ -5,8 +5,11 @@ memos/2021/08/21/hgfe-dcba/
 memos/2022/09/26/abcd-efgh/
 
 .DS_Store
-# tantiny related folders
+# search index files
 .tantiny/
+search_index.db
+search_index.db-wal
+search_index.db-shm
 tmp/
 
 *.gem

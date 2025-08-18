@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
+require_relative '../helper/memo_path'
+
 module FileOperations
+  # Generates new memo files with unique identifiers and proper directory structure
+  #
+  # Creates both the markdown content file and YAML metadata file for a new memo,
+  # organizing them in a date-based directory hierarchy with unique slugs.
+  #
+  # @example Create a new memo
+  #   generator = FileOperations::NewMemoGenerator.new
+  #   memo_path = generator.generate
+  #   puts generator.title  # => "2024-01-15 - New Memo abcd-efgh"
+  #   puts memo_path        # => "memos/2024/01/15/abcd-efgh"
   class NewMemoGenerator
     attr_reader :slug, :title, :path
 
@@ -20,8 +32,8 @@ module FileOperations
       raise ArgumentError if File.exist?(@path)
 
       FileUtils.mkdir_p(@path)
-      File.write("#{@path}/memo.md", '')
-      File.write("#{@path}/meta.yaml", meta_yaml(datetime_now, @title, @slug))
+      File.write("#{@path}/#{Helper::MemoPath::MEMO_FILENAME}", '')
+      File.write("#{@path}/#{Helper::MemoPath::META_FILENAME}", meta_yaml(datetime_now, @title, @slug))
       @path
     end
 
