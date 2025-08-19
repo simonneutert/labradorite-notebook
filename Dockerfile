@@ -1,6 +1,6 @@
 ##### Setup for Alpine #####
 
-FROM ruby:3.4 AS builder
+FROM ruby:3.4-alpine AS builder
 
 ENV LANG=C.UTF-8
 ENV WORKDIR="/app/"
