@@ -18,9 +18,9 @@ GEM
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
-    minitar (0.12.1)
-    minitar-cli (0.12)
-      minitar (~> 0.12.0)
+    minitar (1.0.2)
+    minitar-cli (1.0.0)
+      minitar (~> 1.0.0)
       powerbar (~> 1.0)
     minitest (5.25.5)
     nio4r (2.7.4)
@@ -108,7 +108,7 @@ DEPENDENCIES
   htmlbeautifier
   irb
   logger (~> 1.7)
-  minitar-cli (~> 0.12)
+  minitar-cli (~> 1.0)
   minitest (~> 5.25)
   ostruct (~> 0.6.3)
   puma (~> 6.6)
