@@ -14,6 +14,12 @@ new entry format:
 
 ### next (yyyy/mm/dd)
 
+- [PR#](url) Description. - [@user](url)
+
+### v0.6.0 (2025/08/19)
+
+See [UPGRADING](./UPGRADING.md) for details.
+
 - [PR#193](https://github.com/simonneutert/labradorite-notebook/pull/193) **Major Search Engine Migration**: Complete rewrite from Tantiny (Rust) to SQLite FTS5 with comprehensive code refactoring and architectural improvements. Eliminates external dependencies, improves deployment simplicity, and enhances performance with better platform support. Includes extensive code quality improvements addressing all PR review feedback with method complexity reduction, better separation of concerns, and improved maintainability. All changes maintain full backward compatibility. - [@simonneutert](https://github.com/simonneutert)
 
 ### v0.5.14 (2025/08/02)
