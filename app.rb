@@ -4,7 +4,7 @@ require_relative 'lib/helper/app_logger'
 require_relative 'lib/config/constants'
 
 # TODO: write a method for whitelist checks of media type
-MEDIA_WHITELIST = %w[txt pdf md png jpg jpeg heic webp yml yaml json]
+MEDIA_WHITELIST = %w[txt pdf md png jpg jpeg heic webp yml yaml json gpx]
                   .map { |c| [c.upcase, c] }
                   .flatten
                   .freeze
