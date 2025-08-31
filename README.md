@@ -97,6 +97,7 @@ Pure Ruby + SQLite = simple deployment anywhere!
   - yml
   - yaml
   - json
+  - gpx
 
 **Screenshots**
 

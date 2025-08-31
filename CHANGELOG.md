@@ -14,7 +14,7 @@ new entry format:
 
 ### next (yyyy/mm/dd)
 
-- [PR#](url) Description. - [@user](url)
+- [#197](https://github.com/simonneutert/labradorite-notebook/pull/197) adds gpx to allowed mime type uploads - [@simonneutert](https://github.com/simonneutert)
 
 ### v0.6.0 (2025/08/19)
 

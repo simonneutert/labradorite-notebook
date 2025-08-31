@@ -57,7 +57,7 @@ module Config
     module Upload
       # Supported file extensions (already defined in MEDIA_WHITELIST but centralized here for reference)
       ALLOWED_EXTENSIONS = %w[
-        txt pdf md png jpg jpeg heic webp yml yaml json
+        txt pdf md png jpg jpeg heic webp yml yaml json gpx
       ].freeze
     end
 
