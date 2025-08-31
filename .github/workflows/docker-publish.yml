@@ -6,13 +6,12 @@ name: Docker buildx
 # documentation.
 
 on:
-  workflow_dispatch
   # schedule:
   #   - cron: "0 19 * * 0"
-  # push:
-  #   branches: ["main"]
-  #   # Publish semver tags as releases.
-  #   tags: ["v*.*.*"]  
+  push:
+    branches: ["main"]
+    # Publish semver tags as releases.
+    tags: ["v*.*.*"]  
 
 env:
   # Use docker.io for Docker Hub if empty
