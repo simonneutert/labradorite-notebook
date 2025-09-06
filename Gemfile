@@ -15,7 +15,7 @@ gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.6.2'
 gem 'rexml', '~> 3.4'
 gem 'roda', '~> 3.94'
-gem 'sequel', '~> 5.95'
+gem 'sequel', '~> 5.96'
 gem 'tilt', '~> 2.6'
 
 group :development do
@@ -23,7 +23,7 @@ group :development do
   gem 'irb'
   gem 'rubocop', '~> 1.80', require: false
   gem 'rubocop-minitest', '~> 0.38.2', require: false
-  gem 'rubocop-performance', '~> 1.25', require: false
+  gem 'rubocop-performance', '~> 1.26', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
   gem 'rubocop-sequel', '~> 0.4.1'
   gem 'yard', '~> 0.9.37'
