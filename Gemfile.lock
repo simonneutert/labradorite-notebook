@@ -38,10 +38,10 @@ GEM
     psych (5.2.6)
       date
       stringio
-    puma (7.0.1)
+    puma (7.0.2)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.0)
+    rack (3.2.1)
     rack-test (2.2.0)
       rack (>= 1.3)
     rack-unreloader (2.1.0)
@@ -56,8 +56,8 @@ GEM
     regexp_parser (2.11.2)
     reline (0.6.2)
       io-console (~> 0.5)
-    rexml (3.4.2)
-    roda (3.95.0)
+    rexml (3.4.4)
+    roda (3.96.0)
       rack
     rubocop (1.80.2)
       json (~> 2.3)
@@ -119,7 +119,7 @@ DEPENDENCIES
   redcarpet (~> 3.6)
   reline (~> 0.6.2)
   rexml (~> 3.4)
-  roda (~> 3.94)
+  roda (~> 3.96)
   rubocop (~> 1.80)
   rubocop-minitest (~> 0.38.2)
   rubocop-performance (~> 1.26)

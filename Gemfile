@@ -14,7 +14,7 @@ gem 'rake', '~> 13.3'
 gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.6.2'
 gem 'rexml', '~> 3.4'
-gem 'roda', '~> 3.94'
+gem 'roda', '~> 3.96'
 gem 'sequel', '~> 5.96'
 gem 'tilt', '~> 2.6'
 
