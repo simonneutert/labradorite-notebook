@@ -37,7 +37,7 @@
 - [Development](#development)
 - [Run it](#run-it)
 - [Follow-up: Inspiration, Knowledge](#follow-up-inspiration-knowledge)
-    - [Tantiny](#tantiny)
+    - [SQLite FTS5](#sqlite-fts5)
     - [Rails Multi-Model Search](#rails-multi-model-search)
 
 ---
@@ -207,6 +207,7 @@ services:
     environment:
       - USERNAME=yourusername # REPLACE THIS WITH YOUR VPS user's USERNAME
       - DATABASE_TYPE=file # Optional: use 'file' for persistent search index
+      - DEFAULT_RECENT_MEMOS_COUNT=25 # Optional: number of recent memos to show on homepage
     image: ghcr.io/simonneutert/labradorite-notebook:v0.2.0
     # ports:
     #  - 9292:9292

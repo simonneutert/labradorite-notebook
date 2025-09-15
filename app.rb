@@ -235,7 +235,10 @@ class App < Roda
 
       # TODO: extract to controller
       r.is do
-        n_files = Config::Constants::Search::DEFAULT_RECENT_MEMOS_COUNT
+        n_files = ENV.fetch(
+          'DEFAULT_RECENT_MEMOS_COUNT',
+          Config::Constants::Search::DEFAULT_RECENT_MEMOS_COUNT
+        ).to_i
         r.etag(r.session['last_file_scan'])
 
         files = FileOperations::FilesSortByLatestModified.new.latest_n_memos_by_file_modified(n_files)
