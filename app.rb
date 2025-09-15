@@ -140,6 +140,11 @@ class App < Roda
 
             r.on 'destroy' do
               FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
+
+              # Rebuild search index after deletion
+              controller = Controllers::Memos::Reload.new(index)
+              index = controller.recreate_index
+
               r.session['last_file_scan'] = Digest::SHA1.hexdigest(Time.now.to_i.to_s)
               r.redirect '/'
             end
@@ -195,6 +200,11 @@ class App < Roda
 
         r.on 'destroy' do
           FileOperations::DeleteMemo.new(memo_path, @current_path_memo).run
+
+          # Rebuild search index after deletion
+          controller = Controllers::Memos::Reload.new(index)
+          index = controller.recreate_index
+
           r.session['last_file_scan'] = Digest::SHA1.hexdigest(Time.now.to_i.to_s)
           r.redirect '/'
         end
