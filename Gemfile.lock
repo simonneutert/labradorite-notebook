@@ -14,7 +14,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.13.2)
+    json (2.15.0)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -34,11 +34,11 @@ GEM
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.4.0)
+    prism (1.5.1)
     psych (5.2.6)
       date
       stringio
-    puma (7.0.3)
+    puma (7.0.4)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.1)
@@ -53,13 +53,13 @@ GEM
       erb
       psych (>= 4.0.0)
     redcarpet (3.6.1)
-    regexp_parser (2.11.2)
+    regexp_parser (2.11.3)
     reline (0.6.2)
       io-console (~> 0.5)
     rexml (3.4.4)
     roda (3.96.0)
       rack
-    rubocop (1.80.2)
+    rubocop (1.81.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -67,10 +67,10 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.46.0, < 2.0)
+      rubocop-ast (>= 1.47.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.46.0)
+    rubocop-ast (1.47.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-minitest (0.38.2)
@@ -92,9 +92,9 @@ GEM
       bigdecimal
     stringio (3.1.7)
     tilt (2.6.1)
-    unicode-display_width (3.1.5)
-      unicode-emoji (~> 4.0, >= 4.0.4)
-    unicode-emoji (4.0.4)
+    unicode-display_width (3.2.0)
+      unicode-emoji (~> 4.1)
+    unicode-emoji (4.1.0)
     yard (0.9.37)
 
 PLATFORMS
@@ -120,7 +120,7 @@ DEPENDENCIES
   reline (~> 0.6.2)
   rexml (~> 3.4)
   roda (~> 3.96)
-  rubocop (~> 1.80)
+  rubocop (~> 1.81)
   rubocop-minitest (~> 0.38.2)
   rubocop-performance (~> 1.26)
   rubocop-rake (~> 0.7.1)
