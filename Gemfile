@@ -21,7 +21,7 @@ gem 'tilt', '~> 2.6'
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'irb'
-  gem 'rubocop', '~> 1.80', require: false
+  gem 'rubocop', '~> 1.81', require: false
   gem 'rubocop-minitest', '~> 0.38.2', require: false
   gem 'rubocop-performance', '~> 1.26', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
