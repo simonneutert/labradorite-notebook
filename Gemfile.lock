@@ -34,11 +34,11 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.5.2)
+    prism (1.6.0)
     psych (5.2.6)
       date
       stringio
-    puma (7.0.4)
+    puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.3)
@@ -58,7 +58,7 @@ GEM
     reline (0.6.2)
       io-console (~> 0.5)
     rexml (3.4.4)
-    roda (3.96.0)
+    roda (3.97.0)
       rack
     rubocop (1.81.1)
       json (~> 2.3)
@@ -78,10 +78,10 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-performance (1.26.0)
+    rubocop-performance (1.26.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
-      rubocop-ast (>= 1.44.0, < 2.0)
+      rubocop-ast (>= 1.47.1, < 2.0)
     rubocop-rake (0.7.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1)
@@ -113,7 +113,7 @@ DEPENDENCIES
   minitar-cli (~> 1.0)
   minitest (~> 5.25)
   ostruct (~> 0.6.3)
-  puma (~> 7.0)
+  puma (~> 7.1)
   rack-test
   rack-unreloader (~> 2.1)
   rackup (~> 2.2.1)
@@ -121,7 +121,7 @@ DEPENDENCIES
   redcarpet (~> 3.6)
   reline (~> 0.6.2)
   rexml (~> 3.4)
-  roda (~> 3.96)
+  roda (~> 3.97)
   rubocop (~> 1.81)
   rubocop-minitest (~> 0.38.2)
   rubocop-performance (~> 1.26)
