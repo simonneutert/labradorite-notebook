@@ -26,7 +26,7 @@ GEM
     nio4r (2.7.4)
     ostruct (0.6.3)
     parallel (1.27.0)
-    parser (3.3.9.0)
+    parser (3.3.10.0)
       ast (~> 2.4.1)
       racc
     powerbar (1.0.18)
@@ -48,7 +48,7 @@ GEM
     rackup (2.2.1)
       rack (>= 3)
     rainbow (3.1.1)
-    rake (13.3.0)
+    rake (13.3.1)
     rdoc (6.15.0)
       erb
       psych (>= 4.0.0)
@@ -60,7 +60,7 @@ GEM
     rexml (3.4.4)
     roda (3.97.0)
       rack
-    rubocop (1.81.6)
+    rubocop (1.81.7)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
