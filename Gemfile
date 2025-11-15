@@ -12,9 +12,9 @@ gem 'rack-unreloader', '~> 2.1'
 gem 'rackup', '~> 2.2.1'
 gem 'rake', '~> 13.3'
 gem 'redcarpet', '~> 3.6'
-gem 'reline', '~> 0.6.2'
+gem 'reline', '~> 0.6.3'
 gem 'rexml', '~> 3.4'
-gem 'roda', '~> 3.97'
+gem 'roda', '~> 3.98'
 gem 'sequel', '~> 5.98'
 gem 'tilt', '~> 2.6'
 
@@ -30,6 +30,6 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', '~> 5.25'
+  gem 'minitest', '~> 5.26'
   gem 'rack-test'
 end
