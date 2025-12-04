@@ -80,8 +80,14 @@ Pure Ruby + SQLite = simple deployment anywhere!
 
 **Markdown Editor**
 
-- Preview
+- **Rich editing experience** with [TinyMDE](https://github.com/jefago/tiny-markdown-editor)
+  - Inline markdown formatting preview (bold, italic, code, etc.)
+  - Toolbar with common formatting commands
+  - Works great on mobile with auto-correction support
+  - Lightweight (~70kb) and CDN-hosted
+- Preview mode for rendered markdown
 - Supports auto-formatting with/around saving (on page refresh)
+- See [TINYMDE_INTEGRATION.md](TINYMDE_INTEGRATION.md) for technical details
 
 **Attachments**
 

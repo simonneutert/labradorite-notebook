@@ -1,4 +1,5 @@
 <link href="https://releases.transloadit.com/uppy/v3.0.1/uppy.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/tiny-markdown-editor@0.2.10/dist/tiny-mde.min.css" />
 <div id="memos-edit">
   <div class="row">
     <div class="col">
@@ -37,8 +38,9 @@
         </ul>
       </div>
       <div id="memo-form-content">
-        <div style="overflow-y: scroll;">
-          <textarea name="content" id="content" style="width: 100%; height: 60vh;"><%= @content_md %></textarea>
+        <div id="tinymde-toolbar"></div>
+        <div id="tinymde-container" style="overflow-y: auto; height: 60vh; border: 1px solid #dee2e6; border-top: none; border-radius: 0 0 0.375rem 0.375rem;">
+          <textarea name="content" id="content" style="display: none;" aria-label="Markdown content editor"><%= @content_md %></textarea>
         </div>
       </div>
       <div id="memo-form-preview" class="col" style="display: none;">
@@ -88,6 +90,7 @@
   </div>
 </div>
 <script src="https://releases.transloadit.com/uppy/v3.4.0/uppy.min.js"></script>
+<script src="https://unpkg.com/tiny-markdown-editor@0.2.10/dist/tiny-mde.min.js"></script>
 <script>
   // sets up uppy
   var uppy = new Uppy.Uppy()
@@ -120,4 +123,25 @@
 </script>
 <script>
   ready(() => UseBootstrapTag(document.getElementById('taglist')))
+</script>
+<script>
+  // Initialize TinyMDE editor
+  ready(() => {
+    if (document.getElementById('content')) {
+      // Initialize TinyMDE with the textarea
+      var tinyMDE = new TinyMDE.Editor({
+        textarea: 'content',
+        element: 'tinymde-container'
+      });
+      
+      // Initialize the command bar (toolbar)
+      var commandBar = new TinyMDE.CommandBar({
+        element: 'tinymde-toolbar',
+        editor: tinyMDE
+      });
+      
+      // Store reference globally for potential future use
+      window.tinyMDE = tinyMDE;
+    }
+  });
 </script>
