@@ -117,22 +117,41 @@
       const contentTextarea = document.getElementById('content');
       const initialMarkdown = contentTextarea.value;
       
-      // Initialize Stacks Editor
-      const editor = new window.stacksEditor.StacksEditor(
-        document.querySelector('#stacks-editor-container'),
-        initialMarkdown,
-        {
-          targetClassNames: ['form-control']
+      try {
+        // Check if Stacks Editor is available
+        if (typeof window.stacksEditor === 'undefined' || typeof window.stacksEditor.StacksEditor === 'undefined') {
+          console.error('Stacks Editor library not loaded. Falling back to textarea.');
+          // Show the hidden textarea as fallback
+          contentTextarea.style.display = 'block';
+          contentTextarea.style.width = '100%';
+          contentTextarea.style.height = '60vh';
+          return;
         }
-      );
-      
-      // Update hidden textarea before form submission
-      const form = document.getElementById('memo-form');
-      form.addEventListener('submit', function(e) {
-        // Get markdown content from editor
-        const markdown = editor.content;
-        contentTextarea.value = markdown;
-      }, true); // Use capture phase to ensure this runs before form submission
+        
+        // Initialize Stacks Editor
+        const editor = new window.stacksEditor.StacksEditor(
+          document.querySelector('#stacks-editor-container'),
+          initialMarkdown,
+          {
+            targetClassNames: ['form-control']
+          }
+        );
+        
+        // Update hidden textarea before form submission
+        // This ensures the form data includes the latest markdown content
+        const form = document.getElementById('memo-form');
+        form.addEventListener('submit', function(e) {
+          // Get markdown content from editor
+          const markdown = editor.content;
+          contentTextarea.value = markdown;
+        }, true);
+      } catch (error) {
+        console.error('Error initializing Stacks Editor:', error);
+        // Show the hidden textarea as fallback
+        contentTextarea.style.display = 'block';
+        contentTextarea.style.width = '100%';
+        contentTextarea.style.height = '60vh';
+      }
     }
   });
 </script>
