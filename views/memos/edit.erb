@@ -27,24 +27,13 @@
         </div>
       </div>
       <div>
-        <ul id="form-menu" class="nav nav-tabs">
-          <li id="show-editor-form" class="nav-item">
-            <a class="nav-link active" href="#">Markdown</a>
-          </li>
-          <li id="show-preview" class="nav-item">
-            <a class="nav-link" href="#">Preview</a>
-          </li>
-        </ul>
+        <h5 class="mb-3">Content</h5>
       </div>
       <div id="memo-form-content">
-        <div style="overflow-y: scroll;">
-          <textarea name="content" id="content" style="width: 100%; height: 60vh;"><%= @content_md %></textarea>
-        </div>
-      </div>
-      <div id="memo-form-preview" class="col" style="display: none;">
-        <div id="content-preview" style="height: 60vh; border: 1px solid green; overflow-y: scroll;">
-          <%= @content %>
-        </div>
+        <!-- Stacks Editor Container -->
+        <div id="stacks-editor-container" style="min-height: 60vh;"></div>
+        <!-- Hidden textarea for form submission -->
+        <textarea name="content" id="content" style="display: none;"><%= @content_md %></textarea>
       </div>
       <button id="submit-memo-form" type="submit" class="btn btn-primary mt-2">
         Submit
@@ -120,4 +109,30 @@
 </script>
 <script>
   ready(() => UseBootstrapTag(document.getElementById('taglist')))
+</script>
+<script>
+  // Initialize Stacks Editor
+  ready(() => {
+    if (document.getElementById('stacks-editor-container')) {
+      const contentTextarea = document.getElementById('content');
+      const initialMarkdown = contentTextarea.value;
+      
+      // Initialize Stacks Editor
+      const editor = new window.StacksEditor(
+        document.querySelector('#stacks-editor-container'),
+        initialMarkdown,
+        {
+          targetClassNames: ['form-control']
+        }
+      );
+      
+      // Update hidden textarea before form submission
+      const form = document.getElementById('memo-form');
+      form.addEventListener('submit', function(e) {
+        // Get markdown content from editor
+        const markdown = editor.content;
+        contentTextarea.value = markdown;
+      }, true); // Use capture phase to ensure this runs before form submission
+    }
+  });
 </script>

@@ -21,6 +21,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/use-bootstrap-tag@2.2.0/dist/use-bootstrap-tag.min.css">
+    <!-- Stacks Editor CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks/dist/css/stacks.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@stackoverflow/stacks-editor@0.15.3/dist/styles.css">
     <script>
       function ready(fn) {
         if (document.readyState !== "loading") {
@@ -33,6 +36,10 @@
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/use-bootstrap-tag@2.2.0/dist/use-bootstrap-tag.min.js"></script>
+    <!-- Stacks Editor JS -->
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@latest/highlight.min.js"></script>
+    <script src="https://unpkg.com/@stackoverflow/stacks/dist/js/stacks.min.js"></script>
+    <script src="https://unpkg.com/@stackoverflow/stacks-editor@0.15.3/dist/app.bundle.js"></script>
     <div class="container my-4">
       <%= yield %>
     </div>
