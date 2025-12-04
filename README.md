@@ -80,7 +80,10 @@ Pure Ruby + SQLite = simple deployment anywhere!
 
 **Markdown Editor**
 
-- Preview
+- Rich text/Markdown dual-mode editor powered by [Stacks Editor](https://github.com/StackExchange/Stacks-Editor)
+- WYSIWYG editing with live preview
+- Markdown mode with toolbar for common formatting
+- Code block syntax highlighting
 - Supports auto-formatting with/around saving (on page refresh)
 
 **Attachments**
