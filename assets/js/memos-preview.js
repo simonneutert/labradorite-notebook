@@ -5,7 +5,13 @@ ready(() => {
 
       function initMemosPreview(contentFormElement, searchAbortController) {
         searchAbortController = new AbortController();
-        let markdownContent = contentFormElement.value;
+        // Get content from TinyMDE editor if available, otherwise from textarea
+        let markdownContent;
+        if (window.tinyMDE) {
+          markdownContent = window.tinyMDE.getContent();
+        } else {
+          markdownContent = contentFormElement.value;
+        }
 
         if (!markdownContent) {
           return;

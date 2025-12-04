@@ -57,4 +57,4 @@ EXPOSE 9292
 COPY --from=gembuilder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=${USERNAME} . ${WORKDIR}
 
-CMD ["bundle", "exec rackup -o0 -Eproduction"]
+CMD ["bundle", "exec", "rackup", "-o", "0.0.0.0", "-E", "production"]
