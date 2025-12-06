@@ -1,8 +1,8 @@
 if (document.getElementsByClassName("enable-search-keyboard-shortcut")) {
   (() => {
     // Detect OS and update placeholder
-    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-    const modifierKey = isMac ? 'Cmd' : 'Ctrl';
+    const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+    const modifierKey = isMac ? "Cmd" : "Ctrl";
     const searchInput = document.getElementById("search");
 
     if (searchInput) {
@@ -16,7 +16,7 @@ if (document.getElementsByClassName("enable-search-keyboard-shortcut")) {
         searchInput.focus({ focusVisible: true });
         // Trigger htmx search event if input has value
         if (searchInput.value.length >= 3) {
-          document.body.dispatchEvent(new Event('search'));
+          document.body.dispatchEvent(new Event("search"));
         }
       }
     });
