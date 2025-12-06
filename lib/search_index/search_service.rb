@@ -72,10 +72,9 @@ module SearchIndex
       end
 
       # Multiple terms: require all terms to match (AND logic)
-      query_parts = []
-      terms.each do |term|
+      query_parts = terms.map do |term|
         # Each term must match in at least one field (with prefix)
-        query_parts << "(title:#{term}* OR tags:#{term}* OR content:#{term}*)"
+        "(title:#{term}* OR tags:#{term}* OR content:#{term}*)"
       end
 
       query_parts.join(' AND ')
