@@ -58,26 +58,26 @@ module SearchIndex
     private
 
     def build_fts_query(query)
-      # Escape special FTS5 characters except *
+      # Escape special FTS5 characters
       escaped_query = query.gsub(/['"]/, '')
 
-      # Build queries for both exact match and prefix match
+      # Split into terms
       terms = escaped_query.split(/\s+/).map(&:strip).reject(&:empty?)
 
-      query_parts = []
-      fields = %w[title tags content]
-
-      terms.each do |term|
-        # For each term, try both exact match and prefix match
-        field_exact = fields.map { |field| "#{field}:#{term}" }
-        field_prefix = fields.map { |field| "#{field}:#{term}*" }
-
-        # Combine exact and prefix matches with OR
-        term_query = (field_exact + field_prefix).join(' OR ')
-        query_parts << "(#{term_query})"
+      # If single term, search across all fields with prefix matching
+      if terms.length == 1
+        term = terms.first
+        # Simple: search in any field, with or without prefix
+        return "(title:#{term}* OR tags:#{term}* OR content:#{term}*)"
       end
 
-      # Join multiple terms with AND to require all terms to match
+      # Multiple terms: require all terms to match (AND logic)
+      query_parts = []
+      terms.each do |term|
+        # Each term must match in at least one field (with prefix)
+        query_parts << "(title:#{term}* OR tags:#{term}* OR content:#{term}*)"
+      end
+
       query_parts.join(' AND ')
     end
 
