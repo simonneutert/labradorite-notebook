@@ -9,7 +9,7 @@ gem 'minitar-cli', '~> 1.0'
 gem 'ostruct', '~> 0.6.3'
 gem 'puma', '~> 7.1'
 gem 'rack-unreloader', '~> 2.1'
-gem 'rackup', '~> 2.2.1'
+gem 'rackup', '~> 2.3.1'
 gem 'rake', '~> 13.3'
 gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.6.3'
@@ -26,7 +26,7 @@ group :development do
   gem 'rubocop-performance', '~> 1.26', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
   gem 'rubocop-sequel', '~> 0.4.1'
-  gem 'yard', '~> 0.9.37'
+  gem 'yard', '~> 0.9.38'
 end
 
 group :test do
