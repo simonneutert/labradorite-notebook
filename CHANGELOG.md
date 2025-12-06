@@ -12,6 +12,15 @@ new entry format:
 
 ---
 
+### v0.8.0 (2025-12-06) Santa Clause is coming to town 🎅
+
+- [PR#220](https://github.com/simonneutert/labradorite-notebook/pull/220) Improve search input accessibility and UX. [@simonneutert](https://github.com/simonneutert)
+- [PR#218](https://github.com/simonneutert/labradorite-notebook/pull/218) Integrate TinyMDE markdown editor with backward compatibility. [@simonneutert](https://github.com/simonneutert)
+
+#### Breaking Changes
+
+Search hotkey changed from `Ctrl/Cmd + f` to `Ctrl/Cmd + k` to avoid conflicts with browser default find functionality.
+
 ### v0.7.0 (2025-09-15)
 
 - [PR#203](https://github.com/simonneutert/labradorite-notebook/pull/203) Rebuilds search index after memo deletion in API routes, ensuring search results are updated immediately after a memo is deleted. Closes [#202](https://github.com/simonneutert/labradorite-notebook/issues/202). - [@simonneutert](https://github.com/simonneutert)

@@ -77,6 +77,7 @@ Pure Ruby + SQLite = simple deployment anywhere!
 - **Configurable storage**: Use `DATABASE_TYPE=file` for persistent search index
 - **Multi-field search** across title, tags, and content
 - **Smart snippets** showing matching content with context
+- **Keyboard shortcut**: Press `Ctrl + K` (or `Cmd + K` on Mac) to quickly focus the search input
 
 **Markdown Editor**
 
