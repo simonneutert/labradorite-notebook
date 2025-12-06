@@ -82,4 +82,22 @@ class TestEndpointsGet < Minitest::Test
 
     refute deleted_memo_still_exists, 'Deleted memo should not appear in search results'
   end
+
+  def test_search_all_page_and_htmx_results
+    # Test 1: Full page renders with query
+    get '/memos/search-all?q=pug'
+
+    assert_equal 200, last_response.status
+    assert_includes last_response.body, 'Search All Memos'
+    assert_includes last_response.body, 'pug'
+
+    # Test 2: HTMX partial endpoint returns results
+    get '/memos/search-all/results?q=pug'
+
+    assert_equal 200, last_response.status
+    refute_includes last_response.body, '<html>' # No layout
+    # Should contain at least one of the pug memos
+    assert(last_response.body.include?(MEMO_ID) || last_response.body.include?('abcd-efgh'),
+           'Should contain at least one pug-related memo')
+  end
 end
