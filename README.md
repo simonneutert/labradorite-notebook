@@ -201,6 +201,7 @@ Docker deployment is still supported for convenience.
 **Environment Variables**
 
 - `MEGA_SEARCH_LIMIT`: Maximum results for "Search All" feature (default: 10000)
+- `PREVIEW_SEARCH_LIMIT`: Number of search results shown on homepage preview (default: 3)
 - `DEFAULT_RECENT_MEMOS_COUNT`: Number of recent memos on homepage (default: 25)
 - `DATABASE_TYPE`: 'memory' (default) or 'file' for persistent search index
 - `DATABASE_PATH`: Custom path for database file when using file mode
@@ -227,6 +228,7 @@ services:
     environment:
       - USERNAME=yourusername # REPLACE THIS WITH YOUR VPS user's USERNAME
       - DATABASE_TYPE=file # Optional: use 'file' for persistent search index
+      - PREVIEW_SEARCH_LIMIT=5 # Optional: number of search results on homepage preview
       - DEFAULT_RECENT_MEMOS_COUNT=25 # Optional: number of recent memos to show on homepage
       - MEGA_SEARCH_LIMIT=10000 # Optional: maximum results for "Search All" feature
     image: ghcr.io/simonneutert/labradorite-notebook:v0.2.0

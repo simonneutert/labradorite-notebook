@@ -33,8 +33,9 @@ if (document.getElementById("memos-search")) {
 
     const buildResultCollectionDomElements = function (data) {
       const coll = [];
-      // Limit to top 5 results for preview on index page
-      const previewData = data.slice(0, 5);
+      // Get preview limit from data attribute (customizable via ENV)
+      const previewLimit = parseInt(document.getElementById('memos-index')?.dataset.previewLimit || 5, 10);
+      const previewData = data.slice(0, previewLimit);
       previewData.map((searchResult) => {
         const [url, title, hits] = searchResult;
         const searchResultDomElement = createSearchResultDomElement(
@@ -87,7 +88,7 @@ if (document.getElementById("memos-search")) {
         window.location.href = `/memos/search-all?q=${encodeURIComponent(searchElem.value)}`;
         return;
       }
-      
+
       if (debounce) {
         clearTimeout(debounce);
         searchAbortController.abort();

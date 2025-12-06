@@ -307,6 +307,10 @@ class App < Roda
           'DEFAULT_RECENT_MEMOS_COUNT',
           Config::Constants::Search::DEFAULT_RECENT_MEMOS_COUNT
         ).to_i
+        @preview_search_limit = ENV.fetch(
+          'PREVIEW_SEARCH_LIMIT',
+          Config::Constants::Search::PREVIEW_SEARCH_LIMIT
+        ).to_i
         r.etag(r.session['last_file_scan'])
 
         files = FileOperations::FilesSortByLatestModified.new.latest_n_memos_by_file_modified(n_files)

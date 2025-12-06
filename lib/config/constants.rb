@@ -27,6 +27,7 @@ module Config
       # Default pagination and limits
       DEFAULT_SEARCH_LIMIT = 100          # Standard search result limit
       DEFAULT_RECENT_MEMOS_COUNT = 25     # Homepage recent memos
+      PREVIEW_SEARCH_LIMIT = 3            # Homepage search preview limit
       MEGA_SEARCH_LIMIT = 10_000          # Maximum for comprehensive "Search All" feature
 
       # FTS5 ranking weights for BM25 scoring
