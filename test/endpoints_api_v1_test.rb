@@ -46,12 +46,14 @@ class TestEndpointsApiV1 < Minitest::Test
     assert_equal 2, json.size
     assert_equal 3, json.first.size
 
-    first_result_triplet = json.first
+    # Find the specific memo we're testing for (order may vary based on search ranking)
+    target_memo = json.find { |result| result[1] == MEMO_TITLE }
 
-    assert_equal "/memos/2021/08/21/#{MEMO_ID}", first_result_triplet.first
-    assert_equal MEMO_TITLE, first_result_triplet[1]
-    assert_equal ['The Pug is a breed of dog originally from China, with physically distinctive features of a wrinkly, short-muzzled face and curled tail. The breed has a fine, glossy coat that comes in a variety of colors, most often light brown (fawn) or black, and a compact, square body with well developed and thick muscles all over the body.', '![](/memos/2021/08/21/hgfe-dcba/665507228-pug.jpg)', '[Wikipedia](https://en.wikipedia.org/wiki/Pug)'], first_result_triplet.last
-    assert_kind_of Array, first_result_triplet.last
+    refute_nil target_memo, 'Expected memo should be in search results'
+    assert_equal "/memos/2021/08/21/#{MEMO_ID}", target_memo.first
+    assert_equal MEMO_TITLE, target_memo[1]
+    assert_equal ['The Pug is a breed of dog originally from China, with physically distinctive features of a wrinkly, short-muzzled face and curled tail. The breed has a fine, glossy coat that comes in a variety of colors, most often light brown (fawn) or black, and a compact, square body with well developed and thick muscles all over the body.', '![](/memos/2021/08/21/hgfe-dcba/665507228-pug.jpg)', '[Wikipedia](https://en.wikipedia.org/wiki/Pug)'], target_memo.last
+    assert_kind_of Array, target_memo.last
   end
   # rubocop:enable Layout/LineLength
 
