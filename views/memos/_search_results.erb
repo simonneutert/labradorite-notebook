@@ -1,0 +1,45 @@
+<div class="row">
+<% if @results.nil? || @results.empty? %>
+  <div class="col-12 text-center text-muted py-4">
+    <p>No results found<%= @query && !@query.empty? ? " for \"#{@query}\"" : "" %></p>
+  </div>
+<% else %>
+  <div class="col-12">
+    <div class="alert alert-info">
+      Found <strong><%= @results.length %></strong> result<%= @results.length == 1 ? '' : 's' %>
+    </div>
+  </div>
+
+  <!-- Sidebar: Quick navigation (visible on tablet and up) -->
+  <div class="col-md-4 d-none d-md-block">
+    <div class="sticky-top" style="top: 20px;">
+      <h5>Quick Navigation</h5>
+      <div id="search-nav" class="list-group" style="max-height: 80vh; overflow-y: auto;">
+        <% @results.each_with_index do |(url, title, snippets), index| %>
+          <a href="#result-<%= index %>" 
+             class="list-group-item list-group-item-action"
+             style="font-size: 0.9em;">
+            <%= title %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main content: Search results -->
+  <div class="col-12 col-md-8">
+    <div id="search-results">
+      <% @results.each_with_index do |(url, title, snippets), index| %>
+        <div id="result-<%= index %>" class="search-result-item mb-4 pb-3 border-bottom">
+          <h4>
+            <a href="<%= url %>"><%= title %></a>
+          </h4>
+          <% snippets.each do |snippet| %>
+            <p style="padding-left: 1em;"><%= highlight_search_terms(snippet, @query) %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+</div>

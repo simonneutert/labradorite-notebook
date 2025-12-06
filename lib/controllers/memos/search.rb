@@ -24,7 +24,7 @@ module Controllers
       def initialize(req, index)
         @params = Helper::DeepCopy.create(req.params)
         @index = index
-        @search_input = @params['search']
+        @search_input = @params['search'] || @params['q']
       end
 
       # Executes the search and returns results

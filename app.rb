@@ -13,6 +13,9 @@ class App < Roda
   @production = ENV['RACK_ENV'] == 'production'
   @dev = ENV['RACK_ENV'] == 'development'
 
+  # Cache busting: timestamp when server starts (production) or dynamic (development)
+  ASSETS_VERSION = @production ? Time.now.to_i : nil
+
   use Rack::Deflater
 
   attr_accessor :index, :index_status
@@ -29,10 +32,29 @@ class App < Roda
   plugin :json
   plugin :json_parser
   plugin :sinatra_helpers # , delegate: false
+  plugin :h
   plugin :assets, css: Dir.entries('assets/css').reject { |f| f.size <= 2 },
-                  js: Dir.entries('assets/js').reject { |f| f.size <= 2 }
+                  js: Dir.entries('assets/js').reject { |f| f.size <= 2 },
+                  css_opts: { timestamp: ASSETS_VERSION || :mtime },
+                  js_opts: { timestamp: ASSETS_VERSION || :mtime }
 
   compile_assets if @production
+
+  # Define helper methods using Roda plugin :h
+  def highlight_search_terms(text, query)
+    return text if query.nil? || query.empty?
+
+    # Escape HTML first using Roda's h method
+    escaped_text = h(text)
+
+    # Escape regex special characters in query
+    escaped_query = Regexp.escape(query)
+
+    # Highlight matches
+    escaped_text.gsub(/#{escaped_query}/i) do |match|
+      "<span class=\"highlight-search-span\">#{match}</span>"
+    end
+  end
 
   # Initialize search index
   index ||= SearchIndex::SqliteCore.init_index
@@ -121,6 +143,15 @@ class App < Roda
           # TODO: make the response dependent to action result
           r.post 'search' do
             Controllers::Memos::Search.new(r, index).run
+          end
+
+          # Mega search endpoint with configurable limit
+          r.post 'search-all' do
+            mega_limit = ENV.fetch(
+              'MEGA_SEARCH_LIMIT',
+              Config::Constants::Search::MEGA_SEARCH_LIMIT
+            ).to_i
+            Controllers::Memos::Search.new(r, index).run(limit: mega_limit)
           end
 
           r.post 'preview' do
@@ -237,11 +268,48 @@ class App < Roda
         r.redirect '/memos/new'
       end
 
+      r.on 'search-all' do
+        @mega_search_limit = ENV.fetch(
+          'MEGA_SEARCH_LIMIT',
+          Config::Constants::Search::MEGA_SEARCH_LIMIT
+        ).to_i
+
+        r.on 'results' do
+          # HTMX partial load
+          @query = r.params['q']
+
+          @results = if @query.nil? || @query.length < 3
+                       []
+                     else
+                       Controllers::Memos::Search.new(r, index).run(limit: @mega_search_limit)
+                     end
+
+          view 'memos/_search_results', layout: false
+        end
+
+        r.is do
+          # Full page load
+          @query = r.params['q']
+
+          @results = if @query && @query.length >= 3
+                       Controllers::Memos::Search.new(r, index).run(limit: @mega_search_limit)
+                     else
+                       nil
+                     end
+
+          view 'search_all'
+        end
+      end
+
       # TODO: extract to controller
       r.is do
         n_files = ENV.fetch(
           'DEFAULT_RECENT_MEMOS_COUNT',
           Config::Constants::Search::DEFAULT_RECENT_MEMOS_COUNT
+        ).to_i
+        @preview_search_limit = ENV.fetch(
+          'PREVIEW_SEARCH_LIMIT',
+          Config::Constants::Search::PREVIEW_SEARCH_LIMIT
         ).to_i
         r.etag(r.session['last_file_scan'])
 
