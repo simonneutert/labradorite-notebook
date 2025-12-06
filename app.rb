@@ -293,8 +293,6 @@ class App < Roda
 
           @results = if @query && @query.length >= 3
                        Controllers::Memos::Search.new(r, index).run(limit: @mega_search_limit)
-                     else
-                       nil
                      end
 
           view 'search_all'
