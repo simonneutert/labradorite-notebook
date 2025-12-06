@@ -90,7 +90,7 @@ module SearchIndex
         # Build file path from ID (assuming ID contains the path structure)
         url = "#{Config::Constants::Web::MEMOS_PATH_PREFIX}/#{row[:id]}"
 
-        [url, row[:title], snippet]
+        [url, row[:title], snippet, row[:tags]]
       end
     end
 

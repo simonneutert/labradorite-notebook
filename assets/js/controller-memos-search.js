@@ -11,7 +11,7 @@ if (document.getElementById("memos-search")) {
       );
     };
 
-    const createSearchResultDomElement = function (url, title, hits) {
+    const createSearchResultDomElement = function (url, title, hits, tags) {
       const createSearchResultsElem = document.createElement("div");
       const href = document.createElement("a");
       createSearchResultsElem.appendChild(href);
@@ -20,14 +20,18 @@ if (document.getElementById("memos-search")) {
       const resultHeader = document.createElement("h4");
       resultHeader.appendChild(document.createTextNode(title));
       href.append(resultHeader);
-      hits.forEach((hit) => {
-        const hhit = highlightSearchText(hit);
-        console.log(hhit);
-        const hitElement = document.createElement("p");
-        hitElement.style.paddingLeft = "1em";
-        hitElement.innerHTML = hhit;
-        href.appendChild(hitElement);
-      });
+
+      // Display tags if available
+      if (tags && tags.trim() !== '') {
+        const tagsElem = document.createElement("div");
+        tagsElem.className = "text-muted small";
+        tagsElem.style.marginTop = "0.25rem";
+        tagsElem.innerHTML = highlightSearchText(tags);
+        href.appendChild(tagsElem);
+      }
+
+      // Index page shows titles only - snippets removed
+      // For full results with snippets, use /memos/search-all
       return createSearchResultsElem;
     };
 
@@ -37,11 +41,12 @@ if (document.getElementById("memos-search")) {
       const previewLimit = parseInt(document.getElementById('memos-index')?.dataset.previewLimit || 5, 10);
       const previewData = data.slice(0, previewLimit);
       previewData.map((searchResult) => {
-        const [url, title, hits] = searchResult;
+        const [url, title, hits, tags] = searchResult;
         const searchResultDomElement = createSearchResultDomElement(
           url,
           title,
           hits,
+          tags,
         );
         coll.push(searchResultDomElement);
       });
