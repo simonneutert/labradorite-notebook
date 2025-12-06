@@ -33,7 +33,9 @@ if (document.getElementById("memos-search")) {
 
     const buildResultCollectionDomElements = function (data) {
       const coll = [];
-      data.map((searchResult) => {
+      // Limit to top 5 results for preview on index page
+      const previewData = data.slice(0, 5);
+      previewData.map((searchResult) => {
         const [url, title, hits] = searchResult;
         const searchResultDomElement = createSearchResultDomElement(
           url,
@@ -51,7 +53,6 @@ if (document.getElementById("memos-search")) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify({ search: elem.value }),
       })
@@ -81,6 +82,12 @@ if (document.getElementById("memos-search")) {
     let searchAbortController = new AbortController();
 
     searchElem.addEventListener("keyup", (e) => {
+      // Redirect to search-all on Enter key
+      if (e.key === 'Enter' && searchElem.value.length >= 3) {
+        window.location.href = `/memos/search-all?q=${encodeURIComponent(searchElem.value)}`;
+        return;
+      }
+      
       if (debounce) {
         clearTimeout(debounce);
         searchAbortController.abort();

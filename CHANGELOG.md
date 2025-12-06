@@ -14,6 +14,7 @@ new entry format:
 
 ### v0.8.0 (2025-12-06) Santa Clause is coming to town 🎅
 
+- [PR#221](https://github.com/simonneutert/labradorite-notebook/pull/221) Add a way nicer search feature with configurable result limit, deep links and two-column layout. [@simonneutert](https://github.com/simonneutert)
 - [PR#220](https://github.com/simonneutert/labradorite-notebook/pull/220) Improve search input accessibility and UX. [@simonneutert](https://github.com/simonneutert)
 - [PR#218](https://github.com/simonneutert/labradorite-notebook/pull/218) Integrate TinyMDE markdown editor with backward compatibility. [@simonneutert](https://github.com/simonneutert)
 

@@ -73,6 +73,12 @@ Pure Ruby + SQLite = simple deployment anywhere!
 **Search Engine**
 
 - **SQLite FTS5** full-text search with BM25 ranking
+- **Keyboard shortcut**: Press `Ctrl + K` (or `Cmd + K` on Mac) to quickly focus the search input
+- **Quick search**: Real-time search with up to 100 results on the main page
+- **Search All**: Dedicated comprehensive search page with configurable limit (default: 10,000 results)
+  - Two-column responsive layout with sidebar navigation on tablet and up
+  - Quick navigation via sidebar anchor links
+  - Mobile-optimized single-column view
 - **In-memory database** by default for faster performance
 - **Configurable storage**: Use `DATABASE_TYPE=file` for persistent search index
 - **Multi-field search** across title, tags, and content
@@ -192,6 +198,13 @@ Docker deployment is still supported for convenience.
 - **Persistent**: Set `DATABASE_TYPE=file` for file-based storage
 - **Custom path**: Use `DATABASE_PATH=/custom/path.db` with file mode
 
+**Environment Variables**
+
+- `MEGA_SEARCH_LIMIT`: Maximum results for "Search All" feature (default: 10000)
+- `DEFAULT_RECENT_MEMOS_COUNT`: Number of recent memos on homepage (default: 25)
+- `DATABASE_TYPE`: 'memory' (default) or 'file' for persistent search index
+- `DATABASE_PATH`: Custom path for database file when using file mode
+
 **Testing**
 
 - `$ rake test` runs the test suite
@@ -215,6 +228,7 @@ services:
       - USERNAME=yourusername # REPLACE THIS WITH YOUR VPS user's USERNAME
       - DATABASE_TYPE=file # Optional: use 'file' for persistent search index
       - DEFAULT_RECENT_MEMOS_COUNT=25 # Optional: number of recent memos to show on homepage
+      - MEGA_SEARCH_LIMIT=10000 # Optional: maximum results for "Search All" feature
     image: ghcr.io/simonneutert/labradorite-notebook:v0.2.0
     # ports:
     #  - 9292:9292
