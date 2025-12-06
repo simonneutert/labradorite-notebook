@@ -14,10 +14,6 @@ if (document.getElementsByClassName("enable-search-keyboard-shortcut")) {
       if (e.key == "k" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         searchInput.focus({ focusVisible: true });
-        // Trigger htmx search event if input has value
-        if (searchInput.value.length >= 3) {
-          document.body.dispatchEvent(new Event("search"));
-        }
       }
     });
   })();

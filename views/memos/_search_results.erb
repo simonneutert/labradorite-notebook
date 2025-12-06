@@ -1,3 +1,4 @@
+<div class="row">
 <% if @results.nil? || @results.empty? %>
   <div class="col-12 text-center text-muted py-4">
     <p>No results found<%= @query && !@query.empty? ? " for \"#{@query}\"" : "" %></p>
@@ -41,3 +42,4 @@
     </div>
   </div>
 <% end %>
+</div>
