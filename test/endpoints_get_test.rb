@@ -96,8 +96,8 @@ class TestEndpointsGet < Minitest::Test
 
     assert_equal 200, last_response.status
     refute_includes last_response.body, '<html>' # No layout
+
     # Should contain at least one of the pug memos
-    assert(last_response.body.include?(MEMO_ID) || last_response.body.include?('abcd-efgh'),
-           'Should contain at least one pug-related memo')
+    assert(last_response.body.include?(MEMO_ID) || last_response.body.include?('abcd-efgh'))
   end
 end

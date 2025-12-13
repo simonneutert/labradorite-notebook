@@ -22,7 +22,7 @@ GEM
     minitar-cli (1.0.0)
       minitar (~> 1.0.0)
       powerbar (~> 1.0)
-    minitest (5.26.2)
+    minitest (5.27.0)
     nio4r (2.7.5)
     ostruct (0.6.3)
     parallel (1.27.0)
@@ -58,7 +58,7 @@ GEM
     reline (0.6.3)
       io-console (~> 0.5)
     rexml (3.4.4)
-    roda (3.98.0)
+    roda (3.99.0)
       rack
     rubocop (1.81.7)
       json (~> 2.3)
@@ -111,7 +111,7 @@ DEPENDENCIES
   irb
   logger (~> 1.7)
   minitar-cli (~> 1.0)
-  minitest (~> 5.26)
+  minitest (~> 5.27)
   ostruct (~> 0.6.3)
   puma (~> 7.1)
   rack-test
@@ -121,7 +121,7 @@ DEPENDENCIES
   redcarpet (~> 3.6)
   reline (~> 0.6.3)
   rexml (~> 3.4)
-  roda (~> 3.98)
+  roda (~> 3.99)
   rubocop (~> 1.81)
   rubocop-minitest (~> 0.38.2)
   rubocop-performance (~> 1.26)
