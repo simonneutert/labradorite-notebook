@@ -34,7 +34,7 @@ class TestEndpointsApiV1 < Minitest::Test
   end
 
   # rubocop:disable Layout/LineLength
-  def test_memos_tantiny_search
+  def test_memos_tantiny_search # rubocop:disable Metrics/MethodLength
     post '/api/v1/memos/reload'
 
     post('/api/v1/memos/search', { search: SEARCH_TERM_PUG })
@@ -44,7 +44,8 @@ class TestEndpointsApiV1 < Minitest::Test
     assert_equal 200, last_response.status
     assert_kind_of Array, json
     assert_equal 2, json.size
-    assert_equal 3, json.first.size
+
+    assert_equal 4, json.first.size
 
     # Find the specific memo we're testing for (order may vary based on search ranking)
     target_memo = json.find { |result| result[1] == MEMO_TITLE }
@@ -52,8 +53,18 @@ class TestEndpointsApiV1 < Minitest::Test
     refute_nil target_memo, 'Expected memo should be in search results'
     assert_equal "/memos/2021/08/21/#{MEMO_ID}", target_memo.first
     assert_equal MEMO_TITLE, target_memo[1]
-    assert_equal ['The Pug is a breed of dog originally from China, with physically distinctive features of a wrinkly, short-muzzled face and curled tail. The breed has a fine, glossy coat that comes in a variety of colors, most often light brown (fawn) or black, and a compact, square body with well developed and thick muscles all over the body.', '![](/memos/2021/08/21/hgfe-dcba/665507228-pug.jpg)', '[Wikipedia](https://en.wikipedia.org/wiki/Pug)'], target_memo.last
-    assert_kind_of Array, target_memo.last
+
+    assert_equal [
+      "/memos/2021/08/21/#{MEMO_ID}",
+      'Facts about Pugs!',
+      [
+        'The Pug is a breed of dog originally from China, with physically distinctive features of a wrinkly, short-muzzled face and curled tail. The breed has a fine, glossy coat that comes in a variety of colors, most often light brown (fawn) or black, and a compact, square body with well developed and thick muscles all over the body.',
+        '![](/memos/2021/08/21/hgfe-dcba/665507228-pug.jpg)',
+        '[Wikipedia](https://en.wikipedia.org/wiki/Pug)'
+      ],
+      'dog,pug,pet'
+    ], target_memo
+    assert_kind_of Array, target_memo
   end
   # rubocop:enable Layout/LineLength
 
