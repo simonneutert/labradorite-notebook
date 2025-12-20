@@ -3,18 +3,18 @@ GEM
   specs:
     ast (2.4.3)
     bigdecimal (3.3.1)
-    date (3.5.0)
-    erb (6.0.0)
+    date (3.5.1)
+    erb (6.0.1)
     extralite (2.13)
     fiddle (1.1.8)
     hashie (5.0.0)
     htmlbeautifier (1.4.3)
-    io-console (0.8.1)
-    irb (1.15.3)
+    io-console (0.8.2)
+    irb (1.16.0)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.17.1)
+    json (2.18.0)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -35,8 +35,8 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.6.0)
-    psych (5.2.6)
+    prism (1.7.0)
+    psych (5.3.1)
       date
       stringio
     puma (7.1.0)
@@ -50,7 +50,7 @@ GEM
       rack (>= 3)
     rainbow (3.1.1)
     rake (13.3.1)
-    rdoc (6.16.1)
+    rdoc (7.0.1)
       erb
       psych (>= 4.0.0)
       tsort
@@ -61,7 +61,7 @@ GEM
     rexml (3.4.4)
     roda (3.99.0)
       rack
-    rubocop (1.81.7)
+    rubocop (1.82.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -69,7 +69,7 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.47.1, < 2.0)
+      rubocop-ast (>= 1.48.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.48.0)
@@ -92,12 +92,12 @@ GEM
     ruby-progressbar (1.13.0)
     sequel (5.99.0)
       bigdecimal
-    stringio (3.1.9)
+    stringio (3.2.0)
     tilt (2.6.1)
     tsort (0.2.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
+    unicode-emoji (4.2.0)
     yard (0.9.38)
 
 PLATFORMS
@@ -123,7 +123,7 @@ DEPENDENCIES
   reline (~> 0.6.3)
   rexml (~> 3.4)
   roda (~> 3.99)
-  rubocop (~> 1.81)
+  rubocop (~> 1.82)
   rubocop-minitest (~> 0.38.2)
   rubocop-performance (~> 1.26)
   rubocop-rake (~> 0.7.1)
