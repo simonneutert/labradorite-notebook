@@ -22,7 +22,8 @@ GEM
     minitar-cli (1.0.0)
       minitar (~> 1.0.0)
       powerbar (~> 1.0)
-    minitest (5.27.0)
+    minitest (6.0.0)
+      prism (~> 1.5)
     nio4r (2.7.5)
     ostruct (0.6.3)
     parallel (1.27.0)
@@ -111,7 +112,7 @@ DEPENDENCIES
   irb
   logger (~> 1.7)
   minitar-cli (~> 1.0)
-  minitest (~> 5.27)
+  minitest (~> 6.0)
   ostruct (~> 0.6.3)
   puma (~> 7.1)
   rack-test
