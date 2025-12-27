@@ -22,7 +22,7 @@ GEM
     minitar-cli (1.0.0)
       minitar (~> 1.0.0)
       powerbar (~> 1.0)
-    minitest (6.0.0)
+    minitest (6.0.1)
       prism (~> 1.5)
     nio4r (2.7.5)
     ostruct (0.6.3)
@@ -61,7 +61,7 @@ GEM
     rexml (3.4.4)
     roda (3.99.0)
       rack
-    rubocop (1.82.0)
+    rubocop (1.82.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
