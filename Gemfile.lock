@@ -93,7 +93,7 @@ GEM
     sequel (5.100.0)
       bigdecimal
     stringio (3.2.0)
-    tilt (2.6.1)
+    tilt (2.7.0)
     tsort (0.2.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
@@ -129,7 +129,7 @@ DEPENDENCIES
   rubocop-rake (~> 0.7.1)
   rubocop-sequel (~> 0.4.1)
   sequel (~> 5.100)
-  tilt (~> 2.6)
+  tilt (~> 2.7)
   yard (~> 0.9.38)
 
 BUNDLED WITH
