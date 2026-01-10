@@ -16,7 +16,7 @@ gem 'reline', '~> 0.6.3'
 gem 'rexml', '~> 3.4'
 gem 'roda', '~> 3.99'
 gem 'sequel', '~> 5.100'
-gem 'tilt', '~> 2.6'
+gem 'tilt', '~> 2.7'
 
 group :development do
   gem 'htmlbeautifier', require: false
