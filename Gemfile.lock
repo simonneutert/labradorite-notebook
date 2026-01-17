@@ -59,7 +59,7 @@ GEM
     reline (0.6.3)
       io-console (~> 0.5)
     rexml (3.4.4)
-    roda (3.99.0)
+    roda (3.100.0)
       rack
     rubocop (1.82.1)
       json (~> 2.3)
@@ -93,7 +93,7 @@ GEM
     sequel (5.100.0)
       bigdecimal
     stringio (3.2.0)
-    tilt (2.6.1)
+    tilt (2.7.0)
     tsort (0.2.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
@@ -122,14 +122,14 @@ DEPENDENCIES
   redcarpet (~> 3.6)
   reline (~> 0.6.3)
   rexml (~> 3.4)
-  roda (~> 3.99)
+  roda (~> 3.100)
   rubocop (~> 1.82)
   rubocop-minitest (~> 0.38.2)
   rubocop-performance (~> 1.26)
   rubocop-rake (~> 0.7.1)
   rubocop-sequel (~> 0.4.1)
   sequel (~> 5.100)
-  tilt (~> 2.6)
+  tilt (~> 2.7)
   yard (~> 0.9.38)
 
 BUNDLED WITH
