@@ -39,7 +39,7 @@ GEM
     psych (5.3.1)
       date
       stringio
-    puma (7.1.0)
+    puma (7.2.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.4)
@@ -114,7 +114,7 @@ DEPENDENCIES
   minitar-cli (~> 1.0)
   minitest (~> 6.0)
   ostruct (~> 0.6.3)
-  puma (~> 7.1)
+  puma (~> 7.2)
   rack-test
   rack-unreloader (~> 2.1)
   rackup (~> 2.3.1)
