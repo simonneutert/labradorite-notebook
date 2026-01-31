@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'extralite', '~> 2.13'
+gem 'extralite', '~> 2.14'
 gem 'fiddle', '~> 1.1'
 gem 'logger', '~> 1.7'
 gem 'minitar-cli', '~> 1.0'
@@ -21,7 +21,7 @@ gem 'tilt', '~> 2.7'
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'irb'
-  gem 'rubocop', '~> 1.82', require: false
+  gem 'rubocop', '~> 1.84', require: false
   gem 'rubocop-minitest', '~> 0.38.2', require: false
   gem 'rubocop-performance', '~> 1.26', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
