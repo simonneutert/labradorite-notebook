@@ -14,7 +14,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.18.0)
+    json (2.18.1)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -61,7 +61,7 @@ GEM
     rexml (3.4.4)
     roda (3.100.0)
       rack
-    rubocop (1.84.0)
+    rubocop (1.84.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -90,7 +90,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1, < 2)
     ruby-progressbar (1.13.0)
-    sequel (5.100.0)
+    sequel (5.101.0)
       bigdecimal
     stringio (3.2.0)
     tilt (2.7.0)
@@ -128,7 +128,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.26)
   rubocop-rake (~> 0.7.1)
   rubocop-sequel (~> 0.4.1)
-  sequel (~> 5.100)
+  sequel (~> 5.101)
   tilt (~> 2.7)
   yard (~> 0.9.38)
 
