@@ -14,12 +14,11 @@ new entry format:
 
 ### next
 
+### v0.8.0 (2026-03-04)
+
 - Many CI/CD and dependency updates. Dependabot for GitHub Actions and NPM (prettier) - [@simonneutert](https://github.com/simonneutert)
 - [PR#246](https://github.com/simonneutert/labradorite-notebook/pull/246) Upgrades to Ruby 4.0 and Node.js 24, ensuring compatibility with the latest versions of both languages. - [@simonneutert](https://github.com/simonneutert)
 - [PR#239](https://github.com/simonneutert/labradorite-notebook/pull/239) Upgrades to Ruby 4.0 and Node.js 24, ensuring compatibility with the latest versions of both languages. - [@simonneutert](https://github.com/simonneutert)
-
-### v0.8.0 (2025-12-06) Santa Clause is coming to town 🎅
-
 - [PR#221](https://github.com/simonneutert/labradorite-notebook/pull/221) Add a way nicer search feature with configurable result limit, deep links and two-column layout. [@simonneutert](https://github.com/simonneutert)
 - [PR#220](https://github.com/simonneutert/labradorite-notebook/pull/220) Improve search input accessibility and UX. [@simonneutert](https://github.com/simonneutert)
 - [PR#218](https://github.com/simonneutert/labradorite-notebook/pull/218) Integrate TinyMDE markdown editor with backward compatibility. [@simonneutert](https://github.com/simonneutert)
