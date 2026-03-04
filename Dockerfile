@@ -40,7 +40,7 @@ RUN apk add nodejs npm \
 
 ENV LANG=C.UTF-8
 ENV RUBY_YJIT_ENABLE=1
-ENV NODEJS_VERSION=22
+ENV NODEJS_VERSION=24
 ENV RACK_ENV=production
 # Database configuration (in-memory by default, can override with DATABASE_TYPE=file)
 ENV DATABASE_TYPE=memory
