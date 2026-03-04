@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        ruby-version: ["3.4"]
+        ruby-version: ["4.0"]
 
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
@@ -30,7 +30,7 @@ jobs:
           # Version Spec of the version to use in SemVer notation.
           # It also admits such aliases as lts/*, latest, nightly and canary builds
           # Examples: 12.x, 10.15.1, >=10.15.0, lts/Hydrogen, 16-nightly, latest, node
-          node-version: '24.x'
+          node-version: "24.x"
       - name: Set up Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:

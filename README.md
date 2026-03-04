@@ -22,7 +22,7 @@
 
 ---
 
-[![Ruby 3.4 SQLite FTS5](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml/badge.svg)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml)
+[![Ruby 4 SQLite FTS5](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml/badge.svg)](https://github.com/simonneutert/labradorite-notebook/actions/workflows/ruby.yml)
 
 ---
 
@@ -126,7 +126,7 @@ Pure Ruby + SQLite = simple deployment anywhere!
 
 ## Technical Prerequisites
 
-- Ruby v3.4+ are tested and ready to roll
+- Ruby v4.0+ are tested and ready to roll
 - SQLite3 (included with most systems)
 
 ## Architecture

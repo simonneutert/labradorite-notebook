@@ -17,3 +17,24 @@ updates:
       timezone: "Europe/Berlin"
     assignees:
       - "simonneutert"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    groups:
+      patch-and-minor-dependencies:
+        update-types: ["patch", "minor"]
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "11:45"
+      timezone: "Europe/Berlin"
+    assignees:
+      - "simonneutert"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "21:45"
+      timezone: "Europe/Berlin"
+    assignees:
+      - "simonneutert"
