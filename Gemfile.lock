@@ -102,7 +102,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1, < 2)
     ruby-progressbar (1.13.0)
-    sequel (5.101.0)
+    sequel (5.102.0)
       bigdecimal
     stringio (3.2.0)
     tilt (2.7.0)
@@ -140,7 +140,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.26)
   rubocop-rake (~> 0.7.1)
   rubocop-sequel (~> 0.4.1)
-  sequel (~> 5.101)
+  sequel (~> 5.102)
   tilt (~> 2.7)
   yard (~> 0.9.38)
 
