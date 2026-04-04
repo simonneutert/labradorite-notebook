@@ -15,7 +15,7 @@ gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.6.3'
 gem 'rexml', '~> 3.4'
 gem 'roda', '~> 3.102'
-gem 'sequel', '~> 5.102'
+gem 'sequel', '~> 5.103'
 gem 'tilt', '~> 2.7'
 
 group :development do
