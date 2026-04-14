@@ -29,7 +29,7 @@ GEM
       prism (~> 1.5)
     nio4r (2.7.5)
     ostruct (0.6.3)
-    parallel (1.27.0)
+    parallel (2.0.1)
     parser (3.3.11.1)
       ast (~> 2.4.1)
       racc
@@ -58,17 +58,17 @@ GEM
       psych (>= 4.0.0)
       tsort
     redcarpet (3.6.1)
-    regexp_parser (2.11.3)
+    regexp_parser (2.12.0)
     reline (0.6.3)
       io-console (~> 0.5)
     rexml (3.4.4)
-    roda (3.102.0)
+    roda (3.103.0)
       rack
-    rubocop (1.86.0)
+    rubocop (1.86.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
-      parallel (~> 1.10)
+      parallel (>= 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
@@ -101,7 +101,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
-    yard (0.9.38)
+    yard (0.9.40)
 
 PLATFORMS
   arm64-darwin-22
@@ -125,7 +125,7 @@ DEPENDENCIES
   redcarpet (~> 3.6)
   reline (~> 0.6.3)
   rexml (~> 3.4)
-  roda (~> 3.102)
+  roda (~> 3.103)
   rubocop (~> 1.86)
   rubocop-minitest (~> 0.39.1)
   rubocop-performance (~> 1.26)
@@ -133,7 +133,7 @@ DEPENDENCIES
   rubocop-sequel (~> 0.4.1)
   sequel (~> 5.103)
   tilt (~> 2.7)
-  yard (~> 0.9.38)
+  yard (~> 0.9.40)
 
 BUNDLED WITH
   4.0.7
