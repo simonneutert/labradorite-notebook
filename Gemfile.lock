@@ -101,7 +101,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
-    yard (0.9.40)
+    yard (0.9.42)
 
 PLATFORMS
   arm64-darwin-22
@@ -133,7 +133,7 @@ DEPENDENCIES
   rubocop-sequel (~> 0.4.1)
   sequel (~> 5.103)
   tilt (~> 2.7)
-  yard (~> 0.9.40)
+  yard (~> 0.9.42)
 
 BUNDLED WITH
   4.0.7
