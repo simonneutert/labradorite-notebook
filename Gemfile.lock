@@ -24,7 +24,7 @@ GEM
     minitar-cli (1.0.0)
       minitar (~> 1.0.0)
       powerbar (~> 1.0)
-    minitest (6.0.3)
+    minitest (6.0.4)
       drb (~> 2.0)
       prism (~> 1.5)
     nio4r (2.7.5)
@@ -52,7 +52,7 @@ GEM
     rackup (2.3.1)
       rack (>= 3)
     rainbow (3.1.1)
-    rake (13.3.1)
+    rake (13.4.2)
     rdoc (7.2.0)
       erb
       psych (>= 4.0.0)
@@ -101,7 +101,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
-    yard (0.9.40)
+    yard (0.9.43)
 
 PLATFORMS
   arm64-darwin-22
@@ -121,7 +121,7 @@ DEPENDENCIES
   rack-test
   rack-unreloader (~> 2.1)
   rackup (~> 2.3.1)
-  rake (~> 13.3)
+  rake (~> 13.4)
   redcarpet (~> 3.6)
   reline (~> 0.6.3)
   rexml (~> 3.4)
@@ -133,7 +133,7 @@ DEPENDENCIES
   rubocop-sequel (~> 0.4.1)
   sequel (~> 5.103)
   tilt (~> 2.7)
-  yard (~> 0.9.40)
+  yard (~> 0.9.43)
 
 BUNDLED WITH
   4.0.7
