@@ -5,7 +5,7 @@ GEM
     bigdecimal (4.1.0)
     date (3.5.1)
     drb (2.2.3)
-    erb (6.0.1)
+    erb (6.0.1.1)
     extralite (2.14)
     fiddle (1.1.8)
     hashie (5.0.0)
