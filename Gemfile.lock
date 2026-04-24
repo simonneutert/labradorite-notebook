@@ -2,21 +2,22 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.3)
-    bigdecimal (4.1.0)
+    bigdecimal (4.1.2)
     date (3.5.1)
     drb (2.2.3)
-    erb (6.0.1)
+    erb (6.0.4)
     extralite (2.14)
     fiddle (1.1.8)
-    hashie (5.0.0)
+    hashie (5.1.0)
+      logger
     htmlbeautifier (1.4.3)
     io-console (0.8.2)
-    irb (1.17.0)
+    irb (1.18.0)
       pp (>= 0.6.0)
       prism (>= 1.3.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.19.3)
+    json (2.19.4)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -24,12 +25,12 @@ GEM
     minitar-cli (1.0.0)
       minitar (~> 1.0.0)
       powerbar (~> 1.0)
-    minitest (6.0.4)
+    minitest (6.0.5)
       drb (~> 2.0)
       prism (~> 1.5)
     nio4r (2.7.5)
     ostruct (0.6.3)
-    parallel (2.0.1)
+    parallel (2.1.0)
     parser (3.3.11.1)
       ast (~> 2.4.1)
       racc
@@ -136,4 +137,4 @@ DEPENDENCIES
   yard (~> 0.9.43)
 
 BUNDLED WITH
-  4.0.7
+  4.0.10
