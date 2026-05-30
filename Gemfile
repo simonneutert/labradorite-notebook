@@ -21,12 +21,12 @@ gem 'tilt', '~> 2.7'
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'irb'
-  gem 'rubocop', '~> 1.86', require: false
+  gem 'rubocop', '~> 1.87', require: false
   gem 'rubocop-minitest', '~> 0.39.1', require: false
   gem 'rubocop-performance', '~> 1.26', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
   gem 'rubocop-sequel', '~> 0.4.1'
-  gem 'yard', '~> 0.9.43'
+  gem 'yard', '~> 0.9.44'
 end
 
 group :test do
