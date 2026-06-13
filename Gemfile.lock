@@ -63,7 +63,7 @@ GEM
     reline (0.6.3)
       io-console (~> 0.5)
     rexml (3.4.4)
-    roda (3.104.0)
+    roda (3.105.0)
       rack
     rubocop (1.87.0)
       json (~> 2.3)
@@ -126,7 +126,7 @@ DEPENDENCIES
   redcarpet (~> 3.6)
   reline (~> 0.6.3)
   rexml (~> 3.4)
-  roda (~> 3.104)
+  roda (~> 3.105)
   rubocop (~> 1.87)
   rubocop-minitest (~> 0.39.1)
   rubocop-performance (~> 1.26)
