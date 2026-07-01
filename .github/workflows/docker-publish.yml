@@ -73,3 +73,10 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64
+
+      - name: Clean up old packages
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: 'labradorite-notebook'
+          package-type: 'container'
+          min-versions-to-keep: 5
