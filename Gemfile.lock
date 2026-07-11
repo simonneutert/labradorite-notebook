@@ -6,7 +6,7 @@ GEM
     date (3.5.1)
     drb (2.2.3)
     erb (6.0.4)
-    extralite (2.14)
+    extralite (3.0.0)
     fiddle (1.1.8)
     hashie (5.1.0)
       logger
@@ -110,7 +110,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  extralite (~> 2.14)
+  extralite (~> 3.0)
   fiddle (~> 1.1)
   htmlbeautifier
   irb
