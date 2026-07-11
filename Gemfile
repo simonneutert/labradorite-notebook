@@ -15,8 +15,8 @@ gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.6.3'
 gem 'rexml', '~> 3.4'
 gem 'roda', '~> 3.105'
-gem 'sequel', '~> 5.105'
-gem 'tilt', '~> 2.7'
+gem 'sequel', '~> 5.106'
+gem 'tilt', '~> 2.8'
 
 group :development do
   gem 'htmlbeautifier', require: false
