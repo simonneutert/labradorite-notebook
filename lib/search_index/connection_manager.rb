@@ -127,13 +127,19 @@ module SearchIndex
     private
 
     def create_connection
+      set_pragmas = proc { |raw_conn| raw_conn.busy_timeout = 5000 } # ms, SQLite-level lock wait
+
+      opts = {
+        after_connect: set_pragmas,
+        max_connections: ENV.fetch('PUMA_THREADS', 5).to_i, # match Sequel's pool to Puma's thread count
+        pool_timeout: 5 # seconds, Sequel-level "wait for a free connection" — separate from busy_timeout
+      }
+
       if @config.in_memory?
-        # Use true in-memory database
-        Sequel.connect('extralite://')
+        Sequel.connect('extralite://', **opts)
       else
-        # File-based database for persistence
         ensure_directory_exists
-        Sequel.connect("extralite://#{@config.path}")
+        Sequel.connect("extralite://#{@config.path}", **opts)
       end
     rescue StandardError => e
       raise DatabaseConnectionError, "Failed to connect to database: #{e.message}"
