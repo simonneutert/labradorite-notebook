@@ -15,13 +15,13 @@ gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.6.3'
 gem 'rexml', '~> 3.4'
 gem 'roda', '~> 3.106'
-gem 'sequel', '~> 5.106'
+gem 'sequel', '~> 5.107'
 gem 'tilt', '~> 2.8'
 
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'irb'
-  gem 'rubocop', '~> 1.88', require: false
+  gem 'rubocop', '~> 1.89', require: false
   gem 'rubocop-minitest', '~> 0.40.0', require: false
   gem 'rubocop-performance', '~> 1.26', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
