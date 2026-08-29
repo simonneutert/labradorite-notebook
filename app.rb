@@ -24,10 +24,9 @@ class App < Roda
   plugin :render, layout: './layout'
   plugin :view_options
   plugin :all_verbs
-  # rubocop:disable Layout/LineLength
+  # rubocop:disable-next Layout/LineLength
   plugin :sessions, key: 'labradorite',
                     secret: ENV.delete('SESSION_SECRET') || 'labradoritelabradoritelabradoritelabradoritelabradoritelabradorite'
-  # rubocop:enable Layout/LineLength
   plugin :caching
   plugin :json
   plugin :json_parser

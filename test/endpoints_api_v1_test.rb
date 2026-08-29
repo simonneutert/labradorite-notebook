@@ -33,7 +33,7 @@ class TestEndpointsApiV1 < Minitest::Test
     assert_equal 'success', json['status']
   end
 
-  # rubocop:disable Layout/LineLength
+  # rubocop:disable-next Layout/LineLength
   def test_memos_tantiny_search # rubocop:disable Metrics/MethodLength
     post '/api/v1/memos/reload'
 
@@ -66,7 +66,6 @@ class TestEndpointsApiV1 < Minitest::Test
     ], target_memo
     assert_kind_of Array, target_memo
   end
-  # rubocop:enable Layout/LineLength
 
   def test_memos_tantiny_search_without_match
     post '/api/v1/memos/reload'
@@ -94,7 +93,7 @@ class TestEndpointsApiV1 < Minitest::Test
     assert_equal "<h1>Labradorite</h1>\n", json['md']
   end
 
-  # rubocop:disable Layout/LineLength
+  # rubocop:disable-next Layout/LineLength
   def test_memos_update_memo
     post("/api/v1/memos/2021/08/21/#{MEMO_ID}/update", {
            'title' => 'Facts about Pugsies!',
@@ -105,7 +104,6 @@ class TestEndpointsApiV1 < Minitest::Test
     assert_equal 200, last_response.status
     assert_equal 'success', JSON.parse(last_response.body)['status']
   end
-  # rubocop:enable Layout/LineLength
 
   def test_memo_deletion_via_api_removes_from_search_index
     # Setup: Reload index to ensure test memo is indexed
