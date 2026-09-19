@@ -14,14 +14,14 @@ gem 'rake', '~> 13.4'
 gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.7.0'
 gem 'rexml', '~> 3.4'
-gem 'roda', '~> 3.107'
+gem 'roda', '~> 3.108'
 gem 'sequel', '~> 5.108'
 gem 'tilt', '~> 2.9'
 
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'irb'
-  gem 'rubocop', '~> 1.90', require: false
+  gem 'rubocop', '~> 1.91', require: false
   gem 'rubocop-minitest', '~> 0.40.0', require: false
   gem 'rubocop-performance', '~> 1.27', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
