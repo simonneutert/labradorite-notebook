@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'extralite', '~> 3.0'
+gem 'extralite', '~> 3.1'
 gem 'fiddle', '~> 1.1'
 gem 'logger', '~> 1.7'
 gem 'minitar-cli', '~> 1.0'
