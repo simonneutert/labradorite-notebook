@@ -6,7 +6,7 @@ GEM
     date (3.5.1)
     drb (2.2.3)
     erb (6.0.4)
-    extralite (3.1.0)
+    extralite (3.1.1)
     fiddle (1.1.8)
     hashie (5.1.0)
       logger
