@@ -29,7 +29,7 @@ class App < Roda
                     secret: ENV.delete('SESSION_SECRET') || 'labradoritelabradoritelabradoritelabradoritelabradoritelabradorite'
   plugin :caching
   plugin :json
-  plugin :json_parser
+  plugin :json_parser, content_type_regexp: %r{\Aapplication/(?:vnd\.api\+)?json\b}i
   plugin :sinatra_helpers # , delegate: false
   plugin :h
   plugin :assets, css: Dir.entries('assets/css').reject { |f| f.size <= 2 },

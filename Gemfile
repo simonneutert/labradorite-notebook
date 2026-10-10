@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'extralite', '~> 3.1'
+gem 'extralite', '3.1.1'
 gem 'fiddle', '~> 1.1'
 gem 'logger', '~> 1.7'
 gem 'minitar-cli', '~> 1.0'
@@ -15,14 +15,14 @@ gem 'redcarpet', '~> 3.6'
 gem 'reline', '~> 0.7.0'
 gem 'rexml', '~> 3.4'
 gem 'roda', '~> 3.108'
-gem 'sequel', '~> 5.108'
+gem 'sequel', '~> 5.109'
 gem 'tilt', '~> 2.9'
 
 group :development do
   gem 'htmlbeautifier', require: false
   gem 'irb'
   gem 'rubocop', '~> 1.91', require: false
-  gem 'rubocop-minitest', '~> 0.40.0', require: false
+  gem 'rubocop-minitest', '~> 0.41.0', require: false
   gem 'rubocop-performance', '~> 1.27', require: false
   gem 'rubocop-rake', '~> 0.7.1', require: false
   gem 'rubocop-sequel', '~> 0.4.1'
